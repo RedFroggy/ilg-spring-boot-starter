@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
  * Address17
  */
 
-public class Address17   {
+public class Address17 implements fr.redfroggy.ilg.client.site.Address17 {
   @JsonProperty("street")
   private String street;
 
