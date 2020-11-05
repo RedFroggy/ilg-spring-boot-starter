@@ -1,0 +1,86 @@
+{
+  "@context": "https://webservice.infolegale.fr/v2/schema/xsd/sites.xsd",
+  "@type": "Sites",
+  "@pagination": {
+    "start": 0,
+    "page": 1,
+    "count": 2,
+    "total": 13
+  },
+  "@sorting": {
+    "column": null,
+    "order": "ASC"
+  },
+  "@search": {
+    "search": null,
+    "in": [],
+    "hit": 13
+  },
+  "@id": "https://webservice.infolegale.fr/v2/companies/fr/428785042/sites",
+  "sites": [
+    {
+      "@context": "https://webservice.infolegale.fr/v2/schema/xsd/site.xsd",
+      "@type": "Site",
+      "@link": "https://webservice.infolegale.fr/v2/companies/fr/428785042/sites/42878504200048",
+      "@id": "https://webservice.infolegale.fr/v2/companies/fr/428785042/sites/42878504200048",
+      "registrationId": "42878504200048",
+      "siteNumber": "00048",
+      "commercialName": null,
+      "tradings": "",
+      "status": true,
+      "creationDate": "2007-10-01",
+      "closingDate": null,
+      "isHeadquarter": false,
+      "address": {
+        "street": "1401 RUE DU CHAMP ROUGE",
+        "streetDetail": {
+          "number": "1401",
+          "repetition": "",
+          "streetType": "RUE",
+          "streetName": "DU CHAMP ROUGE"
+        },
+        "street2": null,
+        "postalCode": "45770",
+        "locality": "SARAN"
+      },
+      "workforce": {
+        "value": "1000",
+        "range": "1000-1999",
+        "rangeMin": 1000,
+        "rangeMax": 1999
+      }
+    },
+    {
+      "@context": "https://webservice.infolegale.fr/v2/schema/xsd/site.xsd",
+      "@type": "Site",
+      "@link": "https://webservice.infolegale.fr/v2/companies/fr/428785042/sites/42878504200055",
+      "@id": "https://webservice.infolegale.fr/v2/companies/fr/428785042/sites/42878504200055",
+      "registrationId": "42878504200055",
+      "siteNumber": "00055",
+      "commercialName": null,
+      "tradings": "",
+      "status": true,
+      "creationDate": "2010-08-16",
+      "closingDate": null,
+      "isHeadquarter": false,
+      "address": {
+        "street": "ZAC DES PORTES DE PROVENCE",
+        "streetDetail": {
+          "number": "",
+          "repetition": "",
+          "streetType": "",
+          "streetName": "ZAC DES PORTES DE PROVENCE"
+        },
+        "street2": null,
+        "postalCode": "26200",
+        "locality": "MONTELIMAR"
+      },
+      "workforce": {
+        "value": "500",
+        "range": "500-999",
+        "rangeMin": 500,
+        "rangeMax": 999
+      }
+    }
+  ]
+}
