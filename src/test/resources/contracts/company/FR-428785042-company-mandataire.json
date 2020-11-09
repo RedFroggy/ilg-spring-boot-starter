@@ -1,0 +1,16 @@
+{
+  "@id": "https://webservice.infolegale.fr/v2/executive/16022818",
+  "civilite": "M",
+  "name": "BOLE",
+  "firstname": "Ronan",
+  "type": "person",
+  "maidenName": null,
+  "siren": null,
+  "fonction": {
+    "code": "5",
+    "label": "Président",
+    "priority": null
+  },
+  "email": null,
+  "phone": "+33146171000"
+}

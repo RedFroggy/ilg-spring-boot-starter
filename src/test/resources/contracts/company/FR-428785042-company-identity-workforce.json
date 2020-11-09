@@ -1,0 +1,8 @@
+{
+  "@context": "https://webservice.infolegale.fr/v2/schema/xsd/generics.xsd",
+  "@type": "Workforce",
+  "value": "5700",
+  "range": "5000-9999",
+  "rangeMin": 5000,
+  "rangeMax": 9999
+}

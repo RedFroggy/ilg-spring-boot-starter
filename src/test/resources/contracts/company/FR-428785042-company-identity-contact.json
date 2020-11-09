@@ -1,0 +1,9 @@
+{
+  "@context": "https://webservice.infolegale.fr/v2/schema/xsd/generics.xsd",
+  "@type": "Contact",
+  "type": null,
+  "phone": "+33146171000",
+  "fax": null,
+  "email": null,
+  "webSite": "https://www.amazon.fr/"
+}

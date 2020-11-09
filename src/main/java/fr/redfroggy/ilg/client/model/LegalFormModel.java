@@ -2,6 +2,7 @@ package fr.redfroggy.ilg.client.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import fr.redfroggy.ilg.client.company.LegalFormModelProjection;
 import fr.redfroggy.ilg.client.site.LegalFormModelProjection3;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -9,7 +10,7 @@ import io.swagger.annotations.ApiModelProperty;
  * LegalFormModel
  */
 @JsonIgnoreProperties({"@type", "@context", "@id", "@link"})
-public class LegalFormModel implements LegalFormModelProjection3 {
+public class LegalFormModel implements LegalFormModelProjection, LegalFormModelProjection3 {
 
     private final String code;
 

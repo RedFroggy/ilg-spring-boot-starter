@@ -1,0 +1,17 @@
+{
+  "identity": true,
+  "sites": true,
+  "risk": true,
+  "score": true,
+  "financial": true,
+  "links": true,
+  "groupStructure": true,
+  "groupInfo": true,
+  "mandataire": true,
+  "lastAds": null,
+  "events": true,
+  "executives": true,
+  "mandats": false,
+  "legal": null,
+  "kyc": true
+}

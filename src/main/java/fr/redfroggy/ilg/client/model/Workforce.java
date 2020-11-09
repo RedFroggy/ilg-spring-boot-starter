@@ -2,6 +2,7 @@ package fr.redfroggy.ilg.client.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import fr.redfroggy.ilg.client.company.WorkforceProjection;
 import fr.redfroggy.ilg.client.site.WorkforceProjection2;
 import fr.redfroggy.ilg.client.site.WorkforceProjection4;
 
@@ -9,7 +10,7 @@ import fr.redfroggy.ilg.client.site.WorkforceProjection4;
  * Workforce
  */
 @JsonIgnoreProperties({"@type", "@context", "@id", "@link"})
-public class Workforce implements WorkforceProjection2, WorkforceProjection4 {
+public class Workforce implements WorkforceProjection, WorkforceProjection2, WorkforceProjection4 {
 
     private final String value;
 

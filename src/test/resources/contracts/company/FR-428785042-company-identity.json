@@ -1,0 +1,102 @@
+{
+  "@context": "https://webservice.infolegale.fr/v2/schema/xsd/company/identity.xsd",
+  "@type": "Identity",
+  "id": "428785042",
+  "registrationId": "428785042",
+  "vatnumber": "FR17428785042",
+  "name": "AMAZON FRANCE LOGISTIQUE SAS",
+  "tradings": "",
+  "acronym": "",
+  "address": {
+    "@context": "https://webservice.infolegale.fr/v2/schema/xsd/generics.xsd",
+    "@type": "Address",
+    "country": "FRANCE",
+    "countryCode": "FR",
+    "street": "67 BD DU GENERAL LECLERC",
+    "streetDetail": {
+      "number": "67",
+      "repetition": "",
+      "streetType": "BOULEVARD",
+      "streetName": "DU GENERAL LECLERC"
+    },
+    "street2": null,
+    "postalBoxNumber": "",
+    "region": null,
+    "postalCode": "92110",
+    "locality": "CLICHY",
+    "mailFormatted": {
+      "@context": "https://webservice.infolegale.fr/v2/schema/xsd/generics.xsd",
+      "@type": "PostalAddressMailFormat",
+      "addressL1": "AMAZON FRANCE LOGISTIQUE SAS",
+      "addressL2": "",
+      "addressL3": "",
+      "addressL4": "67 BD DU GENERAL LECLERC",
+      "addressL5": "",
+      "addressL6": "92110 CLICHY",
+      "addressL7": "FRANCE"
+    }
+  },
+  "headquarter": {
+    "@id": "https://webservice.infolegale.fr/v2/companies/fr/428785042/sites/42878504200105",
+    "id": "42878504200105",
+    "companyId": "428785042",
+    "registrationId": "42878504200105",
+    "siteNumber": "00105",
+    "name": "AMAZON FRANCE LOGISTIQUE SAS",
+    "commercialName": "",
+    "tradings": "",
+    "status": true,
+    "isHeadquarter": true,
+    "origine": "Création"
+  },
+  "workforce": {
+    "@context": "https://webservice.infolegale.fr/v2/schema/xsd/generics.xsd",
+    "@type": "Workforce",
+    "value": "5700",
+    "range": "5000-9999",
+    "rangeMin": 5000,
+    "rangeMax": 9999
+  },
+  "contact": {
+    "@context": "https://webservice.infolegale.fr/v2/schema/xsd/generics.xsd",
+    "@type": "Contact",
+    "type": null,
+    "phone": "+33146171000",
+    "fax": null,
+    "email": null,
+    "webSite": "https://www.amazon.fr/"
+  },
+  "legalForm": {
+    "@context": "https://webservice.infolegale.fr/v2/schema/xsd/generics.xsd",
+    "@type": "LegalForm",
+    "code": "5710",
+    "codeINSEE": "5710",
+    "label": "Société par actions simplifiée (SAS)"
+  },
+  "activity": {
+    "@context": "https://webservice.infolegale.fr/v2/schema/xsd/generics.xsd",
+    "@type": "CodeLabelPair",
+    "code": "5210B",
+    "label": "Entreposage et stockage non frigorifique"
+  },
+  "declaredActivity": "exploitation de centres de distribution et de logistique.",
+  "secondaryActivities": null,
+  "creationDate": "1999-12-29",
+  "status": 1,
+  "rna": null,
+  "capital": "38113.00",
+  "rcs": "NANTERRE B 428 785 042",
+  "cotation": {
+    "codeIsin": null,
+    "placeCotation": null,
+    "indices": []
+  },
+  "tags": [
+    {
+      "@context": "https://webservice.infolegale.fr/v2/schema/xsd/generics.xsd",
+      "@type": "CodeLabelPair",
+      "code": "ETI",
+      "label": "Entreprise de Taille Intermédiaire"
+    }
+  ]
+}

@@ -2,6 +2,7 @@ package fr.redfroggy.ilg.client.model;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import fr.redfroggy.ilg.client.company.FinancialProjection;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.time.LocalDate;
@@ -10,7 +11,7 @@ import java.time.LocalDate;
  * Financial
  */
 @JsonDeserialize(builder = Financial.FinancialBuilder.class)
-public class Financial {
+public class Financial implements FinancialProjection {
     private final String turnover;
 
     private final String currency;

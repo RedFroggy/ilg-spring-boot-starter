@@ -2,6 +2,7 @@ package fr.redfroggy.ilg.client.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import fr.redfroggy.ilg.client.company.ActivityModelProjection;
 import fr.redfroggy.ilg.client.site.ActivityModelProjection3;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -9,7 +10,7 @@ import io.swagger.annotations.ApiModelProperty;
  * ActivityModel
  */
 @JsonIgnoreProperties({"@type", "@context", "@id", "@link"})
-public class ActivityModel implements ActivityModelProjection3 {
+public class ActivityModel implements ActivityModelProjection, ActivityModelProjection3 {
 
     private final String code;
 

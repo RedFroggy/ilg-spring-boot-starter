@@ -55,6 +55,78 @@ public SiteProjection getCompanySite(String country, String registrationId, Stri
 }
 ```
 
+### company api
+```java
+//...
+@Autowired
+private CompanyApiClient apiClient;
+
+//...
+public Availability getAvailability(String country, String registrationId) {
+
+    ResponseEntity<Availability> response = apiClient.getAvailability(country, registrationId);
+    return response.getBody();
+}
+
+public CompanyProjection getCompany(String country, String registrationId) {
+
+  ResponseEntity<CompanyProjection> response = apiClient.getCompany(country, registrationId);
+  return response.getBody();
+}
+
+public IdentityProjection getIdentity(String country, String registrationId) {
+
+  ResponseEntity<IdentityProjection> response = apiClient.getIdentity(country, registrationId);
+  return response.getBody();
+}
+
+public ContactProjection getIdentityContact(String country, String registrationId) {
+
+  ResponseEntity<ContactProjection> response = apiClient.getIdentityContact(country, registrationId);
+  return response.getBody();
+}
+
+public ExecutiveProjection getMandataire(String country, String registrationId) {
+
+  ResponseEntity<ExecutiveProjection> response = apiClient.getMandataire(country, registrationId);
+  return response.getBody();
+}
+
+public WorkforceProjection getIdentityWorkforce(String country, String registrationId) {
+
+  ResponseEntity<WorkforceProjection> response = apiClient.getIdentityWorkforce(country, registrationId);
+  return response.getBody();
+}
+
+public RiskProjection getRisk(String country, String registrationId) {
+
+  ResponseEntity<RiskProjection> response = apiClient.getRisk(country, registrationId);
+  return response.getBody();
+}
+
+public ScoreProjection getScore(String country, String registrationId) {
+
+  ResponseEntity<ScoreProjection> response = apiClient.getScore(country, registrationId);
+  return response.getBody();
+}
+
+public ExecutiveTermsProjection getTerms(String country, String registrationId) {
+
+  TermRequest requestParams = TermRequest.builder()
+          .blockId(666)
+          .ordersStartDate(Sorting.Direction.ASC)
+          .positionRole(TermRequest.PositionRole.O)
+          .principal(true)
+          .termsState(true)
+          .build();
+
+  ResponseEntity<ExecutiveTermsProjection> response = apiClient.getTerms(country, registrationId, requestParams);
+  return response.getBody();
+}
+//...
+
+```
+
 ## Security
 To pass authorization headers to the provider API, [interceptors](src/main/java/fr/redfroggy/ilg/spring/boot/autoconfigure/AuthorizationInterceptor.java) are used to add these headers to the request.
 See [IlgRestTemplate ](src/main/java/fr/redfroggy/ilg/spring/boot/autoconfigure/IlgRestTemplate.java) implementation

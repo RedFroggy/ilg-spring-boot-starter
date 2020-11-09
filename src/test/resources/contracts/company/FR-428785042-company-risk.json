@@ -1,0 +1,8 @@
+{
+  "@context": "https://webservice.infolegale.fr/v2/schema/xsd/company/risk.xsd",
+  "@type": "Risk",
+  "class": "17-20",
+  "label": "Risque très faible",
+  "status": "active",
+  "insolvency": null
+}

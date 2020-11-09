@@ -2,6 +2,7 @@ package fr.redfroggy.ilg.client.model;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import fr.redfroggy.ilg.client.company.ExecutiveMouvementProjection6;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.time.LocalDate;
@@ -10,7 +11,7 @@ import java.time.LocalDate;
  * ExecutiveMouvement
  */
 @JsonDeserialize(builder = ExecutiveMouvement.ExecutiveMouvementBuilder.class)
-public class ExecutiveMouvement {
+public class ExecutiveMouvement implements ExecutiveMouvementProjection6 {
     private final Integer code;
 
     private final String label;

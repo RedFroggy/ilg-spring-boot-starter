@@ -1,0 +1,436 @@
+{
+  "@context": "https://webservice.infolegale.fr/v2/schema/xsd/company.xsd",
+  "@type": "Company",
+  "@link": "https://webservice.infolegale.fr/v2/companies/FR/428785042",
+  "@id": "https://webservice.infolegale.fr/v2/companies/FR/428785042",
+  "identity": {
+    "@context": "https://webservice.infolegale.fr/v2/schema/xsd/company/identity.xsd",
+    "@type": "Identity",
+    "id": "428785042",
+    "registrationId": "428785042",
+    "vatnumber": "FR17428785042",
+    "name": "AMAZON FRANCE LOGISTIQUE SAS",
+    "tradings": "",
+    "acronym": "",
+    "address": {
+      "@context": "https://webservice.infolegale.fr/v2/schema/xsd/generics.xsd",
+      "@type": "Address",
+      "country": "FRANCE",
+      "countryCode": "FR",
+      "street": "67 BD DU GENERAL LECLERC",
+      "streetDetail": {
+        "number": "67",
+        "repetition": "",
+        "streetType": "BOULEVARD",
+        "streetName": "DU GENERAL LECLERC"
+      },
+      "street2": null,
+      "postalBoxNumber": "",
+      "region": null,
+      "postalCode": "92110",
+      "locality": "CLICHY",
+      "mailFormatted": {
+        "@context": "https://webservice.infolegale.fr/v2/schema/xsd/generics.xsd",
+        "@type": "PostalAddressMailFormat",
+        "addressL1": "AMAZON FRANCE LOGISTIQUE SAS",
+        "addressL2": "",
+        "addressL3": "",
+        "addressL4": "67 BD DU GENERAL LECLERC",
+        "addressL5": "",
+        "addressL6": "92110 CLICHY",
+        "addressL7": "FRANCE"
+      }
+    },
+    "headquarter": {
+      "@context": "https://webservice.infolegale.fr/v2/schema/xsd/site.xsd",
+      "@type": "Site",
+      "@id": "https://webservice.infolegale.fr/v2/companies/fr/428785042/sites/42878504200105",
+      "id": "42878504200105",
+      "companyId": "428785042",
+      "registrationId": "42878504200105",
+      "siteNumber": "00105",
+      "name": "AMAZON FRANCE LOGISTIQUE SAS",
+      "commercialName": "",
+      "tradings": "",
+      "status": true,
+      "isHeadquarter": true,
+      "origine": "Création"
+    },
+    "workforce": {
+      "@context": "https://webservice.infolegale.fr/v2/schema/xsd/generics.xsd",
+      "@type": "Workforce",
+      "value": "5700",
+      "range": "5000-9999",
+      "rangeMin": 5000,
+      "rangeMax": 9999
+    },
+    "contact": {
+      "@context": "https://webservice.infolegale.fr/v2/schema/xsd/generics.xsd",
+      "@type": "Contact",
+      "type": null,
+      "phone": "+33146171000",
+      "fax": null,
+      "email": null,
+      "webSite": "https://www.amazon.fr/"
+    },
+    "legalForm": {
+      "@context": "https://webservice.infolegale.fr/v2/schema/xsd/generics.xsd",
+      "@type": "LegalForm",
+      "code": "5710",
+      "codeINSEE": "5710",
+      "label": "Société par actions simplifiée (SAS)"
+    },
+    "activity": {
+      "@context": "https://webservice.infolegale.fr/v2/schema/xsd/generics.xsd",
+      "@type": "CodeLabelPair",
+      "code": "5210B",
+      "label": "Entreposage et stockage non frigorifique"
+    },
+    "declaredActivity": "exploitation de centres de distribution et de logistique.",
+    "secondaryActivities": [],
+    "creationDate": "1999-12-29",
+    "status": 1,
+    "rna": null,
+    "capital": "38113.00",
+    "rcs": "NANTERRE B 428 785 042",
+    "cotation": {
+      "codeIsin": null,
+      "placeCotation": null,
+      "indices": []
+    },
+    "tags": [
+      {
+        "@context": "https://webservice.infolegale.fr/v2/schema/xsd/generics.xsd",
+        "@type": "CodeLabelPair",
+        "code": "ETI",
+        "label": "Entreprise de Taille Intermédiaire"
+      }
+    ]
+  },
+  "sites": {
+    "@context": "https://webservice.infolegale.fr/v2/schema/xsd/sites.xsd",
+    "@type": "Sites",
+    "@link": "https://webservice.infolegale.fr/v2/companies/FR/428785042/sites",
+    "@id": "https://webservice.infolegale.fr/v2/companies/FR/428785042/sites"
+  },
+  "risk": {
+    "class": "17-20",
+    "label": "Risque très faible",
+    "status": "active",
+    "insolvency": null
+  },
+  "score": {
+    "score": 17,
+    "previous": 18,
+    "creditLimit": 500000,
+    "delaiReglementFournisseur": 204.21,
+    "delaiReglementFournisseurSecteur": 63.72,
+    "comments": {
+      "COP_8": "Le délai moyen constaté des règlements auprès de ses fournisseurs est de <span class='delai_reglement_negatif'>204</span> jours contre 64 jours pour ses confrères.",
+      "FIN_102": "L’entreprise peut autofinancer ses besoins courants (stocks, créances clients).",
+      "FIN_62": "Le ratio de Liquidité générale exprime une capacité de remboursement des dettes à court terme un peu juste",
+      "LFI_1": "Le capital de AMAZON FRANCE LOGISTIQUE SAS est majoritairement contrôlé, aussi la situation de son actionnaire doit être prise en compte dans votre décision. De façon générale, notez qu’en cas de défaillance de l’actionnaire majoritaire, les filiales sont régulièrement  impactées par le jugement. A l’inverse, et malgré certains devoirs imposés à l’actionnaire majoritaire, il n’est pas rare de constater que ce dernier se déresponsabilise de ses engagements lors de difficultés de paiement, et alors en cas de défaillance de la filiale il appartiendra au juge de définir les responsabilités et les éventuelles poursuites (ce commentaire est d’ordre général, nous n’avons pas constaté à ce jour ce type de fait concernant l’actionnaire de AMAZON FRANCE LOGISTIQUE SAS). ",
+      "NAF_10": "Son secteur d’activité a un taux de défaillance supérieur à la moyenne des entreprises",
+      "REL_4": "La situation de l’entreprise permet une entrée en relation."
+    },
+    "summary": null,
+    "history": [
+      {
+        "year": "2018",
+        "month": "10",
+        "average_score": "17.0",
+        "average_score_activity": "10.6"
+      },
+      {
+        "year": "2018",
+        "month": "11",
+        "average_score": "17.0",
+        "average_score_activity": "10.6"
+      },
+      {
+        "year": "2018",
+        "month": "12",
+        "average_score": "17.0",
+        "average_score_activity": "10.6"
+      },
+      {
+        "year": "2019",
+        "month": "01",
+        "average_score": "17.0",
+        "average_score_activity": "10.5"
+      },
+      {
+        "year": "2019",
+        "month": "02",
+        "average_score": "17.0",
+        "average_score_activity": "10.5"
+      },
+      {
+        "year": "2019",
+        "month": "03",
+        "average_score": "16.0",
+        "average_score_activity": "10.5"
+      },
+      {
+        "year": "2019",
+        "month": "04",
+        "average_score": "16.0",
+        "average_score_activity": "10.5"
+      },
+      {
+        "year": "2019",
+        "month": "05",
+        "average_score": "16.0",
+        "average_score_activity": "10.5"
+      },
+      {
+        "year": "2019",
+        "month": "06",
+        "average_score": "16.0",
+        "average_score_activity": "10.5"
+      },
+      {
+        "year": "2019",
+        "month": "07",
+        "average_score": "16.0",
+        "average_score_activity": "10.5"
+      },
+      {
+        "year": "2019",
+        "month": "08",
+        "average_score": "16.0",
+        "average_score_activity": "10.5"
+      },
+      {
+        "year": "2019",
+        "month": "09",
+        "average_score": "16.0",
+        "average_score_activity": "10.5"
+      },
+      {
+        "year": "2019",
+        "month": "10",
+        "average_score": "17.0",
+        "average_score_activity": "10.5"
+      },
+      {
+        "year": "2019",
+        "month": "11",
+        "average_score": "17.0",
+        "average_score_activity": "10.5"
+      },
+      {
+        "year": "2019",
+        "month": "12",
+        "average_score": "16.0",
+        "average_score_activity": "10.5"
+      },
+      {
+        "year": "2020",
+        "month": "01",
+        "average_score": "16.0",
+        "average_score_activity": "10.4"
+      },
+      {
+        "year": "2020",
+        "month": "02",
+        "average_score": "16.0",
+        "average_score_activity": "10.5"
+      },
+      {
+        "year": "2020",
+        "month": "03",
+        "average_score": "17.0",
+        "average_score_activity": "10.0"
+      },
+      {
+        "year": "2020",
+        "month": "04",
+        "average_score": "17.0",
+        "average_score_activity": "9.8"
+      },
+      {
+        "year": "2020",
+        "month": "05",
+        "average_score": "17.0",
+        "average_score_activity": "9.8"
+      },
+      {
+        "year": "2020",
+        "month": "06",
+        "average_score": "17.0",
+        "average_score_activity": "9.8"
+      },
+      {
+        "year": "2020",
+        "month": "07",
+        "average_score": "17.0",
+        "average_score_activity": "9.9"
+      },
+      {
+        "year": "2020",
+        "month": "08",
+        "average_score": "17.0",
+        "average_score_activity": "9.9"
+      },
+      {
+        "year": "2020",
+        "month": "09",
+        "average_score": "17.0",
+        "average_score_activity": "9.9"
+      },
+      {
+        "year": "2020",
+        "month": "10",
+        "average_score": "17.0",
+        "average_score_activity": "9.9"
+      }
+    ],
+    "tendance": "=",
+    "COVIDImpact": "impact Covid 19 faible"
+  },
+  "financial": {
+    "turnover": "576589985",
+    "currency": "€",
+    "netIncome": "18896318",
+    "operatingIncome": "56380651",
+    "equity": "124482535",
+    "closingDate": "2019-12-31",
+    "lastUpdate": "2019-12-31",
+    "workforce": {
+      "@context": "https://webservice.infolegale.fr/v2/schema/xsd/generics.xsd",
+      "@type": "Workforce",
+      "value": "5700",
+      "range": "5000-9999",
+      "rangeMin": 5000,
+      "rangeMax": 9999
+    },
+    "balances": {
+      "@context": "https://webservice.infolegale.fr/v2/schema/xsd/finance/balance.xsd",
+      "@type": "Balances",
+      "@link": "https://webservice.infolegale.fr/v2/companies/fr/428785042/financial/balances",
+      "@id": "https://webservice.infolegale.fr/v2/companies/fr/428785042/financial/balances"
+    }
+  },
+  "links": {
+    "counts": {
+      "shareholders": 1,
+      "directSubsidiaries": 0,
+      "indirectSubsidiaries": 0
+    },
+    "shareholders": {
+      "@context": "https://webservice.infolegale.fr/v2/schema/xsd/links/member.xsd",
+      "@type": "Members",
+      "@link": "https://webservice.infolegale.fr/v2/companies/fr/428785042/links/shareholders",
+      "@id": "https://webservice.infolegale.fr/v2/companies/fr/428785042/links/shareholders"
+    },
+    "subsidiaries": {
+      "@context": "https://webservice.infolegale.fr/v2/schema/xsd/links/member.xsd",
+      "@type": "Members",
+      "@link": "https://webservice.infolegale.fr/v2/companies/fr/428785042/links/subsidiaries",
+      "@id": "https://webservice.infolegale.fr/v2/companies/fr/428785042/links/subsidiaries"
+    }
+  },
+  "groupStructure": {
+    "@context": "https://webservice.infolegale.fr/v2/schema/xsd/member.xsd",
+    "@type": "Member",
+    "parentId": null,
+    "nodePath": "236410/236427",
+    "entityId": 236410,
+    "entityName": "AMAZON EU SÀRL",
+    "registrationNumber": null,
+    "countryCodeIso3": "LUX",
+    "countryCode": "LU",
+    "country": "Luxembourg",
+    "score": null,
+    "group": {
+      "@context": "https://webservice.infolegale.fr/v2/schema/xsd/group.xsd",
+      "@type": "Group",
+      "@link": "https://webservice.infolegale.fr/v2/groups/236410",
+      "@id": "https://webservice.infolegale.fr/v2/groups/236410"
+    },
+    "address": {
+      "@context": "https://webservice.infolegale.fr/v2/schema/xsd/generics.xsd",
+      "@type": "Address",
+      "country": "Luxembourg",
+      "countryCode": "LU",
+      "street": "38 avenue John F. Kennedy",
+      "streetDetail": {
+        "number": "38",
+        "repetition": "",
+        "streetType": "AVENUE",
+        "streetName": "JOHN F. KENNEDY"
+      },
+      "street2": null,
+      "postalBoxNumber": null,
+      "region": null,
+      "postalCode": "L-1855",
+      "locality": "Luxembourg",
+      "mailFormatted": {
+        "@context": "https://webservice.infolegale.fr/v2/schema/xsd/generics.xsd",
+        "@type": "PostalAddressMailFormat",
+        "addressL1": null,
+        "addressL2": null,
+        "addressL3": null,
+        "addressL4": "38 avenue John F. Kennedy",
+        "addressL5": null,
+        "addressL6": "L-1855 Luxembourg",
+        "addressL7": "Luxembourg"
+      }
+    },
+    "name": null,
+    "firstname": null,
+    "maidenName": null,
+    "title": null,
+    "frenchPrivateGroupHead": null,
+    "minDate": null,
+    "maxDate": null
+  },
+  "groupInfo": {
+    "entityId": "0000236410",
+    "registrationId": null,
+    "companyName": "AMAZON EU SÀRL",
+    "groupWorkforce": "5700",
+    "groupTurnover": "576589985"
+  },
+  "mandataire": {
+    "@id": "https://webservice.infolegale.fr/v2/executive/16022818",
+    "civilite": "M",
+    "name": "BOLE",
+    "firstname": "Ronan",
+    "type": "person",
+    "maidenName": null,
+    "siren": null,
+    "fonction": {
+      "code": "5",
+      "label": "Président",
+      "priority": null
+    },
+    "email": null,
+    "phone": "+33146171000"
+  },
+  "events": {
+    "@context": "https://webservice.infolegale.fr/v2/schema/xsd/events.xsd",
+    "@type": "Events",
+    "@link": "https://webservice.infolegale.fr/v2/companies/FR/428785042/events",
+    "@id": "https://webservice.infolegale.fr/v2/companies/FR/428785042/events"
+  },
+  "executives": {
+    "@link": "https://webservice.infolegale.fr/v2/companies/fr/428785042/executives",
+    "@id": "https://webservice.infolegale.fr/v2/companies/fr/428785042/executives"
+  },
+  "mandats": {
+    "@link": "https://webservice.infolegale.fr/v2/companies/fr/428785042/mandats",
+    "@id": "https://webservice.infolegale.fr/v2/companies/fr/428785042/mandats"
+  },
+  "kyc": {
+    "ubo": {
+      "@link": "https://webservice.infolegale.fr/v2/companies/fr/428785042/kyc/ubo",
+      "@id": "https://webservice.infolegale.fr/v2/companies/fr/428785042/kyc/ubo"
+    },
+    "conformity": {
+      "@link": "https://webservice.infolegale.fr/v2/companies/fr/428785042/kyc/conformity",
+      "@id": "https://webservice.infolegale.fr/v2/companies/fr/428785042/kyc/conformity"
+    }
+  }
+}

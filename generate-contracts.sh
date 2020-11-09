@@ -18,7 +18,7 @@ curl -X POST "$URL/companies/fr/sites/search" -H "accept: application/json" -H "
 
 cd company
 curl -X GET "$URL/companies/fr/428785042" -H "accept: application/json" -H "Authorization: bearer $TOKEN" | jq '.' > FR-428785042-company.json
-cd company
+
 curl -X GET "$URL/companies/fr/428785042/availability" -H "accept: application/json" -H "Authorization: bearer $TOKEN" | jq '.' > FR-428785042-company-availability.json
 curl -X GET "$URL/companies/fr/428785042/identity" -H "accept: application/json" -H "Authorization: bearer $TOKEN" | jq '.' > FR-428785042-company-identity.json
 curl -X GET "$URL/companies/fr/428785042/identity/contact" -H "accept: application/json" -H "Authorization: bearer $TOKEN" | jq '.' > FR-428785042-company-identity-contact.json
@@ -26,6 +26,7 @@ curl -X GET "$URL/companies/fr/428785042/identity/workforce" -H "accept: applica
 curl -X GET "$URL/companies/fr/428785042/mandataire" -H "accept: application/json" -H "Authorization: bearer $TOKEN" | jq '.' > FR-428785042-company-mandataire.json
 curl -X GET "$URL/companies/fr/428785042/risk" -H "accept: application/json" -H "Authorization: bearer $TOKEN" | jq '.' > FR-428785042-company-risk.json
 curl -X GET "$URL/companies/fr/428785042/score" -H "accept: application/json" -H "Authorization: bearer $TOKEN" | jq '.' > FR-428785042-company-score.json
+curl -X GET "$URL/companies/fr/503207896/terms" -H "accept: application/json" -H "Authorization: bearer $TOKEN" | jq '.' > FR-503207896-company-terms.json
 
 cd ../kyc
 curl -X GET "$URL/companies/fr/428785042/kyc/ubo" -H "accept: application/json" -H "Authorization: bearer $TOKEN" | jq '.' > FR-428785042-kyc-ubo.json

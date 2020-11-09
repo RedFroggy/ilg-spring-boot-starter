@@ -2,13 +2,14 @@ package fr.redfroggy.ilg.client.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import fr.redfroggy.ilg.client.company.RiskProjection;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
  * Risk
  */
 @JsonIgnoreProperties({"@type", "@context", "@id", "@link"})
-public class Risk {
+public class Risk implements RiskProjection {
 
     private final String riskClass;
 

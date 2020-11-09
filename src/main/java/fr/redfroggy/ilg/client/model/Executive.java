@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import fr.redfroggy.ilg.client.company.ExecutiveProjection;
 import io.swagger.annotations.ApiModelProperty;
 import javax.validation.Valid;
 import org.springframework.util.ObjectUtils;
@@ -16,7 +17,7 @@ import java.util.List;
  * Executive
  */
 @JsonDeserialize(builder = Executive.ExecutiveBuilder.class)
-public class Executive {
+public class Executive implements ExecutiveProjection {
     private final Integer execId;
 
     private final String civilite;

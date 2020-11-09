@@ -1,0 +1,61 @@
+{
+  "@Pagination": {
+    "page": 1,
+    "itemPerPage": 50,
+    "totalItem": 1
+  },
+  "mandats": [
+    {
+      "siren": 527737738,
+      "raisonSociale": "OFA",
+      "adresse": {
+        "country": "FRANCE",
+        "countryCode": "FR",
+        "street": "20 BD EUGENE DERUELLE",
+        "streetDetail": {
+          "number": "20",
+          "repetition": "",
+          "streetType": "BOULEVARD",
+          "streetName": "EUGENE DERUELLE"
+        },
+        "street2": null,
+        "postalBoxNumber": "",
+        "postalCode": "69003",
+        "locality": "LYON 3EME"
+      },
+      "regroupings": [
+        {
+          "regroupingId": 101,
+          "terms": [
+            {
+              "id": "566a2a3a-b4c1-4b9f-9b6d-3e39a68602b9",
+              "siren": 527737738,
+              "fonction": {
+                "code": 53,
+                "label": "Membre du Conseil de Surveillance"
+              },
+              "startCode": {
+                "code": 2,
+                "label": "Modification"
+              },
+              "startDate": "2011-08-25",
+              "endCode": {
+                "code": 7,
+                "label": "Départ"
+              },
+              "endDate": "2014-06-20",
+              "lastMovementCode": {
+                "code": null,
+                "label": null
+              },
+              "lastMovementDate": null,
+              "principal": 0
+            }
+          ]
+        }
+      ],
+      "score": "8",
+      "risk_label": "Risque élevé"
+    }
+  ]
+}
