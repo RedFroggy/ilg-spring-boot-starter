@@ -1,0 +1,12 @@
+logging:
+  level:
+    com:
+      sisid:
+        ilgclient:
+          RequestResponseLoggingInterceptor: DEBUG
+
+ilg:
+  url: http://ilg.fr
+  username: test-username
+  password: test-password
+  debugging: false

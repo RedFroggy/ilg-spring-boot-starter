@@ -1,0 +1,105 @@
+{
+  "@context": "https://webservice.infolegale.fr/v2/schema/xsd/site.xsd",
+  "@type": "Site",
+  "@id": "https://webservice.infolegale.fr/v2/companies/fr/428785042/sites/42878504200048",
+  "id": "42878504200048",
+  "companyId": "428785042",
+  "registrationId": "42878504200048",
+  "siteNumber": "00048",
+  "name": "AMAZON FRANCE LOGISTIQUE SAS",
+  "commercialName": "",
+  "tradings": "",
+  "sigle": null,
+  "status": true,
+  "creationDate": "2007-10-01",
+  "closingDate": null,
+  "isHeadquarter": false,
+  "address": {
+    "@context": "https://webservice.infolegale.fr/v2/schema/xsd/generics.xsd",
+    "@type": "Address",
+    "country": "FRANCE",
+    "countryCode": "FR",
+    "street": "1401 RUE DU CHAMP ROUGE",
+    "streetDetail": {
+      "number": "1401",
+      "repetition": "",
+      "streetType": "RUE",
+      "streetName": "DU CHAMP ROUGE"
+    },
+    "street2": null,
+    "postalBoxNumber": "",
+    "region": "Centre-Val de Loire",
+    "deptName": null,
+    "postalCode": "45770",
+    "locality": "SARAN",
+    "mailFormatted": {
+      "@context": "https://webservice.infolegale.fr/v2/schema/xsd/generics.xsd",
+      "@type": "PostalAddressMailFormat",
+      "addressL1": "AMAZON FRANCE LOGISTIQUE SAS",
+      "addressL2": "",
+      "addressL3": "PARC D'ACTIVITES",
+      "addressL4": "1401 RUE DU CHAMP ROUGE",
+      "addressL5": "",
+      "addressL6": "45770 SARAN",
+      "addressL7": "FRANCE"
+    }
+  },
+  "headquarter": null,
+  "workforce": {
+    "@context": "https://webservice.infolegale.fr/v2/schema/xsd/generics.xsd",
+    "@type": "Workforce",
+    "value": "1000",
+    "range": "1000-1999",
+    "rangeMin": 1000,
+    "rangeMax": 1999
+  },
+  "activity": {
+    "@context": "https://webservice.infolegale.fr/v2/schema/xsd/generics.xsd",
+    "@type": "CodeLabelPair",
+    "code": "5210B",
+    "label": "Entreposage et stockage non frigorifique"
+  },
+  "company": {
+    "@context": "https://webservice.infolegale.fr/v2/schema/xsd/company.xsd",
+    "@type": "Company",
+    "@link": "https://webservice.infolegale.fr/v2/companies/FR/428785042",
+    "@id": "https://webservice.infolegale.fr/v2/companies/FR/428785042",
+    "identity": {
+      "@context": "https://webservice.infolegale.fr/v2/schema/xsd/company/identity.xsd",
+      "@type": "Identity",
+      "id": "428785042",
+      "registrationId": "428785042",
+      "name": "AMAZON FRANCE LOGISTIQUE SAS",
+      "legalForm": {
+        "code": "5710",
+        "codeINSEE": "5710",
+        "label": "Société par actions simplifiée (SAS)"
+      },
+      "activity": {
+        "@context": "https://webservice.infolegale.fr/v2/schema/xsd/generics.xsd",
+        "@type": "CodeLabelPair",
+        "code": "5210B",
+        "label": "Entreposage et stockage non frigorifique"
+      }
+    }
+  },
+  "origine": "Création",
+  "events": [
+    {
+      "eventDesc": "Modification entreprise",
+      "eventDate": "2017-09-25"
+    },
+    {
+      "eventDesc": "Modification entreprise",
+      "eventDate": "2017-02-28"
+    },
+    {
+      "eventDesc": "Réactivation établissement",
+      "eventDate": "2017-02-28"
+    },
+    {
+      "eventDesc": "Fermeture siège (transfert)",
+      "eventDate": "2017-02-28"
+    }
+  ]
+}

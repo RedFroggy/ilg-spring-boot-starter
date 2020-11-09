@@ -1,0 +1,8 @@
+dateLibrary: java8
+library: spring-cloud
+apiPackage: fr.redfroggy.ilg.client.openapi.api
+modelPackage: fr.redfroggy.ilg.client.openapi.model
+invokerPackage: fr.redfroggy.ilg.client.openapi.invoker
+packageName: fr.redfroggy.ilg.client.openapi
+skipValidateSpec: true
+hideGenerationTimestamp: true
