@@ -21,7 +21,7 @@ public class CompanyApiClient implements CompanyApi {
     public ResponseEntity<Availability> getAvailability(String country, String id) {
         assertCountryAndId(country, id);
 
-        UriComponentsBuilder uriBuilder = client.absoluteUriBuilder("/companies/{country}/{id}/availability");
+        UriComponentsBuilder uriBuilder = client.absoluteCompanyUriBuilder("/availability");
 
         return client.getForEntity(uriBuilder.buildAndExpand(country, id).toUri(), Availability.class);
     }
@@ -30,7 +30,7 @@ public class CompanyApiClient implements CompanyApi {
     public ResponseEntity<CompanyProjection> getCompany(String country, String id) {
         assertCountryAndId(country, id);
 
-        UriComponentsBuilder uriBuilder = client.absoluteUriBuilder("/companies/{country}/{id}");
+        UriComponentsBuilder uriBuilder = client.absoluteCompanyUriBuilder("");
 
         return (ResponseEntity) client.getForEntity(uriBuilder.buildAndExpand(country, id).toUri(), Company.class);
     }
@@ -39,7 +39,7 @@ public class CompanyApiClient implements CompanyApi {
     public ResponseEntity<ContactProjection> getIdentityContact(String country, String id) {
         assertCountryAndId(country, id);
 
-        UriComponentsBuilder uriBuilder = client.absoluteUriBuilder("/companies/{country}/{id}/identity/contact");
+        UriComponentsBuilder uriBuilder = client.absoluteCompanyUriBuilder("/identity/contact");
 
         return (ResponseEntity) client.getForEntity(uriBuilder.buildAndExpand(country, id).toUri(), Contact.class);
     }
@@ -48,7 +48,7 @@ public class CompanyApiClient implements CompanyApi {
     public ResponseEntity<IdentityProjection> getIdentity(String country, String id) {
         assertCountryAndId(country, id);
 
-        UriComponentsBuilder uriBuilder = client.absoluteUriBuilder("/companies/{country}/{id}/identity");
+        UriComponentsBuilder uriBuilder = client.absoluteCompanyUriBuilder("/identity");
 
         return (ResponseEntity) client.getForEntity(uriBuilder.buildAndExpand(country, id).toUri(), Identity.class);
     }
@@ -57,7 +57,7 @@ public class CompanyApiClient implements CompanyApi {
     public ResponseEntity<ExecutiveProjection> getMandataire(String country, String id) {
         assertCountryAndId(country, id);
 
-        UriComponentsBuilder uriBuilder = client.absoluteUriBuilder("/companies/{country}/{id}/mandataire");
+        UriComponentsBuilder uriBuilder = client.absoluteCompanyUriBuilder("/mandataire");
 
         return (ResponseEntity) client.getForEntity(uriBuilder.buildAndExpand(country, id).toUri(), Executive.class);
     }
@@ -66,7 +66,7 @@ public class CompanyApiClient implements CompanyApi {
     public ResponseEntity<WorkforceProjection> getIdentityWorkforce(String country, String id) {
         assertCountryAndId(country, id);
 
-        UriComponentsBuilder uriBuilder = client.absoluteUriBuilder("/companies/{country}/{id}/identity/workforce");
+        UriComponentsBuilder uriBuilder = client.absoluteCompanyUriBuilder("/identity/workforce");
 
         return (ResponseEntity) client.getForEntity(uriBuilder.buildAndExpand(country, id).toUri(), Workforce.class);
     }
@@ -75,7 +75,7 @@ public class CompanyApiClient implements CompanyApi {
     public ResponseEntity<RiskProjection> getRisk(String country, String id) {
         assertCountryAndId(country, id);
 
-        UriComponentsBuilder uriBuilder = client.absoluteUriBuilder("/companies/{country}/{id}/risk");
+        UriComponentsBuilder uriBuilder = client.absoluteCompanyUriBuilder("/risk");
 
         return (ResponseEntity) client.getForEntity(uriBuilder.buildAndExpand(country, id).toUri(), Risk.class);
     }
@@ -84,7 +84,7 @@ public class CompanyApiClient implements CompanyApi {
     public ResponseEntity<ScoreProjection> getScore(String country, String id) {
         assertCountryAndId(country, id);
 
-        UriComponentsBuilder uriBuilder = client.absoluteUriBuilder("/companies/{country}/{id}/score");
+        UriComponentsBuilder uriBuilder = client.absoluteCompanyUriBuilder("/score");
 
         return (ResponseEntity) client.getForEntity(uriBuilder.buildAndExpand(country, id).toUri(), Score.class);
     }
@@ -93,7 +93,7 @@ public class CompanyApiClient implements CompanyApi {
     public ResponseEntity<ExecutiveTermsProjection> getTerms(String country, String id) {
         assertCountryAndId(country, id);
 
-        UriComponentsBuilder uriBuilder = client.absoluteUriBuilder("/companies/{country}/{id}/terms");
+        UriComponentsBuilder uriBuilder = client.absoluteCompanyUriBuilder("/terms");
 
         return client.getForEntity(uriBuilder.buildAndExpand(country, id).toUri(), ExecutiveTermsProjection.class);
     }
@@ -102,7 +102,7 @@ public class CompanyApiClient implements CompanyApi {
     public ResponseEntity<ExecutiveTermsProjection> getTerms(String country, String id, TermRequest requestParam) {
         assertCountryAndId(country, id);
 
-        UriComponentsBuilder uriBuilder = client.absoluteUriBuilder("/companies/{country}/{id}/terms");
+        UriComponentsBuilder uriBuilder = client.absoluteCompanyUriBuilder("/terms");
         if (requestParam != null) {
             uriBuilder.queryParams(requestParam.toQueryParams());
         }

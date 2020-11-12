@@ -1,13 +1,11 @@
 package fr.redfroggy.ilg.client.company;
 
-import static org.assertj.core.api.Assertions.*;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.common.io.Resources;
-import fr.redfroggy.ilg.InterfaceTestUtils;
 import fr.redfroggy.ilg.JacksonUtils;
+import fr.redfroggy.ilg.TestUtils;
 import fr.redfroggy.ilg.client.model.Risk;
 import org.assertj.core.util.Maps;
 import org.junit.Test;
@@ -25,14 +23,10 @@ public class RiskTest {
 
     @Test
     public void shouldGetAmazon00048ContactFromJson() throws IOException {
-        Risk amazonFromJson = json.readValue(amazon00048RiskJson(), Risk.class);
-
-        assertThat(amazonFromJson)
-                .usingRecursiveComparison()
-                .isEqualTo(amazon00048Risk());
+        TestUtils.assertThatJsonIsEqualToResource(amazon00048RiskJson(), amazon00048Risk(), Risk.class);
 
         Map<String, Object> jsonAsMap = json.readValue(amazon00048RiskJson(), Map.class);
-        InterfaceTestUtils.verifyInterfaceGetter(jsonAsMap, RiskProjection.class, Arrays.asList("@context","@type",
+        TestUtils.verifyInterfaceGetter(jsonAsMap, RiskProjection.class, Arrays.asList("@context","@type",
                 "@link", "@id"), Maps.newHashMap("getRiskClass", "getClass"));
     }
 

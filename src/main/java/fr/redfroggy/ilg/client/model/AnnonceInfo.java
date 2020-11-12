@@ -2,6 +2,7 @@ package fr.redfroggy.ilg.client.model;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import fr.redfroggy.ilg.client.events.AnnonceInfoProjection;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.time.LocalDate;
@@ -10,7 +11,7 @@ import java.time.LocalDate;
  * AnnonceInfo
  */
 @JsonDeserialize(builder = AnnonceInfo.AnnonceInfoBuilder.class)
-public class AnnonceInfo {
+public class AnnonceInfo implements AnnonceInfoProjection {
     private final String adID;
 
     private final String origine;

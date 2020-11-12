@@ -1,14 +1,12 @@
 package fr.redfroggy.ilg.client.company;
 
 
-import static org.assertj.core.api.Assertions.*;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.common.io.Resources;
-import fr.redfroggy.ilg.InterfaceTestUtils;
 import fr.redfroggy.ilg.JacksonUtils;
+import fr.redfroggy.ilg.TestUtils;
 import fr.redfroggy.ilg.client.model.Score;
 import fr.redfroggy.ilg.client.model.ScoreHistory;
 import org.junit.Test;
@@ -18,7 +16,6 @@ import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class ScoreTest {
 
@@ -29,14 +26,8 @@ public class ScoreTest {
 
     @Test
     public void shouldGetAmazon00048ScoreFromJson() throws IOException {
-        Score amazonScoreFromJson = json.readValue(amazon00048ScoreJson(), Score.class);
-
-        assertThat(amazonScoreFromJson)
-                .usingRecursiveComparison()
-                .isEqualTo(amazon00048Score());
-
-        Map<String, Object> amazonScoreMap = json.readValue(amazon00048ScoreJson(), Map.class);
-        InterfaceTestUtils.verifyInterfaceGetter(amazonScoreMap, ScoreProjection.class, Arrays.asList("@context","@type"));
+        TestUtils.assertThatJsonIsEqualToResource(amazon00048ScoreJson(), amazon00048Score(), Score.class,
+                ScoreProjection.class);
     }
 
     public static String amazon00048ScoreJson() {

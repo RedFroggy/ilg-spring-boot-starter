@@ -1,20 +1,16 @@
 package fr.redfroggy.ilg.client.company;
 
-import static org.assertj.core.api.Assertions.*;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.common.io.Resources;
-import fr.redfroggy.ilg.InterfaceTestUtils;
 import fr.redfroggy.ilg.JacksonUtils;
+import fr.redfroggy.ilg.TestUtils;
 import fr.redfroggy.ilg.client.model.Contact;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
-import java.util.Arrays;
-import java.util.Map;
 
 public class ContactTest {
     private static final ObjectMapper json = JacksonUtils.buildMapper()
@@ -24,15 +20,8 @@ public class ContactTest {
 
     @Test
     public void shouldGetAmazon00048ContactFromJson() throws IOException {
-        Contact amazonFromJson = json.readValue(amazon00048IdentityContactJson(), Contact.class);
-
-        assertThat(amazonFromJson)
-                .usingRecursiveComparison()
-                .isEqualTo(amazon00048IdentityContact());
-
-        Map<String, Object> jsonAsMap = json.readValue(amazon00048IdentityContactJson(), Map.class);
-        InterfaceTestUtils.verifyInterfaceGetter(jsonAsMap, ContactProjection.class, Arrays.asList("@context","@type",
-                "@link", "@id"));
+        TestUtils.assertThatJsonIsEqualToResource(amazon00048IdentityContactJson(), amazon00048IdentityContact(),
+                Contact.class, ContactProjection.class);
     }
 
     public static Contact amazon00048IdentityContact() {

@@ -23,7 +23,7 @@ public class FiltersRequest {
     public MultiValueMap<String, String> toQueryParams() {
         MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<>();
         if (filters != null) {
-            filters.forEach(filter -> queryParams.add("filters", filter));
+            filters.forEach(filter -> queryParams.add("filters[]", filter));
         }
         return queryParams;
     }

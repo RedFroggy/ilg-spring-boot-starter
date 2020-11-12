@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import fr.redfroggy.ilg.client.company.EventProjection3;
+import fr.redfroggy.ilg.client.events.EventProjection2;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.time.LocalDate;
@@ -12,7 +13,7 @@ import java.time.LocalDate;
  * Event
  */
 @JsonDeserialize(builder = Event.EventBuilder.class)
-public class Event implements EventProjection3 {
+public class Event implements EventProjection2, EventProjection3 {
 
     private final String adId;
 
