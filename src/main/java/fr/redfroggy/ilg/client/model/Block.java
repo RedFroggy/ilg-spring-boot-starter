@@ -2,6 +2,7 @@ package fr.redfroggy.ilg.client.model;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import fr.redfroggy.ilg.client.executive.BlockProjection3;
 import io.swagger.annotations.ApiModelProperty;
 import javax.validation.Valid;
 
@@ -11,7 +12,7 @@ import java.util.List;
  * Block
  */
 @JsonDeserialize(builder = Block.BlockBuilder.class)
-public class Block {
+public class Block implements BlockProjection3 {
 
     private final Integer id;
 
