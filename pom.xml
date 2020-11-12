@@ -56,6 +56,8 @@
     <assertj-core.version>3.14.0</assertj-core.version>
     <swagger-annotations.version>1.6.0</swagger-annotations.version>
     <guava-testlib.version>28.2-jre</guava-testlib.version>
+
+    <maven.javadoc.skip>true</maven.javadoc.skip>
   </properties>
   <!-- Define where the source code for this project lives -->
   <scm>

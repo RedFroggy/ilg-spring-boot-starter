@@ -1,12 +1,13 @@
 package fr.redfroggy.ilg.client.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import fr.redfroggy.ilg.client.kyc.UboInvestigationStepProjection;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
  * UboInvestigationStep
  */
-public class UboInvestigationStep {
+public class UboInvestigationStep implements UboInvestigationStepProjection {
 
     private final String step;
 
@@ -47,7 +48,6 @@ public class UboInvestigationStep {
      *
      * @return decision
      */
-    @ApiModelProperty(value = "")
     public CodeLabelPair getDecision() {
         return decision;
     }

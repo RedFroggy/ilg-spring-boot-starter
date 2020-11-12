@@ -167,6 +167,19 @@ public EventDetailProjection getEventById(String adId) {
         }
 ```
 
+### KYC Api Client
+```java
+//...
+        @Autowired
+        private KycComplianceApi apiClient;
+
+        public KycUboProjection getKycUbo(String country, String registrationId) {
+
+            ResponseEntity<KycUboProjection> response = apiClient.getKycUbo(country, registrationId);
+            return response.getBody();
+        }
+```
+
 
 ## Security
 To pass authorization headers to the provider API, [interceptors](src/main/java/fr/redfroggy/ilg/spring/boot/autoconfigure/AuthorizationInterceptor.java) are used to add these headers to the request.

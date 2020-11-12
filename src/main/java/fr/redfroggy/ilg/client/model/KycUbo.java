@@ -3,6 +3,7 @@ package fr.redfroggy.ilg.client.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import fr.redfroggy.ilg.client.kyc.KycUboProjection;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.List;
  * KycUbo
  */
 @JsonDeserialize(builder = KycUbo.KycUboBuilder.class)
-public class KycUbo {
+public class KycUbo implements KycUboProjection {
 
     private final String minDate;
     private final String maxDate;
