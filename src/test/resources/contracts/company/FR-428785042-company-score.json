@@ -1,0 +1,172 @@
+{
+  "@context": "https://webservice.infolegale.fr/v2/schema/xsd/company/score.xsd",
+  "@type": "Score",
+  "score": 17,
+  "previous": 18,
+  "creditLimit": 500000,
+  "delaiReglementFournisseur": 204.21,
+  "delaiReglementFournisseurSecteur": 63.72,
+  "comments": {
+    "COP_8": "Le délai moyen constaté des règlements auprès de ses fournisseurs est de <span class='delai_reglement_negatif'>204</span> jours contre 64 jours pour ses confrères.",
+    "FIN_102": "L’entreprise peut autofinancer ses besoins courants (stocks, créances clients).",
+    "FIN_62": "Le ratio de Liquidité générale exprime une capacité de remboursement des dettes à court terme un peu juste",
+    "LFI_1": "Le capital de AMAZON FRANCE LOGISTIQUE SAS est majoritairement contrôlé, aussi la situation de son actionnaire doit être prise en compte dans votre décision. De façon générale, notez qu’en cas de défaillance de l’actionnaire majoritaire, les filiales sont régulièrement  impactées par le jugement. A l’inverse, et malgré certains devoirs imposés à l’actionnaire majoritaire, il n’est pas rare de constater que ce dernier se déresponsabilise de ses engagements lors de difficultés de paiement, et alors en cas de défaillance de la filiale il appartiendra au juge de définir les responsabilités et les éventuelles poursuites (ce commentaire est d’ordre général, nous n’avons pas constaté à ce jour ce type de fait concernant l’actionnaire de AMAZON FRANCE LOGISTIQUE SAS). ",
+    "NAF_10": "Son secteur d’activité a un taux de défaillance supérieur à la moyenne des entreprises",
+    "REL_4": "La situation de l’entreprise permet une entrée en relation."
+  },
+  "summary": null,
+  "history": [
+    {
+      "year": "2018",
+      "month": "10",
+      "average_score": "17.0",
+      "average_score_activity": "10.6"
+    },
+    {
+      "year": "2018",
+      "month": "11",
+      "average_score": "17.0",
+      "average_score_activity": "10.6"
+    },
+    {
+      "year": "2018",
+      "month": "12",
+      "average_score": "17.0",
+      "average_score_activity": "10.6"
+    },
+    {
+      "year": "2019",
+      "month": "01",
+      "average_score": "17.0",
+      "average_score_activity": "10.5"
+    },
+    {
+      "year": "2019",
+      "month": "02",
+      "average_score": "17.0",
+      "average_score_activity": "10.5"
+    },
+    {
+      "year": "2019",
+      "month": "03",
+      "average_score": "16.0",
+      "average_score_activity": "10.5"
+    },
+    {
+      "year": "2019",
+      "month": "04",
+      "average_score": "16.0",
+      "average_score_activity": "10.5"
+    },
+    {
+      "year": "2019",
+      "month": "05",
+      "average_score": "16.0",
+      "average_score_activity": "10.5"
+    },
+    {
+      "year": "2019",
+      "month": "06",
+      "average_score": "16.0",
+      "average_score_activity": "10.5"
+    },
+    {
+      "year": "2019",
+      "month": "07",
+      "average_score": "16.0",
+      "average_score_activity": "10.5"
+    },
+    {
+      "year": "2019",
+      "month": "08",
+      "average_score": "16.0",
+      "average_score_activity": "10.5"
+    },
+    {
+      "year": "2019",
+      "month": "09",
+      "average_score": "16.0",
+      "average_score_activity": "10.5"
+    },
+    {
+      "year": "2019",
+      "month": "10",
+      "average_score": "17.0",
+      "average_score_activity": "10.5"
+    },
+    {
+      "year": "2019",
+      "month": "11",
+      "average_score": "17.0",
+      "average_score_activity": "10.5"
+    },
+    {
+      "year": "2019",
+      "month": "12",
+      "average_score": "16.0",
+      "average_score_activity": "10.5"
+    },
+    {
+      "year": "2020",
+      "month": "01",
+      "average_score": "16.0",
+      "average_score_activity": "10.4"
+    },
+    {
+      "year": "2020",
+      "month": "02",
+      "average_score": "16.0",
+      "average_score_activity": "10.5"
+    },
+    {
+      "year": "2020",
+      "month": "03",
+      "average_score": "17.0",
+      "average_score_activity": "10.0"
+    },
+    {
+      "year": "2020",
+      "month": "04",
+      "average_score": "17.0",
+      "average_score_activity": "9.8"
+    },
+    {
+      "year": "2020",
+      "month": "05",
+      "average_score": "17.0",
+      "average_score_activity": "9.8"
+    },
+    {
+      "year": "2020",
+      "month": "06",
+      "average_score": "17.0",
+      "average_score_activity": "9.8"
+    },
+    {
+      "year": "2020",
+      "month": "07",
+      "average_score": "17.0",
+      "average_score_activity": "9.9"
+    },
+    {
+      "year": "2020",
+      "month": "08",
+      "average_score": "17.0",
+      "average_score_activity": "9.9"
+    },
+    {
+      "year": "2020",
+      "month": "09",
+      "average_score": "17.0",
+      "average_score_activity": "9.9"
+    },
+    {
+      "year": "2020",
+      "month": "10",
+      "average_score": "17.0",
+      "average_score_activity": "9.9"
+    }
+  ],
+  "tendance": "=",
+  "COVIDImpact": "impact Covid 19 faible"
+}

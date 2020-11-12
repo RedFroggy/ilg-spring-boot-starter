@@ -3,12 +3,14 @@ package fr.redfroggy.ilg.client.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import fr.redfroggy.ilg.client.company.ContactProjection;
+import fr.redfroggy.ilg.client.company.ContactProjection2;
 
 /**
  * Contact
  */
 @JsonDeserialize(builder = Contact.ContactBuilder.class)
-public class Contact {
+public class Contact implements ContactProjection, ContactProjection2 {
 
     private final String type;
 

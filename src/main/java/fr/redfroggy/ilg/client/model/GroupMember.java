@@ -3,6 +3,7 @@ package fr.redfroggy.ilg.client.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import fr.redfroggy.ilg.client.company.GroupMemberProjection4;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.math.BigDecimal;
@@ -12,7 +13,7 @@ import java.time.LocalDate;
  * GroupMember
  */
 @JsonDeserialize(builder = GroupMember.GroupMemberBuilder.class)
-public class GroupMember {
+public class GroupMember implements GroupMemberProjection4 {
     private final Integer parentId;
 
     private final String nodePath;

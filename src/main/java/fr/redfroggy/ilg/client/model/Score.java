@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import fr.redfroggy.ilg.client.company.ScoreProjection;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.Map;
  * Score
  */
 @JsonDeserialize(builder = Score.ScoreBuilder.class)
-public class Score {
+public class Score implements ScoreProjection {
 
     private final Integer score;
 

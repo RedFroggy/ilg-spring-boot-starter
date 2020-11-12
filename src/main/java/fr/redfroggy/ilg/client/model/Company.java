@@ -3,6 +3,7 @@ package fr.redfroggy.ilg.client.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import fr.redfroggy.ilg.client.company.CompanyProjection;
 import fr.redfroggy.ilg.client.site.CompanyProjection4;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -12,7 +13,7 @@ import java.util.List;
  * Company
  */
 @JsonDeserialize(builder = Company.CompanyBuilder.class)
-public class Company implements CompanyProjection4 {
+public class Company implements CompanyProjection, CompanyProjection4 {
     private final Identity identity;
 
     private final Object sites;
@@ -41,7 +42,7 @@ public class Company implements CompanyProjection4 {
 
     private final Object legal;
 
-    private final Object kyc;
+    private final Kyc kyc;
 
     private Company(CompanyBuilder builder) {
         this.links = builder.links;
@@ -227,7 +228,7 @@ public class Company implements CompanyProjection4 {
      * @return kyc
      */
     @ApiModelProperty(value = "")
-    public Object getKyc() {
+    public Kyc getKyc() {
         return kyc;
     }
 
@@ -249,7 +250,7 @@ public class Company implements CompanyProjection4 {
         private Object executives;
         private Object mandats;
         private Object legal;
-        private Object kyc;
+        private Kyc kyc;
 
         private CompanyBuilder() {
         }
@@ -324,7 +325,7 @@ public class Company implements CompanyProjection4 {
             return this;
         }
 
-        public CompanyBuilder kyc(Object kyc) {
+        public CompanyBuilder kyc(Kyc kyc) {
             this.kyc = kyc;
             return this;
         }

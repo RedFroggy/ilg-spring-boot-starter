@@ -1,12 +1,13 @@
 package fr.redfroggy.ilg.client.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import fr.redfroggy.ilg.client.company.LinksCountsProjection;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
  * LinksCounts
  */
-public class LinksCounts {
+public class LinksCounts implements LinksCountsProjection {
 
     private final Integer shareholders;
 

@@ -1,6 +1,8 @@
 package fr.redfroggy.ilg.client.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import fr.redfroggy.ilg.client.company.StreetProjection;
+import fr.redfroggy.ilg.client.company.StreetProjection10;
 import fr.redfroggy.ilg.client.site.StreetProjection16;
 import fr.redfroggy.ilg.client.site.StreetProjection2;
 
@@ -10,7 +12,7 @@ import java.util.Map;
 /**
  * Street
  */
-public class Street implements StreetProjection2, StreetProjection16 {
+public class Street implements StreetProjection, StreetProjection2, StreetProjection10, StreetProjection16 {
 
     private final String number;
 

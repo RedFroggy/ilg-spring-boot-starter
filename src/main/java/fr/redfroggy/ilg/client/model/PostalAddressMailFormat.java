@@ -3,13 +3,14 @@ package fr.redfroggy.ilg.client.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import fr.redfroggy.ilg.client.company.PostalAddressMailFormatProjection;
 import fr.redfroggy.ilg.client.site.PostalAddressMailFormatProjection2;
 
 /**
  * PostalAddressMailFormat
  */
 @JsonDeserialize(builder = PostalAddressMailFormat.PostalAddressMailFormatBuilder.class)
-public class PostalAddressMailFormat implements PostalAddressMailFormatProjection2 {
+public class PostalAddressMailFormat implements PostalAddressMailFormatProjection, PostalAddressMailFormatProjection2 {
 
     private final String addressL1;
 
