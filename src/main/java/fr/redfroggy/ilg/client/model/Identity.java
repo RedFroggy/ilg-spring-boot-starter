@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import fr.redfroggy.ilg.client.company.IdentityProjection;
+import fr.redfroggy.ilg.client.search.IdentityProjection5;
 import fr.redfroggy.ilg.client.site.IdentityProjection3;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -14,7 +15,8 @@ import java.util.List;
  * Identity
  */
 @JsonDeserialize(builder = Identity.IdentityBuilder.class)
-public class Identity implements IdentityProjection, IdentityProjection3 {
+public class Identity implements IdentityProjection, IdentityProjection3,
+        IdentityProjection5 {
     private final String id;
 
     private final String registrationId;

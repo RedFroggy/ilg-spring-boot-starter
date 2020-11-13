@@ -1,0 +1,58 @@
+{
+  "results": [
+    {
+      "@id": "https://webservice.infolegale.fr/v2/companies/FR/802070748?sid=80207074800016",
+      "id": "80207074800016",
+      "companyId": "802070748",
+      "registrationId": "80207074800016",
+      "name": "RED FROGGY",
+      "tradings": "RED FROGGY",
+      "address": {
+        "country": null,
+        "countryCode": null,
+        "street": "73 CRS ALBERT THOMAS",
+        "streetDetail": null,
+        "street2": null,
+        "postalBoxNumber": null,
+        "postalCode": "69003",
+        "locality": "LYON 3EME",
+        "mailFormatted": []
+      },
+      "activity": "Edition de logiciels applicatifs",
+      "siege": "1",
+      "actif": "1",
+      "nb_etabs": "1",
+      "representantLegal": "Florent PERINEL",
+      "matchedExecutive": {
+        "@id": "https://webservice.infolegale.fr/v2/executive/12658689",
+        "civilite": "M",
+        "name": "PERINEL",
+        "firstname": "Florent",
+        "type": "person",
+        "maidenName": null,
+        "siren": null,
+        "fonction": {
+          "code": "005",
+          "label": "Président",
+          "priority": "4"
+        }
+      },
+      "mandataire": {
+        "@id": "https://webservice.infolegale.fr/v2/executive/12658689",
+        "civilite": "M",
+        "name": "PERINEL",
+        "firstname": "Florent",
+        "type": "person",
+        "maidenName": null,
+        "siren": null,
+        "fonction": {
+          "code": "5",
+          "label": "Président",
+          "priority": null
+        }
+      }
+    }
+  ],
+  "count": 1,
+  "found": 1
+}

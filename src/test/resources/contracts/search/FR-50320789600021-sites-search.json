@@ -1,0 +1,41 @@
+{
+  "sites": [
+    {
+      "@context": "https://webservice.infolegale.fr/v2/schema/xsd/site.xsd",
+      "@type": "Site",
+      "@link": "https://webservice.infolegale.fr/v2/companies/fr/503207896/sites/50320789600021",
+      "@id": "https://webservice.infolegale.fr/v2/companies/fr/503207896/sites/50320789600021",
+      "id": "50320789600021",
+      "companyId": "503207896",
+      "registrationId": "50320789600021",
+      "siteNumber": "00021",
+      "name": "INFOLEGALE",
+      "commercialName": "INFOLEGALE ET MARKETING",
+      "tradings": "INFOLEGALE ET MARKETING",
+      "status": true,
+      "isHeadquarter": true,
+      "address": {
+        "country": "FRANCE",
+        "countryCode": "FR",
+        "street": "CS 83755 20 BD EUGENE DERUELLE",
+        "streetDetail": [],
+        "street2": null,
+        "postalBoxNumber": null,
+        "region": null,
+        "postalCode": "69003",
+        "locality": "LYON 3EME"
+      },
+      "company": {
+        "@context": "https://webservice.infolegale.fr/v2/schema/xsd/company.xsd",
+        "@type": "Company",
+        "@link": "https://webservice.infolegale.fr/v2/companies/FR/503207896",
+        "@id": "https://webservice.infolegale.fr/v2/companies/FR/503207896",
+        "identity": {
+          "registrationId": "503207896"
+        }
+      }
+    }
+  ],
+  "count": 1,
+  "found": 1
+}

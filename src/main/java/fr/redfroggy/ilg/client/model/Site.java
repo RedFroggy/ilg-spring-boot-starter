@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import fr.redfroggy.ilg.client.company.SiteProjection2;
+import fr.redfroggy.ilg.client.search.SiteProjection4;
 import fr.redfroggy.ilg.client.site.CodeLabelPairProjection2;
 import fr.redfroggy.ilg.client.site.SiteProjection;
 import fr.redfroggy.ilg.client.site.SiteProjection5;
@@ -16,7 +17,8 @@ import java.util.List;
  * Site
  */
 @JsonDeserialize(builder = Site.SiteBuilder.class)
-public class Site implements SiteProjection, SiteProjection2, SiteProjection5 {
+public class Site implements SiteProjection, SiteProjection2,
+        SiteProjection4, SiteProjection5 {
     private final String id;
 
     private final String companyId;

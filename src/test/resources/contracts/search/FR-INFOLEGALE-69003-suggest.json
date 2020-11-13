@@ -1,0 +1,87 @@
+{
+  "companies": [
+    {
+      "@id": "https://webservice.infolegale.fr/v2/companies/FR/503207896?sid=50320789600021",
+      "id": "50320789600021",
+      "companyId": "503207896",
+      "registrationId": "50320789600021",
+      "name": "INFOLEGALE",
+      "tradings": "INFOLEGALE ET MARKETING",
+      "address": {
+        "country": "FRANCE",
+        "countryCode": null,
+        "street": "20 BD EUGENE DERUELLE",
+        "streetDetail": null,
+        "street2": null,
+        "postalBoxNumber": "",
+        "postalCode": "69003",
+        "locality": "LYON 3EME",
+        "mailFormatted": []
+      },
+      "activity": "Activités des agences de recouvrement de factures et des sociétés d'information financière sur la clientèle",
+      "siege": "1",
+      "actif": "1",
+      "nb_etabs": "1",
+      "representantLegal": "",
+      "matchedExecutive": null,
+      "mandataire": null
+    },
+    {
+      "@id": "https://webservice.infolegale.fr/v2/companies/FR/535015945?sid=53501594500020",
+      "id": "53501594500020",
+      "companyId": "535015945",
+      "registrationId": "53501594500020",
+      "name": "J2LMS",
+      "tradings": "CHEZ INFOLEGALE ALLEE C",
+      "address": {
+        "country": "FRANCE",
+        "countryCode": null,
+        "street": "20 BD EUGENE DERUELLE",
+        "streetDetail": null,
+        "street2": null,
+        "postalBoxNumber": "",
+        "postalCode": "69003",
+        "locality": "LYON 3EME",
+        "mailFormatted": []
+      },
+      "activity": "Location de terrains et d'autres biens immobiliers",
+      "siege": "1",
+      "actif": "1",
+      "nb_etabs": "1",
+      "representantLegal": "",
+      "matchedExecutive": null,
+      "mandataire": null
+    },
+    {
+      "@id": "https://webservice.infolegale.fr/v2/companies/FR/839616976?sid=83961697600016",
+      "id": "83961697600016",
+      "companyId": "839616976",
+      "registrationId": "83961697600016",
+      "name": "SCI CONSTELLATION",
+      "tradings": "ALLEE C CHEZ INFOLEGALE",
+      "address": {
+        "country": "FRANCE",
+        "countryCode": null,
+        "street": "20 BD EUGENE DERUELLE",
+        "streetDetail": null,
+        "street2": null,
+        "postalBoxNumber": "",
+        "postalCode": "69003",
+        "locality": "LYON 3EME",
+        "mailFormatted": []
+      },
+      "activity": "Location de terrains et d'autres biens immobiliers",
+      "siege": "1",
+      "actif": "1",
+      "nb_etabs": "1",
+      "representantLegal": "",
+      "matchedExecutive": null,
+      "mandataire": null
+    }
+  ],
+  "executives": [],
+  "count": 3,
+  "countExecutives": 0,
+  "found": 3,
+  "foundExecutives": 0
+}

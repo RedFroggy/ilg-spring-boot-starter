@@ -1,5 +1,5 @@
 
-# ILGV2 client library
+# ILGV2 client library [![Build Status](https://travis-ci.org/RedFroggy/ilg-spring-boot-starter.svg?branch=master)](https://travis-ci.org/RedFroggy/ilg-spring-boot-starter)
 Get an organisation identity thanks to ilgV2 rest api
 
 ## Compatibility
@@ -126,7 +126,7 @@ public ExecutiveTermsProjection getTerms(String country, String registrationId) 
 //...
 
 ```
-### company api
+### events api
 ```java
 //...
 @Autowired
@@ -180,6 +180,20 @@ public EventDetailProjection getEventById(String adId) {
         }
 ```
 
+### Search sites Api Client
+```java
+//...
+        @Autowired
+        private SearchApi apiClient;
+
+        public SiteSearch searchSites(String country, String registrationId) {
+            ResponseEntity<SiteSearch> searchResponse = apiClient.searchSites(country, SiteSearchRequest.builder()
+                    .registrationNumber(registrationId)
+                    .build(), null
+            );
+            return response.getBody();
+        }
+```
 
 ## Security
 To pass authorization headers to the provider API, [interceptors](src/main/java/fr/redfroggy/ilg/spring/boot/autoconfigure/AuthorizationInterceptor.java) are used to add these headers to the request.
