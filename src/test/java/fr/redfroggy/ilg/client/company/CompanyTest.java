@@ -8,7 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.common.io.Resources;
 import fr.redfroggy.ilg.JacksonUtils;
-import fr.redfroggy.ilg.TestUtils;
+import fr.redfroggy.ilg.UnitTestUtils;
 import fr.redfroggy.ilg.client.model.*;
 import org.assertj.core.util.Maps;
 import org.junit.Test;
@@ -41,7 +41,7 @@ public class CompanyTest {
                 .containsKeys("@context", "@id", "@link", "@type");
 
         Map<String, Object> jsonAsMap = json.readValue(amazon00048CompanyJson(), Map.class);
-        TestUtils.verifyInterfaceGetter(jsonAsMap, CompanyProjection.class, Arrays.asList("@context","@type",
+        UnitTestUtils.verifyInterfaceGetter(jsonAsMap, CompanyProjection.class, Arrays.asList("@context","@type",
                 "@link", "@id"), Maps.newHashMap("getRiskClass", "getClass"));
     }
 

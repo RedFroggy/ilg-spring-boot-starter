@@ -8,7 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.common.io.Resources;
 import fr.redfroggy.ilg.JacksonUtils;
-import fr.redfroggy.ilg.TestUtils;
+import fr.redfroggy.ilg.UnitTestUtils;
 import fr.redfroggy.ilg.client.model.*;
 import org.junit.Test;
 
@@ -40,7 +40,7 @@ public class ExecutiveTest {
                 .isEqualTo(amazon00048ExecutiveBoleTerm());
 
         Map<String, Object> jsonAsMap = json.readValue(amazon00048ExecutiveTermsJson(), Map.class);
-        TestUtils.verifyInterfaceGetter(jsonAsMap, ExecutivesProjection2.class, Arrays.asList("@context","@type",
+        UnitTestUtils.verifyInterfaceGetter(jsonAsMap, ExecutivesProjection2.class, Arrays.asList("@context","@type",
                 "@link", "@id"));
     }
 

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import fr.redfroggy.ilg.JacksonUtils;
-import fr.redfroggy.ilg.TestUtils;
+import fr.redfroggy.ilg.UnitTestUtils;
 import org.junit.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 
@@ -20,7 +20,7 @@ public class PostalAddressMailFormatTest {
     public void shouldGetObjectFromDefaultJson() throws IOException {
         String defaultJson = defaultJson();
         PostalAddressMailFormat defaultObject = defaultObject();
-        TestUtils.assertThatJsonIsEqualToResource(defaultJson, defaultObject,PostalAddressMailFormat.class);
+        UnitTestUtils.assertThatJsonIsEqualToResource(defaultJson, defaultObject,PostalAddressMailFormat.class);
 
         JSONAssert.assertEquals(json.writeValueAsString(defaultObject), defaultJson, false);
     }

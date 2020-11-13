@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.common.io.Resources;
 import fr.redfroggy.ilg.JacksonUtils;
-import fr.redfroggy.ilg.TestUtils;
+import fr.redfroggy.ilg.UnitTestUtils;
 import fr.redfroggy.ilg.client.model.*;
 import org.junit.Test;
 
@@ -26,7 +26,7 @@ public class EventDetailTest {
 
     @Test
     public void shouldGetEventDetailFromJson() throws IOException {
-        TestUtils.assertThatJsonIsEqualToResource(ilg503207896EventDetailJson(),
+        UnitTestUtils.assertThatJsonIsEqualToResource(ilg503207896EventDetailJson(),
                 ilg503207896EventDetail(), EventDetail.class, EventDetailProjection.class);
     }
 

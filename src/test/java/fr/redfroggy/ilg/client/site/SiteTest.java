@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.common.io.Resources;
 import fr.redfroggy.ilg.JacksonUtils;
-import fr.redfroggy.ilg.TestUtils;
+import fr.redfroggy.ilg.UnitTestUtils;
 import fr.redfroggy.ilg.client.model.*;
 import org.junit.Test;
 
@@ -25,7 +25,7 @@ public class SiteTest {
 
     @Test
     public void shouldGetAmazon00048SiteFromJson() throws IOException {
-        TestUtils.assertThatJsonIsEqualToResource(amazon00048SiteJson(), amazon00048Site(), Site.class,
+        UnitTestUtils.assertThatJsonIsEqualToResource(amazon00048SiteJson(), amazon00048Site(), Site.class,
                 SiteProjection.class);
     }
 
