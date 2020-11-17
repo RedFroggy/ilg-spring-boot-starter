@@ -1,13 +1,11 @@
 package fr.redfroggy.ilg.client.site;
 
-import static org.assertj.core.api.Assertions.*;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.common.io.Resources;
-import fr.redfroggy.ilg.InterfaceTestUtils;
 import fr.redfroggy.ilg.JacksonUtils;
+import fr.redfroggy.ilg.TestUtils;
 import fr.redfroggy.ilg.client.Pagination;
 import fr.redfroggy.ilg.client.Sorting;
 import fr.redfroggy.ilg.client.model.*;
@@ -29,14 +27,10 @@ public class SitesTest {
 
     @Test
     public void shouldGetAmazonSitesFromJson() throws IOException {
-        SitesProjection amazonSitesFromJson = json.readValue(amazonSitesJson(), Sites.class);
-
-        assertThat(amazonSitesFromJson)
-                .usingRecursiveComparison()
-                .isEqualTo(amazonSites());
+        TestUtils.assertThatJsonIsEqualToResource(amazonSitesJson(), amazonSites(), Sites.class);
 
         Map<String, Object> jsonAsMap = json.readValue(amazonSitesJson(), Map.class);
-        InterfaceTestUtils.verifyInterfaceGetter(jsonAsMap, SitesProjection.class, Arrays.asList("@context","@type",
+        TestUtils.verifyInterfaceGetter(jsonAsMap, SitesProjection.class, Arrays.asList("@context","@type",
                 "@link", "@id","@search"));
     }
 

@@ -1,13 +1,11 @@
 package fr.redfroggy.ilg.client.company;
 
-import static org.assertj.core.api.Assertions.*;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.common.io.Resources;
-import fr.redfroggy.ilg.InterfaceTestUtils;
 import fr.redfroggy.ilg.JacksonUtils;
+import fr.redfroggy.ilg.TestUtils;
 import fr.redfroggy.ilg.client.model.*;
 import org.junit.Test;
 
@@ -28,14 +26,11 @@ public class ExecutiveTermsTest {
 
     @Test
     public void shouldGetExecutiveTermsFromJson() throws IOException {
-        ExecutiveTerms fromJson = json.readValue(ilgTermsJson(), ExecutiveTerms.class);
+        String jsonResource = ilgTermsJson();
+        TestUtils.assertThatJsonIsEqualToResource(jsonResource, ilgTerms(), ExecutiveTerms.class);
 
-        assertThat(fromJson)
-                .usingRecursiveComparison()
-                .isEqualTo(ilgTerms());
-
-        Map<String, Object> jsonAsMap = json.readValue(ilgTermsJson(), Map.class);
-        InterfaceTestUtils.verifyInterfaceGetter(jsonAsMap, ExecutiveTermsProjection.class, Arrays.asList(
+        Map<String, Object> jsonAsMap = json.readValue(jsonResource, Map.class);
+        TestUtils.verifyInterfaceGetter(jsonAsMap, ExecutiveTermsProjection.class, Arrays.asList(
                 "@Pagination"));
     }
 

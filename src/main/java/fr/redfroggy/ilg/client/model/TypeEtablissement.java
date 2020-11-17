@@ -3,7 +3,7 @@ package fr.redfroggy.ilg.client.model;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
-import java.util.Locale;
+import java.util.Arrays;
 
 /**
  * Type of Site
@@ -27,11 +27,10 @@ public enum TypeEtablissement {
 
     @JsonCreator
     public static TypeEtablissement fromValue(String value) {
-        try {
-            return TypeEtablissement.valueOf(value.toUpperCase(Locale.US));
-        } catch (Exception e) {
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
+        return Arrays.stream(TypeEtablissement.values())
+                .filter(type -> type.value.equalsIgnoreCase(value))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("Unexpected value '" + value + "'"));
     }
 
     @JsonValue

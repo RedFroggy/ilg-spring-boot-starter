@@ -3,13 +3,14 @@ package fr.redfroggy.ilg.client.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import fr.redfroggy.ilg.client.events.EventDetailProjection;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
  * EventDetail
  */
 @JsonDeserialize(builder = EventDetail.EventDetailBuilder.class)
-public class EventDetail {
+public class EventDetail implements EventDetailProjection {
 
     private final AnnonceInfo annonceInfo;
 

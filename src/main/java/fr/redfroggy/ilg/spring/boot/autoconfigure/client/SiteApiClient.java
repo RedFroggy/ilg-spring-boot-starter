@@ -26,7 +26,7 @@ public class SiteApiClient implements SiteApi {
         Assert.hasText(country, "Get sites cannot execute without country");
         Assert.hasText(id, "Get sites cannot execute without id");
 
-        UriComponentsBuilder uriBuilder = client.absoluteUriBuilder("/companies/{country}/{id}/sites");
+        UriComponentsBuilder uriBuilder = client.absoluteCompanyUriBuilder("/sites");
         if (requestParam != null) {
             uriBuilder.queryParams(requestParam.toQueryParams());
         }
@@ -45,7 +45,7 @@ public class SiteApiClient implements SiteApi {
         Assert.hasText(id, "Get site cannot execute without id");
         Assert.hasText(sid, "Get site cannot execute without sid");
 
-        UriComponentsBuilder uriBuilder = client.absoluteUriBuilder("/companies/{country}/{id}/sites/{sid}");
+        UriComponentsBuilder uriBuilder = client.absoluteCompanyUriBuilder("/sites/{sid}");
 
         return (ResponseEntity)client.getForEntity(uriBuilder.buildAndExpand(country, id, sid).toUri(), Site.class);
     }

@@ -1,14 +1,12 @@
 package fr.redfroggy.ilg.client.company;
 
 
-import static org.assertj.core.api.Assertions.*;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.common.io.Resources;
-import fr.redfroggy.ilg.InterfaceTestUtils;
 import fr.redfroggy.ilg.JacksonUtils;
+import fr.redfroggy.ilg.TestUtils;
 import fr.redfroggy.ilg.client.model.*;
 import org.junit.Test;
 
@@ -16,9 +14,7 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.time.LocalDate;
 import java.time.Month;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.Map;
 
 public class IdentityTest {
 
@@ -29,15 +25,8 @@ public class IdentityTest {
 
     @Test
     public void shouldGetAmazon00048IdentityFromJson() throws IOException {
-        Identity amazonIdentityFromJson = json.readValue(amazon00048IdentityJson(), Identity.class);
-
-        assertThat(amazonIdentityFromJson)
-                .usingRecursiveComparison()
-                .isEqualTo(amazon00048Identity());
-
-        Map<String, Object> jsonAsMap = json.readValue(amazon00048IdentityJson(), Map.class);
-        InterfaceTestUtils.verifyInterfaceGetter(jsonAsMap, IdentityProjection.class, Arrays.asList("@context","@type",
-                "@link", "@id"));
+        TestUtils.assertThatJsonIsEqualToResource(amazon00048IdentityJson(), amazon00048Identity(), Identity.class,
+                IdentityProjection.class);
     }
 
     public static String amazon00048IdentityJson() {

@@ -126,6 +126,29 @@ public ExecutiveTermsProjection getTerms(String country, String registrationId) 
 //...
 
 ```
+### company api
+```java
+//...
+@Autowired
+private EventsApiClient apiClient;
+
+//...
+public EventsProjection getEventsByCode(String country, String registrationId, String code) {
+
+    EventRequest requestParam = EventRequest.builder()
+            .filters(FiltersRequest.of("$.eventCode,"+code))
+            .build();
+
+    ResponseEntity<EventsProjection> response = apiClient.getEvents("fr", "503207896", requestParam);
+    return response.getBody();
+}
+
+public EventDetailProjection getEventById(String adId) {
+
+    ResponseEntity<EventDetailProjection> response = apiClient.getEvent(adId);
+    return response.getBody();
+}
+```
 
 ## Security
 To pass authorization headers to the provider API, [interceptors](src/main/java/fr/redfroggy/ilg/spring/boot/autoconfigure/AuthorizationInterceptor.java) are used to add these headers to the request.

@@ -1,0 +1,31 @@
+{
+  "@pagination": {
+    "start": 0,
+    "page": 1,
+    "count": 1,
+    "total": 54
+  },
+  "@sorting": {
+    "column": null,
+    "order": "ASC"
+  },
+  "@id": "https://webservice.infolegale.fr/v2/companies/fr/503207896/events",
+  "events": [
+    {
+      "@context": "https://webservice.infolegale.fr/v2/schema/xsd/company/event.xsd",
+      "@type": "event",
+      "@link": "https://webservice.infolegale.fr/v2/event/6000574496",
+      "@id": "https://webservice.infolegale.fr/v2/event/6000574496",
+      "adId": "6000574496",
+      "source": "RPC",
+      "origine": "Registre des Paiements et des Contentieux",
+      "eventCode": 6365,
+      "categorie": "Cotation Banque de France : 3",
+      "dateParution": "2020-10-08",
+      "dateEffet": "2020-10-08",
+      "role": "SO",
+      "impact": null
+    }
+  ],
+  "count": 54
+}

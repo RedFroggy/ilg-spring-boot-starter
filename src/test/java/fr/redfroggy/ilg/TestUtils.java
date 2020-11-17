@@ -2,17 +2,25 @@ package fr.redfroggy.ilg;
 
 import static org.assertj.core.api.Assertions.*;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.text.WordUtils;
 import org.springframework.util.ObjectUtils;
 
+import java.io.IOException;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.lang.reflect.WildcardType;
 import java.util.*;
 
-public class InterfaceTestUtils {
+public class TestUtils {
+    private static final ObjectMapper json = JacksonUtils.buildMapper()
+            .setSerializationInclusion(JsonInclude.Include.NON_NULL)
+            .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
+            .disable(SerializationFeature.FAIL_ON_UNWRAPPED_TYPE_IDENTIFIERS);
 
     public static void verifyInterfaceGetter(Map<String, Object> fixtures, Class interfaceToTest ) {
         verifyInterfaceGetter(fixtures, interfaceToTest, Collections.emptyList(), Collections.emptyMap());
@@ -77,5 +85,23 @@ public class InterfaceTestUtils {
             return;
         }
         verifyInterfaceGetter((Map<String, Object>)fixtures, returnType, ignoreFields, forceMethodMapping);
+    }
+
+
+    public static void assertThatJsonIsEqualToResource(String jsonResource, Object resource, Class resourceClass) throws IOException {
+        Object fromJson = json.readValue(jsonResource, resourceClass);
+
+        assertThat(fromJson)
+                .usingRecursiveComparison()
+                .isEqualTo(resource);
+    }
+
+    public static void assertThatJsonIsEqualToResource(String jsonResource, Object resource, Class resourceClass,
+                                                       Class projectionClass) throws IOException {
+        assertThatJsonIsEqualToResource(jsonResource, resource, resourceClass);
+
+        Map<String, Object> jsonAsMap = json.readValue(jsonResource, Map.class);
+        TestUtils.verifyInterfaceGetter(jsonAsMap, projectionClass, Arrays.asList("@context","@type",
+                "@id","@link"));
     }
 }

@@ -1,21 +1,17 @@
 package fr.redfroggy.ilg.client.company;
 
-import static org.assertj.core.api.Assertions.*;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.common.io.Resources;
-import fr.redfroggy.ilg.InterfaceTestUtils;
 import fr.redfroggy.ilg.JacksonUtils;
+import fr.redfroggy.ilg.TestUtils;
 import fr.redfroggy.ilg.client.model.Executive;
 import fr.redfroggy.ilg.client.model.ExecutiveFonction;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
-import java.util.Arrays;
-import java.util.Map;
 
 public class ExecutiveTest {
     private static final ObjectMapper json = JacksonUtils.buildMapper()
@@ -25,15 +21,8 @@ public class ExecutiveTest {
 
     @Test
     public void shouldGetAmazon00048ExecutiveFromJson() throws IOException {
-        Executive amazonFromJson = json.readValue(amazon00048MandataireJson(), Executive.class);
-
-        assertThat(amazonFromJson)
-                .usingRecursiveComparison()
-                .isEqualTo(amazon00048Mandataire());
-
-        Map<String, Object> jsonAsMap = json.readValue(amazon00048MandataireJson(), Map.class);
-        InterfaceTestUtils.verifyInterfaceGetter(jsonAsMap, ExecutiveProjection.class, Arrays.asList("@context","@type",
-                "@link", "@id"));
+        TestUtils.assertThatJsonIsEqualToResource(amazon00048MandataireJson(), amazon00048Mandataire(), Executive.class,
+                ExecutiveProjection.class);
     }
 
 

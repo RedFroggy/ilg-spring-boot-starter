@@ -3,6 +3,7 @@ package fr.redfroggy.ilg.client.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import fr.redfroggy.ilg.client.Pagination;
 import fr.redfroggy.ilg.client.Sorting;
+import fr.redfroggy.ilg.client.events.EventsProjection;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
 /**
  * Events
  */
-public class Events {
+public class Events implements EventsProjection {
 
     private final String id;
 

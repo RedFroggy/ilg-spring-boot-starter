@@ -20,6 +20,8 @@ import java.util.Map;
 @Service
 public class IlgRestTemplate extends RestTemplate {
 
+    public final String COMPANY_URI = "/companies/{country}/{id}";
+
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     private final IlgProperties properties;
@@ -40,6 +42,16 @@ public class IlgRestTemplate extends RestTemplate {
 
     public String getBaseUrl() {
         return properties.getUrl();
+    }
+
+    /**
+     * Build Uri with base url + company uri + custom uri
+     * Example: http://ilg.fr/companies/{country}/{id}/uri
+     * @param uri custom uri
+     * @return uri builer
+     */
+    public UriComponentsBuilder absoluteCompanyUriBuilder(String uri) {
+        return absoluteUriBuilder(COMPANY_URI+uri);
     }
 
     public UriComponentsBuilder absoluteUriBuilder(String uri) {

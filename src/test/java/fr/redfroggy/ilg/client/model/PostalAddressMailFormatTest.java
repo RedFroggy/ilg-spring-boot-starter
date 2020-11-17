@@ -1,12 +1,14 @@
 package fr.redfroggy.ilg.client.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import fr.redfroggy.ilg.JacksonUtils;
+import fr.redfroggy.ilg.TestUtils;
 import org.junit.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
+
+import java.io.IOException;
 
 public class PostalAddressMailFormatTest {
     private static final ObjectMapper json = JacksonUtils.buildMapper()
@@ -15,8 +17,12 @@ public class PostalAddressMailFormatTest {
             .disable(SerializationFeature.FAIL_ON_UNWRAPPED_TYPE_IDENTIFIERS);
 
     @Test
-    public void shouldGetObjectFromDefaultJson() throws JsonProcessingException {
-        JSONAssert.assertEquals(json.writeValueAsString(defaultObject()),defaultJson(), false);
+    public void shouldGetObjectFromDefaultJson() throws IOException {
+        String defaultJson = defaultJson();
+        PostalAddressMailFormat defaultObject = defaultObject();
+        TestUtils.assertThatJsonIsEqualToResource(defaultJson, defaultObject,PostalAddressMailFormat.class);
+
+        JSONAssert.assertEquals(json.writeValueAsString(defaultObject), defaultJson, false);
     }
 
     public static String defaultJson() {

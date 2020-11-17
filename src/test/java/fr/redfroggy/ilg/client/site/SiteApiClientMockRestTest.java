@@ -133,7 +133,7 @@ public class SiteApiClientMockRestTest {
         mockApiServer.expect(ExpectedCount.once(),
                 requestTo(
                     new URI("http://ilg.fr/companies/fr/428785042/sites?" +
-                            "filters=$.eventCode,1100&filters=$.eventCode,999")))
+                            "filters[]=$.eventCode,1100&filters[]=$.eventCode,999")))
                 .andExpect(method(HttpMethod.GET))
                 .andExpect(header("authorization","Bearer test-token"))
                 .andExpect(header("accept",MediaType.APPLICATION_JSON_UTF8_VALUE))
