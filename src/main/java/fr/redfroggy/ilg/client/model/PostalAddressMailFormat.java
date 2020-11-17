@@ -1,16 +1,17 @@
 package fr.redfroggy.ilg.client.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import fr.redfroggy.ilg.client.company.PostalAddressMailFormatProjection;
 import fr.redfroggy.ilg.client.site.PostalAddressMailFormatProjection2;
 
 /**
  * PostalAddressMailFormat
  */
-@JsonDeserialize(builder = PostalAddressMailFormat.PostalAddressMailFormatBuilder.class)
-public class PostalAddressMailFormat implements PostalAddressMailFormatProjection, PostalAddressMailFormatProjection2 {
+@JsonIgnoreProperties({"@type", "@context", "@id", "@link"})
+public class PostalAddressMailFormat implements PostalAddressMailFormatProjection,
+        PostalAddressMailFormatProjection2 {
 
     private final String addressL1;
 
@@ -25,6 +26,23 @@ public class PostalAddressMailFormat implements PostalAddressMailFormatProjectio
     private final String addressL6;
 
     private final String addressL7;
+
+    @JsonCreator
+    public PostalAddressMailFormat(@JsonProperty("addressL1") String addressL1,
+                                   @JsonProperty("addressL2") String addressL2,
+                                   @JsonProperty("addressL3") String addressL3,
+                                   @JsonProperty("addressL4") String addressL4,
+                                   @JsonProperty("addressL5") String addressL5,
+                                   @JsonProperty("addressL6") String addressL6,
+                                   @JsonProperty("addressL7") String addressL7) {
+        this.addressL1 = addressL1;
+        this.addressL2 = addressL2;
+        this.addressL3 = addressL3;
+        this.addressL4 = addressL4;
+        this.addressL5 = addressL5;
+        this.addressL6 = addressL6;
+        this.addressL7 = addressL7;
+    }
 
     protected PostalAddressMailFormat(PostalAddressMailFormatBuilder builder) {
         this.addressL4 = builder.addressL4;
@@ -110,8 +128,6 @@ public class PostalAddressMailFormat implements PostalAddressMailFormatProjectio
         return addressL7;
     }
 
-    @JsonPOJOBuilder(withPrefix = "")
-    @JsonIgnoreProperties({"@type", "@context", "@id", "@link"})
     public static class PostalAddressMailFormatBuilder<T extends PostalAddressMailFormatBuilder<T>> {
         private String addressL1;
         private String addressL2;

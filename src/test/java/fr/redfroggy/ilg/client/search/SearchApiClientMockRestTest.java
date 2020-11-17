@@ -55,4 +55,33 @@ public class SearchApiClientMockRestTest extends ApiClientMockRestTest {
                 .isEqualTo(SiteSearchTest.ilgSites());
         mockApiServer.verify();
     }
+
+    @Test
+    public void shouldFindIlgCompanyWhenSearchOn50320789600021RegistrationId() throws URISyntaxException,
+            JsonProcessingException {
+        mockApiServer.expect(ExpectedCount.once(),
+                requestTo(
+                        new URI("http://ilg.fr/companies/fr/search/companies")))
+                .andExpect(method(HttpMethod.POST))
+                .andExpect(header("authorization","Bearer test-token"))
+                .andExpect(header("accept",MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(header(HttpHeaders.CONTENT_TYPE, startsWith("multipart/form-data")))
+                .andExpect(content().string(StringContains.containsString("Content-Disposition: form-data; " +
+                        "name=\"simpleSearch\"") ))
+                .andExpect(content().string(StringContains.containsString("50320789600021") ))
+                .andRespond(withStatus(HttpStatus.OK)
+                        .contentType(MediaType.APPLICATION_JSON_UTF8)
+                        .body(CompanySearchGenericTest.ilgCompanySearchJson())
+                );
+
+        ResponseEntity<CompanySearchGeneric> searchResponse = apiClient.searchCompanies("fr", CompanySearchRequestParam.builder()
+                .simpleSearch("50320789600021")
+                .build(), null
+        );
+
+        assertThat(searchResponse.getBody())
+                .usingRecursiveComparison()
+                .isEqualTo(CompanySearchGenericTest.ilgCompanySearch());
+        mockApiServer.verify();
+    }
 }

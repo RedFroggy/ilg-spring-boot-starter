@@ -1,5 +1,6 @@
 package fr.redfroggy.ilg.spring.boot.autoconfigure;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,6 +9,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.BufferingClientHttpRequestFactory;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import org.springframework.util.LinkedMultiValueMap;
@@ -30,6 +32,7 @@ public class IlgRestTemplate extends RestTemplate {
 
     public IlgRestTemplate(AuthorizationInterceptor authorizationInterceptor, IlgProperties properties, ObjectMapper mapper) {
         super();
+
         setRequestFactory(new BufferingClientHttpRequestFactory(getRequestFactory()));
 
         getInterceptors().add(authorizationInterceptor);
@@ -38,7 +41,17 @@ public class IlgRestTemplate extends RestTemplate {
         }
 
         this.properties = properties;
-        this.mapper = mapper;
+
+        MappingJackson2HttpMessageConverter httpMessageConverter = (MappingJackson2HttpMessageConverter)
+                this.getMessageConverters()
+                .stream()
+                .filter(converter -> converter instanceof MappingJackson2HttpMessageConverter)
+                .findFirst()
+                .orElse(new MappingJackson2HttpMessageConverter());
+
+        this.mapper = httpMessageConverter.getObjectMapper()
+                .enable(DeserializationFeature.ACCEPT_EMPTY_ARRAY_AS_NULL_OBJECT);
+        httpMessageConverter.setObjectMapper(this.mapper);
     }
 
     public String getBaseUrl() {

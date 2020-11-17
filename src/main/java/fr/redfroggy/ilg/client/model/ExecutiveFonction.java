@@ -6,6 +6,7 @@ import fr.redfroggy.ilg.client.company.ExecutiveFonctionProjection;
 import fr.redfroggy.ilg.client.company.ExecutiveFonctionProjection8;
 import fr.redfroggy.ilg.client.executive.ExecutiveFonctionProjection6;
 import fr.redfroggy.ilg.client.kyc.ExecutiveFonctionProjection4;
+import fr.redfroggy.ilg.client.search.ExecutiveFonctionProjection9;
 import io.swagger.annotations.ApiModelProperty;
 import javax.validation.Valid;
 
@@ -15,7 +16,7 @@ import javax.validation.Valid;
 @JsonDeserialize(builder = ExecutiveFonction.ExecutiveFonctionBuilder.class)
 public class ExecutiveFonction implements ExecutiveFonctionProjection, ExecutiveFonctionProjection4,
         ExecutiveFonctionProjection6,
-        ExecutiveFonctionProjection8 {
+        ExecutiveFonctionProjection8, ExecutiveFonctionProjection9 {
 
     private final String code;
 
