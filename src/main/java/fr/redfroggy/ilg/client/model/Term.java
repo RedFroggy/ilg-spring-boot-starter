@@ -3,6 +3,7 @@ package fr.redfroggy.ilg.client.model;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import fr.redfroggy.ilg.client.company.TermProjection2;
+import fr.redfroggy.ilg.client.executive.TermProjection;
 import io.swagger.annotations.ApiModelProperty;
 import javax.validation.Valid;
 
@@ -13,7 +14,7 @@ import java.time.LocalDate;
  */
 
 @JsonDeserialize(builder = Term.TermBuilder.class)
-public class Term implements TermProjection2 {
+public class Term implements TermProjection, TermProjection2 {
 
     private final String id;
 

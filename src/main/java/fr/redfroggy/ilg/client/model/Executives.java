@@ -2,6 +2,7 @@ package fr.redfroggy.ilg.client.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import fr.redfroggy.ilg.client.executive.ExecutivesProjection2;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
  * Executives
  */
 @JsonIgnoreProperties({"@type", "@context", "@id", "@link"})
-public class Executives {
+public class Executives implements ExecutivesProjection2 {
 
     private final List<Executive> executives;
 
