@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import fr.redfroggy.ilg.client.company.ExecutiveFonctionProjection;
 import fr.redfroggy.ilg.client.company.ExecutiveFonctionProjection8;
 import fr.redfroggy.ilg.client.executive.ExecutiveFonctionProjection6;
+import fr.redfroggy.ilg.client.kyc.ExecutiveFonctionProjection4;
 import io.swagger.annotations.ApiModelProperty;
 import javax.validation.Valid;
 
@@ -12,7 +13,8 @@ import javax.validation.Valid;
  * ExecutiveFonction
  */
 @JsonDeserialize(builder = ExecutiveFonction.ExecutiveFonctionBuilder.class)
-public class ExecutiveFonction implements ExecutiveFonctionProjection, ExecutiveFonctionProjection6,
+public class ExecutiveFonction implements ExecutiveFonctionProjection, ExecutiveFonctionProjection4,
+        ExecutiveFonctionProjection6,
         ExecutiveFonctionProjection8 {
 
     private final String code;

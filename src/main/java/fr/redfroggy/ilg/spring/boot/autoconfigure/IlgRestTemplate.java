@@ -9,6 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.BufferingClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -70,5 +71,17 @@ public class IlgRestTemplate extends RestTemplate {
         HttpEntity request = new HttpEntity(mapFormData, headers);
 
         return this.postForEntity(url, request, responseType);
+    }
+
+    public void assertCountryAndId(String country, String id) {
+        Assert.hasText(country, "Cannot execute without country");
+        Assert.hasText(id, "Cannot execute without id");
+    }
+
+    public <T> ResponseEntity<T> getForCompanyEntity(String country, String id, String uri, Class<T> responseType) {
+        assertCountryAndId(country, id);
+        UriComponentsBuilder uriBuilder = this.absoluteCompanyUriBuilder(uri);
+
+        return this.getForEntity(uriBuilder.buildAndExpand(country, id).toUri(), responseType);
     }
 }

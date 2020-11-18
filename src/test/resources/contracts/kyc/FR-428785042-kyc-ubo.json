@@ -1,0 +1,27 @@
+{
+  "@id": "https://webservice.infolegale.fr/v2/companies/fr/428785042/kyc/ubo",
+  "minDate": null,
+  "maxDate": "2020-02-13",
+  "totalMembers": 0,
+  "totalCapitalDetentionMembers": 0,
+  "totalLegalRepresentativeMembers": 0,
+  "members": [],
+  "steps": [
+    {
+      "step": "Legal status",
+      "decision": {
+        "code": "DECISION_CHECK_SHARE",
+        "label": "Check capital detention"
+      },
+      "reason": "Civil or commercial company"
+    },
+    {
+      "step": "Capital detention",
+      "decision": {
+        "code": "DECISION_INVESTIGATION_NEEDED",
+        "label": "Investigation Needed"
+      },
+      "reason": "Capital detention does not allow us to find an ultimate beneficial owner. Investigation needed."
+    }
+  ]
+}

@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import fr.redfroggy.ilg.client.company.AddressProjection;
 import fr.redfroggy.ilg.client.company.AddressProjection11;
 import fr.redfroggy.ilg.client.executive.AddressProjection5;
+import fr.redfroggy.ilg.client.kyc.AddressProjection6;
 import fr.redfroggy.ilg.client.site.AddressProjection17;
 import fr.redfroggy.ilg.client.site.AddressProjection2;
 import io.swagger.annotations.ApiModelProperty;
@@ -14,7 +15,9 @@ import io.swagger.annotations.ApiModelProperty;
  * Address
  */
 @JsonDeserialize(builder = Address.AddressBuilder.class)
-public class Address implements AddressProjection, AddressProjection2, AddressProjection5, AddressProjection11, AddressProjection17 {
+public class Address implements AddressProjection, AddressProjection2,
+        AddressProjection6,
+        AddressProjection5, AddressProjection11, AddressProjection17 {
     private final String country;
 
     private final String countryCode;

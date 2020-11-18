@@ -27,5 +27,5 @@ language: java
 notifications:
   email: false
 script:
-  - mvn package
+  - mvn package -Dmaven.javadoc.skip=true
 os: linux

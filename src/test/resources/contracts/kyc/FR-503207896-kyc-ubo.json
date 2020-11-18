@@ -1,0 +1,96 @@
+{
+  "@id": "https://webservice.infolegale.fr/v2/companies/FR/503207896/kyc/ubo",
+  "minDate": "2018-10-11",
+  "maxDate": "2020-03-06",
+  "totalMembers": 2,
+  "totalCapitalDetentionMembers": 2,
+  "totalLegalRepresentativeMembers": 0,
+  "members": [
+    {
+      "entityId": 455198,
+      "entityName": "M Frédéric JULIEN",
+      "registrationNumber": null,
+      "countryCode": "FR",
+      "country": "France",
+      "share": 28.99,
+      "type": "person",
+      "methodUsed": "Capital detention",
+      "qualite": "Actionnaire",
+      "distance": 1,
+      "address": {
+        "country": "France",
+        "countryCode": "FR",
+        "street": "54 Quai Clemenceau",
+        "streetDetail": [],
+        "street2": null,
+        "postalCode": "69300",
+        "locality": "CALUIRE ET CUIRE"
+      },
+      "fonction": null,
+      "birthday": "1965-10-26",
+      "birthCity": "LYON",
+      "birthCountry": "France",
+      "birthCountryCode": "FR",
+      "nationality": null,
+      "nationalityCode": null,
+      "name": "JULIEN",
+      "firstname": "Frédéric",
+      "maidenName": null,
+      "title": "M",
+      "minDate": "2018-10-11",
+      "maxDate": "2020-03-06"
+    },
+    {
+      "entityId": 455199,
+      "entityName": "M Bertrand LAFFAY",
+      "registrationNumber": null,
+      "countryCode": "FR",
+      "country": "France",
+      "share": 28.99,
+      "type": "person",
+      "methodUsed": "Capital detention",
+      "qualite": "Actionnaire",
+      "distance": 1,
+      "address": {
+        "country": "France",
+        "countryCode": "FR",
+        "street": "23 cours Aristide Briand",
+        "streetDetail": [],
+        "street2": null,
+        "postalCode": "69300",
+        "locality": "CALUIRE ET CUIRE"
+      },
+      "fonction": null,
+      "birthday": "1969-01-07",
+      "birthCity": "LYON",
+      "birthCountry": "France",
+      "birthCountryCode": "FR",
+      "nationality": null,
+      "nationalityCode": null,
+      "name": "LAFFAY",
+      "firstname": "Bertrand",
+      "maidenName": null,
+      "title": "M",
+      "minDate": "2018-10-11",
+      "maxDate": "2020-03-06"
+    }
+  ],
+  "steps": [
+    {
+      "step": "Legal status",
+      "decision": {
+        "code": "DECISION_CHECK_SHARE",
+        "label": "Check capital detention"
+      },
+      "reason": "Civil or commercial company"
+    },
+    {
+      "step": "Capital detention",
+      "decision": {
+        "code": "DECISION_STOP",
+        "label": "End of preliminary investigation"
+      },
+      "reason": "Ultimate beneficial owner found"
+    }
+  ]
+}
