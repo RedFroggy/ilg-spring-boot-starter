@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.*;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.google.common.io.Resources;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.text.WordUtils;
 import org.springframework.util.ObjectUtils;
@@ -14,13 +15,28 @@ import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.lang.reflect.WildcardType;
+import java.nio.charset.Charset;
 import java.util.*;
 
-public class TestUtils {
+public class UnitTestUtils {
     private static final ObjectMapper json = JacksonUtils.buildMapper()
             .setSerializationInclusion(JsonInclude.Include.NON_NULL)
             .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
             .disable(SerializationFeature.FAIL_ON_UNWRAPPED_TYPE_IDENTIFIERS);
+
+    public static ObjectMapper getJsonMapper() {
+        return json;
+    }
+
+    public static String getJsonFromContractFile(String path) {
+        try {
+            return Resources.toString(
+                    Resources.getResource("contracts"+path),
+                    Charset.forName("UTF8"));
+        } catch (IOException e) {
+            return "";
+        }
+    }
 
     public static void verifyInterfaceGetter(Map<String, Object> fixtures, Class interfaceToTest ) {
         verifyInterfaceGetter(fixtures, interfaceToTest, Collections.emptyList(), Collections.emptyMap());
@@ -101,7 +117,7 @@ public class TestUtils {
         assertThatJsonIsEqualToResource(jsonResource, resource, resourceClass);
 
         Map<String, Object> jsonAsMap = json.readValue(jsonResource, Map.class);
-        TestUtils.verifyInterfaceGetter(jsonAsMap, projectionClass, Arrays.asList("@context","@type",
+        UnitTestUtils.verifyInterfaceGetter(jsonAsMap, projectionClass, Arrays.asList("@context","@type",
                 "@id","@link"));
     }
 }

@@ -1,0 +1,100 @@
+{
+  "@pagination": {
+    "start": 0,
+    "page": 1,
+    "count": null,
+    "total": 5
+  },
+  "@sorting": {
+    "column": null,
+    "order": "ASC"
+  },
+  "@id": "https://webservice.infolegale.fr/v2/companies/FR/503207896/links/subsidiaries",
+  "members": [
+    {
+      "entityId": 443115,
+      "entityName": "INFOLEGALE (MAURICE) LTÉE",
+      "registrationNumber": null,
+      "countryCodeIso3": "MUS",
+      "countryCode": "MU",
+      "country": "Maurice",
+      "share": "100.00",
+      "score": null,
+      "type": "company",
+      "name": null,
+      "firstname": null,
+      "maidenName": null,
+      "title": null,
+      "minDate": null,
+      "maxDate": null
+    },
+    {
+      "entityId": 1515596,
+      "entityName": "CONFORMITEE",
+      "registrationNumber": "848312708",
+      "countryCodeIso3": "FRA",
+      "countryCode": "FR",
+      "country": "France",
+      "share": "19.22",
+      "score": "6",
+      "type": "company",
+      "name": null,
+      "firstname": null,
+      "maidenName": null,
+      "title": null,
+      "minDate": null,
+      "maxDate": null
+    },
+    {
+      "entityId": 561464,
+      "entityName": "SIS",
+      "registrationNumber": "824003958",
+      "countryCodeIso3": "FRA",
+      "countryCode": "FR",
+      "country": "France",
+      "share": "10.00",
+      "score": "8",
+      "type": "company",
+      "name": null,
+      "firstname": null,
+      "maidenName": null,
+      "title": null,
+      "minDate": null,
+      "maxDate": null
+    },
+    {
+      "entityId": 200398,
+      "entityName": "OFA",
+      "registrationNumber": "527737738",
+      "countryCodeIso3": "FRA",
+      "countryCode": "FR",
+      "country": "France",
+      "share": "8.07",
+      "score": "9",
+      "type": "company",
+      "name": null,
+      "firstname": null,
+      "maidenName": null,
+      "title": null,
+      "minDate": null,
+      "maxDate": null
+    },
+    {
+      "entityId": 1500911,
+      "entityName": "VIACO",
+      "registrationNumber": "844647156",
+      "countryCodeIso3": "FRA",
+      "countryCode": "FR",
+      "country": "France",
+      "share": "8.00",
+      "score": "11",
+      "type": "company",
+      "name": null,
+      "firstname": null,
+      "maidenName": null,
+      "title": null,
+      "minDate": null,
+      "maxDate": null
+    }
+  ]
+}

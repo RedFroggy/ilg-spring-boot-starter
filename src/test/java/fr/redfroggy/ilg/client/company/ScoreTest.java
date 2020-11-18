@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.common.io.Resources;
 import fr.redfroggy.ilg.JacksonUtils;
-import fr.redfroggy.ilg.TestUtils;
+import fr.redfroggy.ilg.UnitTestUtils;
 import fr.redfroggy.ilg.client.model.Score;
 import fr.redfroggy.ilg.client.model.ScoreHistory;
 import org.junit.Test;
@@ -26,7 +26,7 @@ public class ScoreTest {
 
     @Test
     public void shouldGetAmazon00048ScoreFromJson() throws IOException {
-        TestUtils.assertThatJsonIsEqualToResource(amazon00048ScoreJson(), amazon00048Score(), Score.class,
+        UnitTestUtils.assertThatJsonIsEqualToResource(amazon00048ScoreJson(), amazon00048Score(), Score.class,
                 ScoreProjection.class);
     }
 

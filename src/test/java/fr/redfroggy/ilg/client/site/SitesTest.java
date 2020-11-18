@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.common.io.Resources;
 import fr.redfroggy.ilg.JacksonUtils;
-import fr.redfroggy.ilg.TestUtils;
+import fr.redfroggy.ilg.UnitTestUtils;
 import fr.redfroggy.ilg.client.Pagination;
 import fr.redfroggy.ilg.client.Sorting;
 import fr.redfroggy.ilg.client.model.*;
@@ -27,10 +27,10 @@ public class SitesTest {
 
     @Test
     public void shouldGetAmazonSitesFromJson() throws IOException {
-        TestUtils.assertThatJsonIsEqualToResource(amazonSitesJson(), amazonSites(), Sites.class);
+        UnitTestUtils.assertThatJsonIsEqualToResource(amazonSitesJson(), amazonSites(), Sites.class);
 
         Map<String, Object> jsonAsMap = json.readValue(amazonSitesJson(), Map.class);
-        TestUtils.verifyInterfaceGetter(jsonAsMap, SitesProjection.class, Arrays.asList("@context","@type",
+        UnitTestUtils.verifyInterfaceGetter(jsonAsMap, SitesProjection.class, Arrays.asList("@context","@type",
                 "@link", "@id","@search"));
     }
 

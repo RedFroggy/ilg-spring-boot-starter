@@ -5,6 +5,10 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import fr.redfroggy.ilg.client.company.GroupMemberProjection4;
 import fr.redfroggy.ilg.client.kyc.GroupMemberProjection;
+import fr.redfroggy.ilg.client.relation.GroupMemberProjection2;
+import fr.redfroggy.ilg.client.relation.GroupMemberProjection3;
+import fr.redfroggy.ilg.client.relation.GroupMemberProjection5;
+import fr.redfroggy.ilg.client.relation.GroupMemberProjection7;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.math.BigDecimal;
@@ -14,7 +18,9 @@ import java.time.LocalDate;
  * GroupMember
  */
 @JsonDeserialize(builder = GroupMember.GroupMemberBuilder.class)
-public class GroupMember implements GroupMemberProjection, GroupMemberProjection4 {
+public class GroupMember implements GroupMemberProjection, GroupMemberProjection2,
+        GroupMemberProjection3, GroupMemberProjection4,
+        GroupMemberProjection5, GroupMemberProjection7 {
     private final Integer parentId;
 
     private final String nodePath;

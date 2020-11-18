@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.common.io.Resources;
 import fr.redfroggy.ilg.JacksonUtils;
-import fr.redfroggy.ilg.TestUtils;
+import fr.redfroggy.ilg.UnitTestUtils;
 import fr.redfroggy.ilg.client.Pagination;
 import fr.redfroggy.ilg.client.Sorting;
 import fr.redfroggy.ilg.client.model.Event;
@@ -31,10 +31,10 @@ public class EventsTest {
     @Test
     public void shouldGetEventsFromJson() throws IOException {
         String fromJson = ilg503207896EventsJson();
-        TestUtils.assertThatJsonIsEqualToResource(fromJson,  ilg503207896Events(), Events.class);
+        UnitTestUtils.assertThatJsonIsEqualToResource(fromJson,  ilg503207896Events(), Events.class);
 
         Map<String, Object> jsonAsMap = json.readValue(fromJson, Map.class);
-        TestUtils.verifyInterfaceGetter(jsonAsMap, EventsProjection.class, Arrays.asList("@context","@type",
+        UnitTestUtils.verifyInterfaceGetter(jsonAsMap, EventsProjection.class, Arrays.asList("@context","@type",
                 "@link", "@id", "@sorting"));
     }
 

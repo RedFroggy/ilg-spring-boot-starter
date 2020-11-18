@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.common.io.Resources;
 import fr.redfroggy.ilg.JacksonUtils;
-import fr.redfroggy.ilg.TestUtils;
+import fr.redfroggy.ilg.UnitTestUtils;
 import fr.redfroggy.ilg.client.model.Workforce;
 import org.junit.Test;
 
@@ -20,7 +20,7 @@ public class WorkforceTest {
 
     @Test
     public void shouldGetAmazon00048ContactFromJson() throws IOException {
-        TestUtils.assertThatJsonIsEqualToResource(amazon00048IdentityWorkforceJson(), amazon00048IdentityWorkforce(), Workforce.class,
+        UnitTestUtils.assertThatJsonIsEqualToResource(amazon00048IdentityWorkforceJson(), amazon00048IdentityWorkforce(), Workforce.class,
                 WorkforceProjection.class);
     }
 

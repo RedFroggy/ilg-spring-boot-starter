@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.common.io.Resources;
 import fr.redfroggy.ilg.JacksonUtils;
-import fr.redfroggy.ilg.TestUtils;
+import fr.redfroggy.ilg.UnitTestUtils;
 import fr.redfroggy.ilg.client.model.Executive;
 import fr.redfroggy.ilg.client.model.ExecutiveFonction;
 import org.junit.Test;
@@ -21,7 +21,7 @@ public class ExecutiveTest {
 
     @Test
     public void shouldGetAmazon00048ExecutiveFromJson() throws IOException {
-        TestUtils.assertThatJsonIsEqualToResource(amazon00048MandataireJson(), amazon00048Mandataire(), Executive.class,
+        UnitTestUtils.assertThatJsonIsEqualToResource(amazon00048MandataireJson(), amazon00048Mandataire(), Executive.class,
                 ExecutiveProjection.class);
     }
 

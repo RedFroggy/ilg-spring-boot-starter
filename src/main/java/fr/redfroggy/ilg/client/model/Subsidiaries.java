@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import fr.redfroggy.ilg.client.Pagination;
 import fr.redfroggy.ilg.client.Sorting;
+import fr.redfroggy.ilg.client.relation.SubsidiariesProjection;
+import fr.redfroggy.ilg.client.relation.SubsidiariesProjection2;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.util.List;
@@ -12,7 +14,7 @@ import java.util.List;
  * Subsidiaries
  */
 @JsonIgnoreProperties({"@type", "@context", "@link"})
-public class Subsidiaries {
+public class Subsidiaries implements SubsidiariesProjection, SubsidiariesProjection2 {
 
     private final String id;
     private final Pagination pagination;

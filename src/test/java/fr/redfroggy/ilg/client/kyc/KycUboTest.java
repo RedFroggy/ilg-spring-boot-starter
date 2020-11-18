@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.common.io.Resources;
 import fr.redfroggy.ilg.JacksonUtils;
-import fr.redfroggy.ilg.TestUtils;
+import fr.redfroggy.ilg.UnitTestUtils;
 import fr.redfroggy.ilg.client.model.*;
 import org.junit.Test;
 
@@ -27,7 +27,7 @@ public class KycUboTest {
 
     @Test
     public void shouldGetIlgUboFromJson() throws IOException {
-        TestUtils.assertThatJsonIsEqualToResource(ilg503207896UboJson(), ilg503207896Ubo(), KycUbo.class, KycUboProjection.class);
+        UnitTestUtils.assertThatJsonIsEqualToResource(ilg503207896UboJson(), ilg503207896Ubo(), KycUbo.class, KycUboProjection.class);
     }
 
     public static String ilg503207896UboJson() {

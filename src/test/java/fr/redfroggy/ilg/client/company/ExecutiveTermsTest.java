@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.common.io.Resources;
 import fr.redfroggy.ilg.JacksonUtils;
-import fr.redfroggy.ilg.TestUtils;
+import fr.redfroggy.ilg.UnitTestUtils;
 import fr.redfroggy.ilg.client.model.*;
 import org.junit.Test;
 
@@ -27,10 +27,10 @@ public class ExecutiveTermsTest {
     @Test
     public void shouldGetExecutiveTermsFromJson() throws IOException {
         String jsonResource = ilgTermsJson();
-        TestUtils.assertThatJsonIsEqualToResource(jsonResource, ilgTerms(), ExecutiveTerms.class);
+        UnitTestUtils.assertThatJsonIsEqualToResource(jsonResource, ilgTerms(), ExecutiveTerms.class);
 
         Map<String, Object> jsonAsMap = json.readValue(jsonResource, Map.class);
-        TestUtils.verifyInterfaceGetter(jsonAsMap, ExecutiveTermsProjection.class, Arrays.asList(
+        UnitTestUtils.verifyInterfaceGetter(jsonAsMap, ExecutiveTermsProjection.class, Arrays.asList(
                 "@Pagination"));
     }
 
