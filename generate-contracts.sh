@@ -11,10 +11,11 @@ export TOKEN=$(curl -X POST "$URL/login_json" -H "accept: application/json" -H "
 export AUTH_HEADER="bearer $TOKEN"
 echo $AUTH_HEADER
 
-cd ../site
+cd site
 curl -X GET "$URL/companies/fr/428785042/sites?number=2" -H "accept: application/json" -H "Authorization: bearer $TOKEN" | jq '.' > FR-428785042-sites.json
 curl -X GET "$URL/companies/fr/428785042/sites/42878504200048" -H "accept: application/json" -H "Authorization: bearer $TOKEN" | jq '.' > FR-42878504200048-site.json
 curl -X POST "$URL/companies/fr/sites/search" -H "accept: application/json" -H "Authorization: bearer $TOKEN" -H "Content-Type: multipart/form-data" -F "registrationNumber=42878504200048" | jq '.' > FR-42878504200048-search-site.json
+cd ..
 
 cd company
 curl -X GET "$URL/companies/fr/428785042" -H "accept: application/json" -H "Authorization: bearer $TOKEN" | jq '.' > FR-428785042-company.json
@@ -48,4 +49,13 @@ curl -X GET "$URL/groups/455198" -H "accept: application/json" -H "Authorization
 cd ../legalinformation
 curl -X GET "$URL/companies/FR/503207896/legal" -H "accept: application/json" -H "Authorization: bearer $TOKEN" | jq '.' > FR-503207896-legal.json
 curl -X GET "$URL/companies/{country}/{id}/legal/deposits" -H "accept: application/json" -H "Authorization: bearer $TOKEN" | jq '.' > FR-503207896-legal-deposits.json
+cd ..
 
+cd search
+curl -X POST "$URL/companies/fr/autocomplete" -H "Content-Type: multipart/form-data" -H "accept: application/json" -H "Authorization: bearer $TOKEN" -F 'name=INFOLEGALE' -F 'codePostal=69003' | jq '.' > FR-INFOLEGALE-69003-autocomplete.json
+curl -X POST "$URL/companies/fr/find" -H "Content-Type: multipart/form-data" -H "accept: application/json" -H "Authorization: bearer $TOKEN" -F 'registrationId=50320789600021'  | jq '.' > FR-50320789600021-find.json
+curl -X POST "$URL/companies/fr/search/companies" -H "Content-Type: multipart/form-data" -H "accept: application/json" -H "Authorization: bearer $TOKEN" -F 'simpleSearch=50320789600021' | jq '.'  | jq '.' > FR-50320789600021-search-companies.json
+curl -X POST "$URL/companies/fr/search/executives" -H "Content-Type: multipart/form-data" -H "accept: application/json" -H "Authorization: bearer $TOKEN" -F 'dirigeantNom=PERINEL' -F 'dirigeantPrenom=FLORENT' | jq '.' > FR-FLORENT-PERINEL-search-executives.json
+curl -X POST "$URL/companies/fr/search" -H "Content-Type: multipart/form-data" -H "accept: application/json" -H "Authorization: bearer $TOKEN" -F 'simpleSearch=50320789600021' | jq '.' > FR-50320789600021-search.json
+curl -X POST "$URL/companies/fr/sites/search" -H "Content-Type: multipart/form-data" -H "accept: application/json" -H "Authorization: bearer $TOKEN" -F 'registrationNumber=50320789600021' | jq '.' > FR-50320789600021-sites-search.json
+curl -X POST "$URL/companies/fr/suggest" -H "Content-Type: multipart/form-data" -H "accept: application/json" -H "Authorization: bearer $TOKEN" -F 'name=INFOLEGALE' -F 'codePostal=69003' | jq '.' > FR-INFOLEGALE-69003-suggest.json

@@ -1,0 +1,35 @@
+{
+  "companies": [
+    {
+      "@id": "https://webservice.infolegale.fr/v2/companies/FR/503207896?sid=50320789600021",
+      "id": "50320789600021",
+      "companyId": "503207896",
+      "registrationId": "50320789600021",
+      "name": "INFOLEGALE",
+      "tradings": "INFOLEGALE ET MARKETING",
+      "address": {
+        "country": "FRANCE",
+        "countryCode": null,
+        "street": "20 BD EUGENE DERUELLE",
+        "streetDetail": null,
+        "street2": null,
+        "postalBoxNumber": "",
+        "postalCode": "69003",
+        "locality": "LYON 3EME",
+        "mailFormatted": []
+      },
+      "activity": "Activités des agences de recouvrement de factures et des sociétés d'information financière sur la clientèle",
+      "siege": "1",
+      "actif": "1",
+      "nb_etabs": "1",
+      "representantLegal": "",
+      "matchedExecutive": null,
+      "mandataire": null
+    }
+  ],
+  "executives": [],
+  "count": 1,
+  "countExecutives": 0,
+  "found": 0,
+  "foundExecutives": 0
+}

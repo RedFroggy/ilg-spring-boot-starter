@@ -5,7 +5,7 @@ after_success:
   # It is included here to test running code coverage reports as part of conveyal workflow.
   # run codecov after semantic-release because maven-semantic-release creates extra commits that
   # codecov will need a report on to reference in future PRs to the release branch
-  # - bash <(curl -s https://codecov.io/bash)
+  - bash <(curl -s https://codecov.io/bash)
 before_install: |
   echo $GPG_SECRET_KEYS | base64 --decode | gpg --import --no-tty --batch
   nvm use 11

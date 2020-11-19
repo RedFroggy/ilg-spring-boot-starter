@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import fr.redfroggy.ilg.client.company.CompanyProjection;
+import fr.redfroggy.ilg.client.search.CompanyProjection5;
 import fr.redfroggy.ilg.client.site.CompanyProjection4;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -13,7 +14,8 @@ import java.util.List;
  * Company
  */
 @JsonDeserialize(builder = Company.CompanyBuilder.class)
-public class Company implements CompanyProjection, CompanyProjection4 {
+public class Company implements CompanyProjection, CompanyProjection4,
+        CompanyProjection5 {
     private final Identity identity;
 
     private final Object sites;

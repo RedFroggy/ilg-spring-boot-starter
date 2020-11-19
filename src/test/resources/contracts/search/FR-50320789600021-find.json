@@ -1,0 +1,160 @@
+{
+  "company": {
+    "@type": "Company",
+    "@link": "https://webservice.infolegale.fr/v2/companies/FR/503207896",
+    "@id": "https://webservice.infolegale.fr/v2/companies/FR/503207896",
+    "identity": {
+      "id": "503207896",
+      "registrationId": "503207896",
+      "vatnumber": "FR90503207896",
+      "name": "INFOLEGALE",
+      "tradings": "INFOLEGALE ET MARKETING",
+      "acronym": "",
+      "address": {
+        "country": "FRANCE",
+        "countryCode": "FR",
+        "street": "20 BD EUGENE DERUELLE",
+        "streetDetail": [],
+        "street2": null,
+        "postalBoxNumber": "CS 83755",
+        "region": null,
+        "deptName": null,
+        "postalCode": "69003",
+        "locality": "LYON 3EME"
+      },
+      "headquarter": {
+        "@type": "Site",
+        "@link": "https://webservice.infolegale.fr/v2/companies/fr/503207896/sites/50320789600021",
+        "@id": "https://webservice.infolegale.fr/v2/companies/fr/503207896/sites/50320789600021",
+        "id": "50320789600021",
+        "companyId": "503207896",
+        "registrationId": "50320789600021",
+        "siteNumber": "00021",
+        "name": "INFOLEGALE",
+        "commercialName": "INFOLEGALE ET MARKETING",
+        "tradings": "INFOLEGALE ET MARKETING",
+        "sigle": null,
+        "status": true,
+        "creationDate": "2011-11-14",
+        "closingDate": null,
+        "isHeadquarter": true,
+        "address": {
+          "country": "FRANCE",
+          "countryCode": "FR",
+          "street": "20 BD EUGENE DERUELLE",
+          "streetDetail": [],
+          "street2": null,
+          "postalBoxNumber": "CS 83755",
+          "region": "Auvergne-Rhône-Alpes",
+          "deptName": null,
+          "postalCode": "69003",
+          "locality": "LYON 3EME"
+        },
+        "headquarter": null,
+        "workforce": {
+          "value": "20",
+          "range": "20-49",
+          "rangeMin": 20,
+          "rangeMax": 49
+        },
+        "activity": {
+          "code": "8291Z",
+          "label": "Activités des agences de recouvrement de factures et des sociétés d'information financière sur la clientèle"
+        },
+        "origine": "Création"
+      },
+      "workforce": {
+        "value": "46",
+        "range": "20-49",
+        "rangeMin": 20,
+        "rangeMax": 49
+      },
+      "contact": {
+        "@context": "https://webservice.infolegale.fr/v2/schema/xsd/generics.xsd",
+        "@type": "Contact",
+        "phone": "+33472383250",
+        "fax": null,
+        "email": null,
+        "webSite": "https://www.infolegale.fr/fr/accueil/"
+      },
+      "legalForm": {
+        "code": "5710",
+        "codeINSEE": "5710",
+        "label": "Société par actions simplifiée (SAS)"
+      },
+      "activity": {
+        "code": "8291Z",
+        "label": "Activités des agences de recouvrement de factures et des sociétés d'information financière sur la clientèle"
+      },
+      "declaredActivity": "Production et fourniture d'informations économiques",
+      "secondaryActivities": null,
+      "creationDate": "2008-03-15",
+      "status": 1,
+      "rna": null,
+      "capital": "758846.00",
+      "tags": [
+        {
+          "code": "PME",
+          "label": "Petite ou Moyenne Entreprise"
+        }
+      ]
+    },
+    "risk": {
+      "class": "17-20",
+      "label": "Risque très faible",
+      "status": "active",
+      "insolvency": null
+    },
+    "financial": {
+      "turnover": "6796542"
+    },
+    "groupInfo": {
+      "entityId": "0000200397",
+      "registrationId": "503207896",
+      "companyName": "INFOLEGALE",
+      "groupWorkforce": "46",
+      "groupTurnover": "6796542"
+    }
+  },
+  "site": {
+    "@type": "Site",
+    "@link": "https://webservice.infolegale.fr/v2/companies/fr/503207896/sites/50320789600021",
+    "@id": "https://webservice.infolegale.fr/v2/companies/fr/503207896/sites/50320789600021",
+    "id": "50320789600021",
+    "companyId": "503207896",
+    "registrationId": "50320789600021",
+    "siteNumber": "00021",
+    "name": "INFOLEGALE",
+    "commercialName": "INFOLEGALE ET MARKETING",
+    "tradings": "INFOLEGALE ET MARKETING",
+    "sigle": null,
+    "status": true,
+    "creationDate": "2011-11-14",
+    "closingDate": null,
+    "isHeadquarter": true,
+    "address": {
+      "country": "FRANCE",
+      "countryCode": "FR",
+      "street": "20 BD EUGENE DERUELLE",
+      "streetDetail": [],
+      "street2": null,
+      "postalBoxNumber": "CS 83755",
+      "region": "Auvergne-Rhône-Alpes",
+      "deptName": null,
+      "postalCode": "69003",
+      "locality": "LYON 3EME"
+    },
+    "headquarter": null,
+    "workforce": {
+      "value": "20",
+      "range": "20-49",
+      "rangeMin": 20,
+      "rangeMax": 49
+    },
+    "activity": {
+      "code": "8291Z",
+      "label": "Activités des agences de recouvrement de factures et des sociétés d'information financière sur la clientèle"
+    },
+    "origine": "Création"
+  }
+}
