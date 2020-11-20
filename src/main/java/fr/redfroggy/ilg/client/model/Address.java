@@ -9,6 +9,7 @@ import fr.redfroggy.ilg.client.executive.AddressProjection5;
 import fr.redfroggy.ilg.client.kyc.AddressProjection6;
 import fr.redfroggy.ilg.client.relation.AddressProjection9;
 import fr.redfroggy.ilg.client.search.AddressProjection13;
+import fr.redfroggy.ilg.client.search.AddressProjection14;
 import fr.redfroggy.ilg.client.site.AddressProjection17;
 import fr.redfroggy.ilg.client.site.AddressProjection2;
 import io.swagger.annotations.ApiModelProperty;
@@ -21,7 +22,7 @@ public class Address implements AddressProjection, AddressProjection2,
         AddressProjection6,
         AddressProjection5, AddressProjection9,
         AddressProjection11, AddressProjection13,
-        AddressProjection17 {
+        AddressProjection14, AddressProjection17 {
     private final String country;
 
     private final String countryCode;

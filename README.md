@@ -1,5 +1,5 @@
 
-# ILGV2 client library [![Build Status](https://travis-ci.org/RedFroggy/ilg-spring-boot-starter.svg?branch=master)](https://travis-ci.org/RedFroggy/ilg-spring-boot-starter)
+# ILGV2 client library [![Build Status](https://travis-ci.org/RedFroggy/ilg-spring-boot-starter.svg?branch=master)](https://travis-ci.org/RedFroggy/ilg-spring-boot-starter) [![codecov](https://codecov.io/gh/RedFroggy/ilg-spring-boot-starter/branch/master/graph/badge.svg?token=XM9R6ZV9SJ)](https://codecov.io/gh/RedFroggy/ilg-spring-boot-starter)
 Get an organisation identity thanks to ilgV2 rest api
 
 ## Compatibility
@@ -189,6 +189,21 @@ public EventDetailProjection getEventById(String adId) {
         public SiteSearch searchSites(String country, String registrationId) {
             ResponseEntity<SiteSearch> searchResponse = apiClient.searchSites(country, SiteSearchRequest.builder()
                     .registrationNumber(registrationId)
+                    .build(), null
+            );
+            return response.getBody();
+        }
+```
+
+### Search companies Api Client
+```java
+//...
+        @Autowired
+        private SearchApi apiClient;
+
+        public CompanySearchGeneric searchCompanies(String country, String registrationId) {
+            ResponseEntity<CompanySearchGeneric> searchResponse = apiClient.searchCompanies("fr", CompanySearchRequestParam.builder()
+                    .simpleSearch(registrationId)
                     .build(), null
             );
             return response.getBody();
