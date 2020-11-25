@@ -1,23 +1,17 @@
 package fr.redfroggy.ilg.client.search;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.hamcrest.Matchers.*;
-import static org.springframework.test.web.client.match.MockRestRequestMatchers.*;
-import static org.springframework.test.web.client.response.MockRestResponseCreators.*;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import fr.redfroggy.ilg.TestApplication;
 import fr.redfroggy.ilg.client.ApiClientMockRestTest;
-import org.hamcrest.core.StringContains;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.*;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.client.ExpectedCount;
 
-import java.net.URI;
 import java.net.URISyntaxException;
 
 @RunWith(SpringRunner.class)
@@ -30,20 +24,8 @@ public class SearchApiClientMockRestTest extends ApiClientMockRestTest {
     @Test
     public void shouldFindIlgSiteWhenSearchOn50320789600021RegistrationId() throws URISyntaxException,
             JsonProcessingException {
-        mockApiServer.expect(ExpectedCount.once(),
-                requestTo(
-                        new URI("http://ilg.fr/companies/fr/sites/search")))
-                .andExpect(method(HttpMethod.POST))
-                .andExpect(header("authorization","Bearer test-token"))
-                .andExpect(header("accept",MediaType.APPLICATION_JSON_UTF8_VALUE))
-                .andExpect(header(HttpHeaders.CONTENT_TYPE, startsWith("multipart/form-data")))
-                .andExpect(content().string(StringContains.containsString("Content-Disposition: form-data; " +
-                        "name=\"registrationNumber\"") ))
-                .andExpect(content().string(StringContains.containsString("50320789600021") ))
-                .andRespond(withStatus(HttpStatus.OK)
-                        .contentType(MediaType.APPLICATION_JSON_UTF8)
-                        .body(SiteSearchTest.ilgSiteSearchJson())
-                );
+        mockPostData("http://ilg.fr/companies/fr/sites/search", SiteSearchTest.ilgSiteSearchJson(),
+                "name=\"registrationNumber\"", "50320789600021");
 
         ResponseEntity<SiteSearch> searchResponse = apiClient.searchSites("fr", SiteSearchRequest.builder()
                 .registrationNumber("50320789600021")
@@ -57,26 +39,50 @@ public class SearchApiClientMockRestTest extends ApiClientMockRestTest {
     }
 
     @Test
+    public void shouldFindIlgSiteWhenSearchOn50320789600021RegistrationIdWhitLimit1() throws URISyntaxException,
+            JsonProcessingException {
+        mockPostData("http://ilg.fr/companies/fr/sites/search?limit=1", SiteSearchTest.ilgSiteSearchJson(),
+                "name=\"registrationNumber\"", "50320789600021");
+
+        ResponseEntity<SiteSearch> searchResponse = apiClient.searchSites("fr", SiteSearchRequest.builder()
+                .registrationNumber("50320789600021")
+                .build(), 1
+        );
+
+        assertThat(searchResponse.getBody())
+                .usingRecursiveComparison()
+                .isEqualTo(SiteSearchTest.ilgSites());
+        mockApiServer.verify();
+    }
+
+    @Test
     public void shouldFindIlgCompanyWhenSearchOn50320789600021RegistrationId() throws URISyntaxException,
             JsonProcessingException {
-        mockApiServer.expect(ExpectedCount.once(),
-                requestTo(
-                        new URI("http://ilg.fr/companies/fr/search/companies")))
-                .andExpect(method(HttpMethod.POST))
-                .andExpect(header("authorization","Bearer test-token"))
-                .andExpect(header("accept",MediaType.APPLICATION_JSON_UTF8_VALUE))
-                .andExpect(header(HttpHeaders.CONTENT_TYPE, startsWith("multipart/form-data")))
-                .andExpect(content().string(StringContains.containsString("Content-Disposition: form-data; " +
-                        "name=\"simpleSearch\"") ))
-                .andExpect(content().string(StringContains.containsString("50320789600021") ))
-                .andRespond(withStatus(HttpStatus.OK)
-                        .contentType(MediaType.APPLICATION_JSON_UTF8)
-                        .body(CompanySearchGenericTest.ilgCompanySearchJson())
-                );
+        mockPostData("http://ilg.fr/companies/fr/search/companies", CompanySearchGenericTest.ilgCompanySearchJson(),
+                "name=\"simpleSearch\"", "50320789600021");
 
         ResponseEntity<CompanySearchGeneric> searchResponse = apiClient.searchCompanies("fr", CompanySearchRequestParam.builder()
                 .simpleSearch("50320789600021")
                 .build(), null
+        );
+
+        assertThat(searchResponse.getBody())
+                .usingRecursiveComparison()
+                .isEqualTo(CompanySearchGenericTest.ilgCompanySearch());
+        mockApiServer.verify();
+    }
+
+    @Test
+    public void shouldFindIlgCompanyWhenSearchOn50320789600021RegistrationIdWithLimit1() throws URISyntaxException,
+            JsonProcessingException {
+        mockPostData("http://ilg.fr/companies/fr/search/companies?limit=1",
+                CompanySearchGenericTest.ilgCompanySearchJson(),
+                "name=\"simpleSearch\"", "50320789600021");
+
+
+        ResponseEntity<CompanySearchGeneric> searchResponse = apiClient.searchCompanies("fr", CompanySearchRequestParam.builder()
+                .simpleSearch("50320789600021")
+                .build(), 1
         );
 
         assertThat(searchResponse.getBody())

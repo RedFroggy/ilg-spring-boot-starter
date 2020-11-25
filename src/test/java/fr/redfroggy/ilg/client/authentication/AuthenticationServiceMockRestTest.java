@@ -6,6 +6,7 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.benmanes.caffeine.cache.LoadingCache;
 import fr.redfroggy.ilg.TestApplication;
 import fr.redfroggy.ilg.spring.boot.autoconfigure.client.AuthenticationApiClient;
 import org.junit.Before;
@@ -17,6 +18,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.client.ExpectedCount;
 import org.springframework.test.web.client.MockRestServiceServer;
 import org.springframework.web.client.HttpClientErrorException;
@@ -26,7 +28,8 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = TestApplication.class)
+@SpringBootTest(classes = TestApplication.class, properties = { "ilg.url=http://ilg.fr","ilg.debugging=false",
+"ilg.username=test-username","ilg.password=test-password"})
 public class AuthenticationServiceMockRestTest {
 
     @Autowired
@@ -41,6 +44,8 @@ public class AuthenticationServiceMockRestTest {
 
     @Before
     public void init() {
+        LoadingCache<String, AuthenticationJwt> tokens = (LoadingCache<String, AuthenticationJwt>) ReflectionTestUtils.getField(authService,"tokens");
+        tokens.invalidateAll();
         mockServer = MockRestServiceServer.createServer(simpleRestTemplate);
     }
 
@@ -89,5 +94,17 @@ public class AuthenticationServiceMockRestTest {
             .hasFieldOrPropertyWithValue("statusCode", HttpStatus.UNAUTHORIZED);
 
         mockServer.verify();
+    }
+
+    @Test
+    public void shouldReturnUnsupportedWhenCheckLogin() throws URISyntaxException, JsonProcessingException {
+        assertThatThrownBy(() -> authService.loginCheck("john","pass"))
+                .isInstanceOf(UnsupportedOperationException.class);
+    }
+
+    @Test
+    public void shouldReturnUnsupportedWhenRefresh() throws URISyntaxException, JsonProcessingException {
+        assertThatThrownBy(() -> authService.refresh("myJwt","theRefreshToken"))
+                .isInstanceOf(UnsupportedOperationException.class);
     }
 }

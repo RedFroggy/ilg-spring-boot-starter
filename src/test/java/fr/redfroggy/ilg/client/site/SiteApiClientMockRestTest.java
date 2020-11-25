@@ -16,7 +16,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.net.URISyntaxException;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = TestApplication.class, properties = { "ilg.url=http://ilg.fr","ilg.debugging=false"})
+@SpringBootTest(classes = TestApplication.class, properties = { "ilg.url=http://ilg.fr","ilg.debugging=true",
+        "logging.level.fr.redfroggy.ilg.spring.boot.autoconfigure.RequestResponseLoggingInterceptor=INFO"})
 public class SiteApiClientMockRestTest extends ApiClientMockRestTest {
 
     @Autowired

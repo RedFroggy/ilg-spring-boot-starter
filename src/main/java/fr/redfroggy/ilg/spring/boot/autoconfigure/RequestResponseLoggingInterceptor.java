@@ -24,6 +24,7 @@ public class RequestResponseLoggingInterceptor implements ClientHttpRequestInter
         }
         logRequest(request, body);
         ClientHttpResponse response = execution.execute(request, body);
+        response = new BufferingClientHttpResponse(response);
         logResponse(response);
 
         return response;
@@ -33,23 +34,24 @@ public class RequestResponseLoggingInterceptor implements ClientHttpRequestInter
     {
         log.debug(
                 "=================request begin=================\n" +
-                        "URI         : {}", request.getURI() + "\n" +
-                        "Method      : {}", request.getMethod() + "\n" +
-                        "Headers     : {}", request.getHeaders() + "\n" +
-                        "Request body: {}", new String(body, "UTF-8")+ "\n" +
+                        "URI         : {}\n" +
+                        "Method      : {}\n" +
+                        "Headers     : {}\n" +
+                        "Request body: {}\n" +
                         "=================request end================="
-        );
+        ,request.getURI(), request.getMethod(), request.getHeaders(), new String(body, "UTF-8"));
     }
 
     private void logResponse(ClientHttpResponse response) throws IOException
     {
         log.debug(
                 "=================response begin=================" + "\n" +
-                        "Status code  : {}", response.getStatusCode()+ "\n" +
-                        "Status text  : {}", response.getStatusText()+ "\n" +
-                        "Headers      : {}", response.getHeaders()+ "\n" +
-                        "Response body: {}", StreamUtils.copyToString(response.getBody(), Charset.defaultCharset())+ "\n" +
+                        "Status code  : {}\n" +
+                        "Status text  : {}\n" +
+                        "Headers      : {}\n" +
+                        "Response body: {}\n" +
                         "=================response end================="
-        );
+                , response.getStatusCode(), response.getStatusText(), response.getHeaders()
+                , StreamUtils.copyToString(response.getBody(), Charset.defaultCharset()));
     }
 }
