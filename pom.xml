@@ -277,11 +277,6 @@
           <!-- Force alphabetical order to have a reproducible build -->
           <runOrder>alphabetical</runOrder>
           <reportsDirectory>${junit.utReportFolder}</reportsDirectory>
-          <excludes>
-            <exclude>**/*IT*</exclude>
-            <exclude>**/*IntTest*</exclude>
-            <exclude>**/*CucumberIT*</exclude>
-          </excludes>
         </configuration>
       </plugin>
       <!-- This plugin calculates code coverage and generates a report during the test phase in maven.
@@ -303,6 +298,38 @@
             <goals>
               <goal>report</goal>
             </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/jacoco/test</outputDirectory>
+            </configuration>
+          </execution>
+          <execution>
+            <id>jacoco-check</id>
+            <phase>test</phase>
+            <goals>
+              <goal>check</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <rule>
+                  <element>CLASS</element>
+                  <excludes>
+                    <exclude>fr.redfroggy.ilg.client.model.*</exclude>
+                  </excludes>
+                  <limits>
+                    <limit>
+                      <counter>LINE</counter>
+                      <value>COVEREDRATIO</value>
+                      <minimum>90%</minimum>
+                    </limit>
+                    <limit>
+                      <counter>BRANCH</counter>
+                      <value>COVEREDRATIO</value>
+                      <minimum>100%</minimum>
+                    </limit>
+                  </limits>
+                </rule>
+              </rules>
+            </configuration>
           </execution>
         </executions>
       </plugin>

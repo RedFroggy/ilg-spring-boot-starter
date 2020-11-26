@@ -91,11 +91,7 @@ public class CompanyApiClient implements CompanyApi {
 
     @Override
     public ResponseEntity<ExecutiveTermsProjection> getTerms(String country, String id) {
-        assertCountryAndId(country, id);
-
-        UriComponentsBuilder uriBuilder = client.absoluteCompanyUriBuilder("/terms");
-
-        return client.getForEntity(uriBuilder.buildAndExpand(country, id).toUri(), ExecutiveTermsProjection.class);
+        return getTerms(country, id, null);
     }
 
     @Override

@@ -15,8 +15,6 @@ package fr.redfroggy.ilg.client.authentication;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.Objects;
-
 /**
  * AuthenticationJwt
  */
@@ -45,25 +43,6 @@ public class AuthenticationJwt {
   **/
   public String getRefreshToken() {
     return refreshToken;
-  }
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    AuthenticationJwt authenticationModel = (AuthenticationJwt) o;
-    return Objects.equals(this.token, authenticationModel.token) &&
-        Objects.equals(this.refreshToken, authenticationModel.refreshToken);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(token, refreshToken);
   }
 
 }

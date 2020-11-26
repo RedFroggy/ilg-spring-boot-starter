@@ -29,14 +29,12 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = TestApplication.class, properties = { "ilg.url=http://ilg.fr","ilg.debugging=false"})
+@SpringBootTest(classes = TestApplication.class, properties = { "ilg.url=http://ilg.fr","ilg.debugging=true",
+        "logging.level.fr.redfroggy.ilg.spring.boot.autoconfigure.RequestResponseLoggingInterceptor=DEBUG"})
 public class IlgRestTemplateMockRestTest {
 
     @Autowired
     private IlgRestTemplate apiClient;
-
-    @Autowired
-    private RestTemplate ilgRestTemplate;
 
     @Autowired
     private RestTemplate simpleRestTemplate;
@@ -57,7 +55,14 @@ public class IlgRestTemplateMockRestTest {
                         .body(mapper.writeValueAsString(jwt))
                 );
 
-        mockApiServer = MockRestServiceServer.createServer(ilgRestTemplate);
+        mockApiServer = MockRestServiceServer.createServer(apiClient);
+    }
+
+    @Test
+    public void shouldGetBaseUrl() throws URISyntaxException,
+            JsonProcessingException {
+        assertThat(apiClient.getBaseUrl())
+                .isEqualTo("http://ilg.fr");
     }
 
     @Test

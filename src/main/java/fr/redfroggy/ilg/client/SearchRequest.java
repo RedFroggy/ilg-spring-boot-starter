@@ -3,6 +3,7 @@ package fr.redfroggy.ilg.client;
 import org.springframework.util.Assert;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.util.ObjectUtils;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -29,10 +30,9 @@ public class SearchRequest {
 
     public MultiValueMap<String, String> toQueryParams() {
         MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<>();
-        if (search != null) {
-            queryParams.add("search", search);
-        }
-        if (in != null) {
+        queryParams.add("search", search);
+
+        if (!ObjectUtils.isEmpty(in)) {
             in.forEach(in -> queryParams.add("in", in));
         }
         return queryParams;
@@ -57,7 +57,7 @@ public class SearchRequest {
      * @return search request
      */
     public static SearchRequest of(String search, String... in) {
-        return new SearchRequest(search, Arrays.asList(in));
+        return of(search, Arrays.asList(in));
     }
 
     /**

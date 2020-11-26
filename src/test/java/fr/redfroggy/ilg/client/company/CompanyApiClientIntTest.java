@@ -12,6 +12,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.ObjectUtils;
@@ -36,9 +37,8 @@ public class CompanyApiClientIntTest {
             JsonProcessingException {
 
         ResponseEntity<Availability> response = apiClient.getAvailability("fr", "428785042");
-        assertThat(response.getBody())
-                .usingRecursiveComparison()
-                .isEqualTo(CompanyTest.amazon00048Availability());
+        assertThat(response.getStatusCode())
+                .isEqualTo(HttpStatus.OK);
     }
 
     @Test
@@ -48,7 +48,7 @@ public class CompanyApiClientIntTest {
         ResponseEntity<CompanyProjection> response = apiClient.getCompany("fr", "428785042");
         assertThat(response.getBody())
                 .usingRecursiveComparison()
-                .ignoringFields("score.covidImpact","score.delaiReglementFournisseurSecteur",
+                .ignoringFields("groupInfo","groupStructure","score.covidImpact","score.delaiReglementFournisseurSecteur",
                         "score.history","financial.balances")
                 .isEqualTo(CompanyTest.amazon00048Company());
 

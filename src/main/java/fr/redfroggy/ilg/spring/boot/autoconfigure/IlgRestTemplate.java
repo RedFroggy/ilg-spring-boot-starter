@@ -2,13 +2,10 @@ package fr.redfroggy.ilg.spring.boot.autoconfigure;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.client.BufferingClientHttpRequestFactory;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -25,15 +22,11 @@ public class IlgRestTemplate extends RestTemplate {
 
     public final String COMPANY_URI = "/companies/{country}/{id}";
 
-    private final Logger log = LoggerFactory.getLogger(this.getClass());
-
     private final IlgProperties properties;
     private final ObjectMapper mapper;
 
-    public IlgRestTemplate(AuthorizationInterceptor authorizationInterceptor, IlgProperties properties, ObjectMapper mapper) {
+    public IlgRestTemplate(AuthorizationInterceptor authorizationInterceptor, IlgProperties properties) {
         super();
-
-        setRequestFactory(new BufferingClientHttpRequestFactory(getRequestFactory()));
 
         getInterceptors().add(authorizationInterceptor);
         if (properties.isDebugging()) {

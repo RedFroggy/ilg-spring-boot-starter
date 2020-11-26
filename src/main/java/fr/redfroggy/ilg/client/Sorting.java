@@ -7,7 +7,6 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.util.ObjectUtils;
 
 import java.util.Locale;
-import java.util.Optional;
 
 public class Sorting {
 
@@ -15,8 +14,7 @@ public class Sorting {
     private final Direction order;
 
     public Sorting(@JsonProperty("column") String column, @JsonProperty("order") String order) {
-        this.column = column;
-        this.order = Direction.fromString(order);
+        this(column, Direction.fromString(order));
     }
 
     private Sorting(String column, Direction order) {
@@ -107,22 +105,6 @@ public class Sorting {
             } catch (Exception e) {
                 throw new IllegalArgumentException(String.format(
                         "Invalid value '%s' for orders given! Has to be either 'desc' or 'asc' (case insensitive).", value), e);
-            }
-        }
-
-        /**
-         * Returns the {@link Direction} enum for the given {@link String} or null if it cannot be parsed into an enum
-         * value.
-         *
-         * @param value value of enum
-         * @return optional direction
-         */
-        public static Optional<Direction> fromOptionalString(String value) {
-
-            try {
-                return Optional.of(fromString(value));
-            } catch (IllegalArgumentException e) {
-                return Optional.empty();
             }
         }
     }
