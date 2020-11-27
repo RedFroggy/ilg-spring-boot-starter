@@ -16,7 +16,7 @@ Add the following in your `pom.xml`
         <dependency>
           <groupId>fr.redfroggy</groupId>
           <artifactId>ilg-spring-boot-starter</artifactId>
-          <version>1.1.0</version>
+          <version>1.4.0</version>
         </dependency>
     </dependencies>
 ```
@@ -208,6 +208,59 @@ public EventDetailProjection getEventById(String adId) {
             );
             return response.getBody();
         }
+```
+
+## Caching data
+Improve the performance of requesting api. 
+All GET endpoints are annotated to work with cache.
+
+Interfaces implemented IlgApi interface are annotated with
+```
+@CacheConfig(cacheNames = "ilg{NameOfInterface}", cacheResolver = "ilgCacheResolver", keyGenerator = "methodKeyGenerator")
+```
+And get methods with
+```
+@Cacheable
+```
+
+## Enable caching data
+add spring-boot-starter-cache lib in your app
+```
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-cache</artifactId>
+    </dependency>
+```
+
+Add configuration class in your app with @EnableCaching
+```
+@EnableCaching
+public class CachingConfiguration {
+
+}
+```
+
+In you application.(properties|yaml) enable ilg api cache
+```
+ilg.api-cache.enabled=true
+```
+
+## Default cache configuration
+If enabled, the cache works out of the box, no configuration necessary.
+
+The default configuration use caffeine cache
+[IlgCacheConfiguration](src/main/java/fr/redfroggy/ilg/spring/boot/autoconfigure/IlgCacheConfiguration.java) with params :
+* expireAfterWrite = 5 minutes
+* initialCapacity = 50 entries
+* maximumSize = 200 entries
+
+## Custom cache 
+A custom cache resolver can be used by overriding existing bean ilgCacheResolver with your own spring cacheManager.
+```
+    @Bean(name = "ilgCacheResolver")
+    public CacheResolver ilgCacheResolver(CacheManager myCacheManager) {
+        return new SimpleCacheResolver(myCacheManager);
+    }
 ```
 
 ## Security

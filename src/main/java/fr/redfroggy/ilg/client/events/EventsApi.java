@@ -7,11 +7,14 @@ package fr.redfroggy.ilg.client.events;
 
 import fr.redfroggy.ilg.client.IlgApi;
 import io.swagger.annotations.Api;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 
 @Validated
 @Api(value = "Events", description = "the Events API")
+@CacheConfig(cacheNames = "ilgEventsApi", cacheResolver = "ilgCacheResolver", keyGenerator = "methodKeyGenerator")
 public interface EventsApi extends IlgApi {
 
     /**
@@ -26,6 +29,7 @@ public interface EventsApi extends IlgApi {
      *         or Forbidden (status code 403)
      *         or Resource not found (status code 404)
      */
+    @Cacheable
     ResponseEntity<EventsProjection> getEvents(String country, String id, EventRequest requestParam);
 
 
@@ -40,6 +44,7 @@ public interface EventsApi extends IlgApi {
      *         or Forbidden (status code 403)
      *         or Resource not found (status code 404)
      */
+    @Cacheable
     ResponseEntity<EventsProjection> getEvents(String country, String id);
 
 
@@ -53,6 +58,7 @@ public interface EventsApi extends IlgApi {
      *         or Forbidden (status code 403)
      *         or Resource not found (status code 404)
      */
+    @Cacheable
     ResponseEntity<EventDetailProjection> getEvent(String id);
 
 }

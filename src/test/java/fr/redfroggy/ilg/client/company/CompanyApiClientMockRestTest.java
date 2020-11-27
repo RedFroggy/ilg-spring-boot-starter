@@ -4,25 +4,29 @@ import static org.assertj.core.api.Assertions.*;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import fr.redfroggy.ilg.TestApplication;
+import fr.redfroggy.ilg.TestCachingConfiguration;
 import fr.redfroggy.ilg.client.ApiClientMockRestTest;
 import fr.redfroggy.ilg.client.Sorting;
 import fr.redfroggy.ilg.client.model.Availability;
-import fr.redfroggy.ilg.spring.boot.autoconfigure.client.CompanyApiClient;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.client.ExpectedCount;
 
 import java.net.URISyntaxException;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = TestApplication.class, properties = { "ilg.url=http://ilg.fr","ilg.debugging=false"})
+@SpringBootTest(classes = {TestApplication.class, TestCachingConfiguration.class},
+        properties = { "ilg.url=http://ilg.fr",
+        "ilg.debugging=true",
+        "ilg.api-cache.enabled=true"})
 public class CompanyApiClientMockRestTest  extends ApiClientMockRestTest {
 
     @Autowired
-    private CompanyApiClient apiClient;
+    private CompanyApi apiClient;
 
     @Test
     public void shouldGetAmazonAvailabilityWhenRequestIsAmazon() throws URISyntaxException,
@@ -160,6 +164,20 @@ public class CompanyApiClientMockRestTest  extends ApiClientMockRestTest {
         assertThat(response.getBody())
                 .usingRecursiveComparison()
                 .isEqualTo(ExecutiveTermsTest.ilgTerms());
+
+        mockApiServer.verify();
+    }
+
+    @Test
+    public void shouldRequestAvailabilityOnceWhenCacheIsEnabledWithDefaultConfig() throws URISyntaxException,
+            JsonProcessingException {
+        mockApi("http://ilg.fr/companies/fr/999999999/availability", CompanyTest.amazon00048AvailabilityJson(),
+                ExpectedCount.once());
+
+        // cache is enabled, availability is requested once
+        apiClient.getAvailability("fr", "999999999");
+        apiClient.getAvailability("fr", "999999999");
+        apiClient.getAvailability("fr", "999999999");
 
         mockApiServer.verify();
     }

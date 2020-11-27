@@ -9,11 +9,14 @@ import fr.redfroggy.ilg.client.IlgApi;
 import io.swagger.annotations.Api;
 import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 
 @Validated
 @Api(value = "OwnershipRelations", description = "the OwnershipRelations API")
+@CacheConfig(cacheNames = "ilgOwnershipRelationsApi", cacheResolver = "ilgCacheResolver", keyGenerator = "methodKeyGenerator")
 public interface OwnershipRelationsApi extends IlgApi {
 
     /**
@@ -27,6 +30,7 @@ public interface OwnershipRelationsApi extends IlgApi {
      *         or Forbidden (status code 403)
      *         or Resource not found (status code 404)
      */
+    @Cacheable
     ResponseEntity<LinksProjection> getLinks(@NotEmpty @Pattern(regexp="^[A-Za-z]{2}$") String country,
                                              @NotEmpty String id);
 
@@ -42,6 +46,7 @@ public interface OwnershipRelationsApi extends IlgApi {
      *         or Forbidden (status code 403)
      *         or Resource not found (status code 404)
      */
+    @Cacheable
     ResponseEntity<ShareholdersProjection> getLinksShareholders(@Pattern(regexp="^[A-Za-z]{2}$") String country, String id);
 
 
@@ -56,6 +61,7 @@ public interface OwnershipRelationsApi extends IlgApi {
      *         or Forbidden (status code 403)
      *         or Resource not found (status code 404)
      */
+    @Cacheable
     ResponseEntity<SubsidiariesProjection> getLinksSubsidiaries(@Pattern(regexp="^[A-Za-z]{2}$") String country,
                                                              String id);
 
@@ -70,6 +76,7 @@ public interface OwnershipRelationsApi extends IlgApi {
      *         or Forbidden (status code 403)
      *         or Resource not found (status code 404)
      */
+    @Cacheable
     ResponseEntity<GroupProjection> getGroups(String id);
 
 }

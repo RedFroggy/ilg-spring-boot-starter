@@ -1,9 +1,11 @@
 package fr.redfroggy.ilg.client.site;
 
 import fr.redfroggy.ilg.client.IlgApi;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 
-
+@CacheConfig(cacheNames = "ilgSiteApi", cacheResolver = "ilgCacheResolver", keyGenerator = "methodKeyGenerator")
 public interface SiteApi extends IlgApi {
 
     /**
@@ -21,6 +23,7 @@ public interface SiteApi extends IlgApi {
      * or Forbidden (status code 403)
      * or Resource not found (status code 404)
      */
+    @Cacheable
     ResponseEntity<SitesProjection> getSites(String country, String id, SiteRequest requestParam);
 
     /**
@@ -34,6 +37,7 @@ public interface SiteApi extends IlgApi {
      * or Forbidden (status code 403)
      * or Resource not found (status code 404)
      */
+    @Cacheable
     ResponseEntity<SitesProjection> getSites(String country, String id);
 
 
@@ -49,6 +53,7 @@ public interface SiteApi extends IlgApi {
      * or Forbidden (status code 403)
      * or Resource not found (status code 404)
      */
+    @Cacheable
     ResponseEntity<SiteProjection> getSite(
             String country,
             String id,

@@ -7,9 +7,12 @@ package fr.redfroggy.ilg.client.kyc;
 
 import fr.redfroggy.ilg.client.IlgApi;
 import io.swagger.annotations.Api;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 
 @Api(value = "KycCompliance", description = "the KycCompliance API")
+@CacheConfig(cacheNames = "ilgKycComplianceApi", cacheResolver = "ilgCacheResolver", keyGenerator = "methodKeyGenerator")
 public interface KycComplianceApi extends IlgApi {
 
     /**
@@ -23,6 +26,7 @@ public interface KycComplianceApi extends IlgApi {
      *         or Forbidden (status code 403)
      *         or Resource not found (status code 404)
      */
+    @Cacheable
     ResponseEntity<KycUboProjection> getKycUbo(String country, String id);
 
 

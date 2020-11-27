@@ -47,7 +47,11 @@ public abstract class ApiClientMockRestTest {
     }
 
     protected void mockApi(String uri, String body) throws URISyntaxException {
-        mockApiServer.expect(ExpectedCount.once(),
+        mockApi(uri, body, ExpectedCount.once());
+    }
+
+    protected void mockApi(String uri, String body, ExpectedCount expectedCount) throws URISyntaxException {
+        mockApiServer.expect(expectedCount,
                 requestTo(new URI(uri)))
                 .andExpect(method(HttpMethod.GET))
                 .andExpect(header("authorization", "Bearer test-token"))

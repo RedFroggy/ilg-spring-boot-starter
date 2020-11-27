@@ -3,25 +3,27 @@ package fr.redfroggy.ilg.client.site;
 import static org.assertj.core.api.Assertions.*;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import fr.redfroggy.ilg.TestApplication;
+import fr.redfroggy.ilg.TestCachingConfiguration;
 import fr.redfroggy.ilg.client.*;
-import fr.redfroggy.ilg.spring.boot.autoconfigure.client.SiteApiClient;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.client.ExpectedCount;
 
 import java.net.URISyntaxException;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = TestApplication.class, properties = { "ilg.url=http://ilg.fr","ilg.debugging=true",
+@SpringBootTest(classes = TestCachingConfiguration.class, properties = { "ilg.url=http://ilg.fr","ilg.debugging=true",
+        "ilg.api-cache.enabled=true",
+        "ilg.api-cache.spec=expireAfterWrite\\=1s",
         "logging.level.fr.redfroggy.ilg.spring.boot.autoconfigure.RequestResponseLoggingInterceptor=INFO"})
 public class SiteApiClientMockRestTest extends ApiClientMockRestTest {
 
     @Autowired
-    private SiteApiClient apiClient;
+    private SiteApi apiClient;
 
     @Test
     public void shouldGetAmazonSitesWhenRequestIsAmazon() throws URISyntaxException,
@@ -137,4 +139,16 @@ public class SiteApiClientMockRestTest extends ApiClientMockRestTest {
         mockApiServer.verify();
     }
 
+    @Test
+    public void shouldRequestSitesTwiceWhenCacheEnabledExpiredAfter1s() throws URISyntaxException,
+            JsonProcessingException, InterruptedException {
+        mockApi("http://ilg.fr/companies/fr/999999999/sites", SitesTest.amazonSitesJson(),ExpectedCount.times(2));
+
+        apiClient.getSites("fr", "999999999");
+        apiClient.getSites("fr", "999999999");
+        Thread.sleep(1000);
+        apiClient.getSites("fr", "999999999");
+
+        mockApiServer.verify();
+    }
 }

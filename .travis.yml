@@ -13,6 +13,7 @@ before_install: |
 before_script:
   - nvm use 11
   - yarn global add https://github.com/conveyal/maven-semantic-release/archive/v4.5.0.tar.gz semantic-release@15
+  - yarn add @commitlint/travis-cli
 cache:
   directories:
     - $HOME/.m2
@@ -27,5 +28,6 @@ language: java
 notifications:
   email: false
 script:
+  - commitlint-travis
   - mvn package
 os: linux

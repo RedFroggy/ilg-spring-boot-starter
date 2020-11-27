@@ -3,26 +3,27 @@ package fr.redfroggy.ilg.client.events;
 import static org.assertj.core.api.Assertions.*;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import fr.redfroggy.ilg.TestApplication;
+import fr.redfroggy.ilg.TestCachingConfiguration;
 import fr.redfroggy.ilg.client.ApiClientMockRestTest;
 import fr.redfroggy.ilg.client.FiltersRequest;
 import fr.redfroggy.ilg.client.PageRequest;
-import fr.redfroggy.ilg.spring.boot.autoconfigure.client.EventsApiClient;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.client.ExpectedCount;
 
 import java.net.URISyntaxException;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = TestApplication.class, properties = { "ilg.url=http://ilg.fr","ilg.debugging=false"})
+@SpringBootTest(classes = {TestCachingConfiguration.class},
+        properties = { "ilg.url=http://ilg.fr","ilg.debugging=false","ilg.api-cache.enabled=false"})
 public class EventsApiClientMockRestTest extends ApiClientMockRestTest {
 
     @Autowired
-    private EventsApiClient apiClient;
+    private EventsApi apiClient;
 
     @Test
     public void shouldGetIlgEventsWhenRequestIsIlg() throws URISyntaxException,
@@ -65,6 +66,18 @@ public class EventsApiClientMockRestTest extends ApiClientMockRestTest {
         assertThat(response.getBody())
                 .usingRecursiveComparison()
                 .isEqualTo(EventDetailTest.ilg503207896EventDetail());
+
+        mockApiServer.verify();
+    }
+
+    @Test
+    public void shouldRequestEventsTwiceWhenCacheIsDisabled() throws URISyntaxException,
+            JsonProcessingException {
+        mockApi("http://ilg.fr/companies/fr/503207896/events", EventsTest.ilg503207896EventsJson(), ExpectedCount.times(2));
+
+        //cache disabled, api requested twice
+        apiClient.getEvents("fr", "503207896");
+        apiClient.getEvents("fr", "503207896");
 
         mockApiServer.verify();
     }

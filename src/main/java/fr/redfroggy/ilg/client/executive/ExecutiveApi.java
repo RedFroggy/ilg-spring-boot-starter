@@ -9,10 +9,13 @@ import fr.redfroggy.ilg.client.IlgApi;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiParam;
 import javax.validation.constraints.Pattern;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @Api(value = "Executive", description = "the Executive API")
+@CacheConfig(cacheNames = "ilgExecutiveApi", cacheResolver = "ilgCacheResolver", keyGenerator = "methodKeyGenerator")
 public interface ExecutiveApi extends IlgApi {
 
     /**
@@ -30,6 +33,7 @@ public interface ExecutiveApi extends IlgApi {
      *         or Forbidden (status code 403)
      *         or Resource not found (status code 404)
      */
+    @Cacheable
     ResponseEntity<ExecutivesProjection2> getExecutivesTerms(@Pattern(regexp="^[A-Za-z]{2}$") @ApiParam(value =
             "Country Code in ISO 3166-2",required=true) @PathVariable("country") String country, @ApiParam(value = "Unique identifier " +
             "representing a specific company",required=true) @PathVariable("id") String id,
@@ -47,6 +51,7 @@ public interface ExecutiveApi extends IlgApi {
      *         or Forbidden (status code 403)
      *         or Resource not found (status code 404)
      */
+    @Cacheable
     ResponseEntity<ExecutivesProjection2> getExecutivesTerms(@Pattern(regexp="^[A-Za-z]{2}$") @ApiParam(value =
             "Country Code in ISO 3166-2",required=true) @PathVariable("country") String country, @ApiParam(value = "Unique identifier " +
             "representing a specific company",required=true) @PathVariable("id") String id);

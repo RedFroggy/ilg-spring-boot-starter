@@ -2,8 +2,10 @@ package fr.redfroggy.ilg.client.company;
 
 import fr.redfroggy.ilg.client.IlgApi;
 import fr.redfroggy.ilg.client.model.Availability;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
-
+@CacheConfig(cacheNames = "ilgCompanyApi", cacheResolver = "ilgCacheResolver", keyGenerator = "methodKeyGenerator")
 public interface CompanyApi extends IlgApi {
 
     /**
@@ -18,6 +20,7 @@ public interface CompanyApi extends IlgApi {
      *         or Forbidden (status code 403)
      *         or Resource not found (status code 404)
      */
+    @Cacheable
     ResponseEntity<Availability> getAvailability(String country, String id);
 
     /**
@@ -31,6 +34,7 @@ public interface CompanyApi extends IlgApi {
      *         or Forbidden (status code 403)
      *         or Resource not found (status code 404)
      */
+    @Cacheable
     ResponseEntity<CompanyProjection> getCompany(String country, String id);
 
     /**
@@ -44,6 +48,7 @@ public interface CompanyApi extends IlgApi {
      *         or Forbidden (status code 403)
      *         or Resource not found (status code 404)
      */
+    @Cacheable
     ResponseEntity<ContactProjection> getIdentityContact(String country, String id);
 
     /**
@@ -57,6 +62,7 @@ public interface CompanyApi extends IlgApi {
      *         or Forbidden (status code 403)
      *         or Resource not found (status code 404)
      */
+    @Cacheable
     ResponseEntity<IdentityProjection> getIdentity(String country, String id);
 
     /**
@@ -70,6 +76,7 @@ public interface CompanyApi extends IlgApi {
      *         or Forbidden (status code 403)
      *         or Resource not found (status code 404)
      */
+    @Cacheable
     ResponseEntity<ExecutiveProjection> getMandataire(String country, String id);
 
     /**
@@ -83,6 +90,7 @@ public interface CompanyApi extends IlgApi {
      *         or Forbidden (status code 403)
      *         or Resource not found (status code 404)
      */
+    @Cacheable
     ResponseEntity<WorkforceProjection> getIdentityWorkforce(String country, String id);
 
     /**
@@ -96,6 +104,7 @@ public interface CompanyApi extends IlgApi {
      *         or Forbidden (status code 403)
      *         or Resource not found (status code 404)
      */
+    @Cacheable
     ResponseEntity<RiskProjection> getRisk(String country, String id);
 
     /**
@@ -109,6 +118,7 @@ public interface CompanyApi extends IlgApi {
      *         or Forbidden (status code 403)
      *         or Resource not found (status code 404)
      */
+    @Cacheable
     ResponseEntity<ScoreProjection> getScore(String country, String id);
 
     /**
@@ -122,6 +132,7 @@ public interface CompanyApi extends IlgApi {
      *         or Forbidden (status code 403)
      *         or Resource not found (status code 404)
      */
+    @Cacheable
     ResponseEntity<ExecutiveTermsProjection> getTerms(String country, String id);
 
     /**

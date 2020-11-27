@@ -24,6 +24,8 @@ public class IlgProperties {
 
     private String tokenCacheSpec = "expireAfterWrite=14m";
 
+    private final ApiCache apiCache = new ApiCache();
+
     @NotEmpty
     public String getUrl() {
         return url;
@@ -66,5 +68,40 @@ public class IlgProperties {
 
     public void setTokenCacheSpec(String tokenCacheSpec) {
         this.tokenCacheSpec = tokenCacheSpec;
+    }
+
+    public ApiCache getApiCache() {
+        return apiCache;
+    }
+
+    /**
+     * Caffeine specific cache properties.
+     */
+    public static class ApiCache {
+
+        private Boolean enabled = false;
+
+        /**
+         * The spec to use to create caches. Check CaffeineSpec for more details on the
+         * spec format.
+         */
+        private String spec;
+
+        public String getSpec() {
+            return this.spec;
+        }
+
+        public void setSpec(String spec) {
+            this.spec = spec;
+        }
+
+
+        public Boolean getEnabled() {
+            return enabled;
+        }
+
+        public void setEnabled(Boolean enabled) {
+            this.enabled = enabled;
+        }
     }
 }
