@@ -2,13 +2,13 @@
 
 cd ./src/test/resources/contracts
 
-export URL_PREPROD="http://wspreprod.infolegale.fr/v2"
+export URL_PREPROD="https://wspreprod.infolegale.fr/v2"
 export URL_PROD="https://webservice.infolegale.fr/v2"
 export URL=$URL_PROD
 
 export TOKEN=$(curl -X POST "$URL/login_json" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"_username\": \"$1\", \"_password\": \"$2\"}" | jq --raw-output .token)
 
-export AUTH_HEADER="bearer $TOKEN"
+export AUTH_HEADER="Bearer $TOKEN"
 echo $AUTH_HEADER
 
 cd site
@@ -59,3 +59,22 @@ curl -X POST "$URL/companies/fr/search/executives" -H "Content-Type: multipart/f
 curl -X POST "$URL/companies/fr/search" -H "Content-Type: multipart/form-data" -H "accept: application/json" -H "Authorization: bearer $TOKEN" -F 'simpleSearch=50320789600021' | jq '.' > FR-50320789600021-search.json
 curl -X POST "$URL/companies/fr/sites/search" -H "Content-Type: multipart/form-data" -H "accept: application/json" -H "Authorization: bearer $TOKEN" -F 'registrationNumber=50320789600021' | jq '.' > FR-50320789600021-sites-search.json
 curl -X POST "$URL/companies/fr/suggest" -H "Content-Type: multipart/form-data" -H "accept: application/json" -H "Authorization: bearer $TOKEN" -F 'name=INFOLEGALE' -F 'codePostal=69003' | jq '.' > FR-INFOLEGALE-69003-suggest.json
+cd ..
+
+cd monitoring
+
+export PORTFOLIO="999999"
+export SIREN=503207896
+export SUBSCRIBER=999@999.fr
+
+curl -X GET "$URL/monitoring/alert" -H "accept: application/json" -H "Authorization: $AUTH_HEADER" | jq '.' > monitoring-alert.json
+curl -X GET "$URL/monitoring/alert/portfolio/$PORTFOLIO?sort=adId&order=ASC" -H "accept: application/json" -H "Authorization: $AUTH_HEADER" | jq '.' > monitoring-alert-portfolio-1.json
+curl -X GET "$URL/monitoring/portfolio/$PORTFOLIO/item" -H "accept: application/json" -H "Authorization: $AUTH_HEADER" | jq '.' > monitoring-portfolio-1-item.json
+
+curl -X GET "$URL/monitoring/targets" -H "accept: application/json" -H "Authorization: $AUTH_HEADER" | jq '.' > monitoring-targets.json
+curl -X GET "$URL/monitoring/portfolio" -H "accept: application/json" -H "Authorization: $AUTH_HEADER" | jq '.' > monitoring-portfolio.json
+curl -X GET "$URL/monitoring/portfolio/$PORTFOLIO" -H "accept: application/json" -H "Authorization: $AUTH_HEADER" | jq '.' > monitoring-portfolio-1.json
+curl -X GET "$URL/monitoring/portfolio/siren/$SIREN" -H "accept: application/json" -H "Authorization: $AUTH_HEADER" | jq '.' > monitoring-siren-1.json
+
+curl -X GET "$URL/monitoring/numbers?portfolioId=$PORTFOLIO" -H "accept: application/json" -H "Authorization: $AUTH_HEADER" | jq '.' > monitoring-numbers.json
+curl -X GET "$URL/monitoring/target/$SUBSCRIBER/subscriptions" -H "accept: application/json" -H "Authorization: $AUTH_HEADER" | jq '.' > monitoring-target-subscriptions.json

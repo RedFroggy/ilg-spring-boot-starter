@@ -2,6 +2,8 @@
 # ILGV2 client library [![Build Status](https://travis-ci.org/RedFroggy/ilg-spring-boot-starter.svg?branch=master)](https://travis-ci.org/RedFroggy/ilg-spring-boot-starter) [![codecov](https://codecov.io/gh/RedFroggy/ilg-spring-boot-starter/branch/master/graph/badge.svg?token=XM9R6ZV9SJ)](https://codecov.io/gh/RedFroggy/ilg-spring-boot-starter)
 Get an organisation identity thanks to ilgV2 rest api
 
+see ilg documentation https://webservice.infolegale.fr/v2/docs/api/
+
 ## Compatibility
 
 This library requires library requires Java version 1.8 or higher.
@@ -210,6 +212,44 @@ public EventDetailProjection getEventById(String adId) {
         }
 ```
 
+### Monitoring alerts Api Client
+```java
+//...
+        @Autowired
+        private MonitoringApi apiClient;
+
+        public Alerts getMonitoringAlert() {
+            ResponseEntity<Alerts> response = apiClient.getMonitoringAlert(
+                AlertRequest.builder()
+                        .entityId(777)
+                        .userEmail("tes@test.fr")
+                        .isPerso(1)
+                        .alertMaxDate(LocalDate.of(2021, Month.FEBRUARY, 12))
+                        .alertMinDate(LocalDate.of(2021, Month.FEBRUARY, 12))
+                        .source(AlertSource.BOD)
+                        .page(PageRequest.of(1,2))
+                        .sort(MonitoringSorting.by("my-column", MonitoringSorting.Direction.ASC))
+                        .build());
+            return response.getBody();
+        }
+
+        public Alerts getMonitoringAlertByPortfolio(Integer portfolio) {
+            ResponseEntity<Alerts> response = apiClient.getMonitoringAlertPortfolio(portfolio,
+                AlertPortfolioRequest.builder()
+                        .alertMaxDate(LocalDate.of(2021, Month.FEBRUARY, 12))
+                        .alertMinDate(LocalDate.of(2021, Month.FEBRUARY, 12))
+                        .source(AlertSource.BOD)
+                        .page(PageRequest.of(1,2))
+                        .build());
+            return response.getBody();
+        }
+
+        public MonitoringNumbers getMonitoringNumbersByPortfolio(Integer portfolio) {
+            ResponseEntity<MonitoringNumbers> response = apiClient.getMonitoringNumbers(portfolio);
+            return response.getBody();
+        }
+```
+
 ## Security
 To pass authorization headers to the provider API, [interceptors](src/main/java/fr/redfroggy/ilg/spring/boot/autoconfigure/AuthorizationInterceptor.java) are used to add these headers to the request.
 See [IlgRestTemplate ](src/main/java/fr/redfroggy/ilg/spring/boot/autoconfigure/IlgRestTemplate.java) implementation
@@ -222,7 +262,7 @@ Client information must be set using environment variables
 * `ILG_PASSWORD`: Password for ILG
 * `ILG_URL`: URL for ILG webservices
 
-or add properties into application.yml
+or set as properties into application.yml
 ```yaml
 ilg:
   url: http://ilg.fr

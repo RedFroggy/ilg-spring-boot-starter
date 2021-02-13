@@ -1,0 +1,41 @@
+{
+  "id": "/alert",
+  "start": 1,
+  "page": 1,
+  "total": 2,
+  "count": 2,
+  "alertes": [
+    {
+      "adId": "RCS-C_BXC20210030580",
+      "source": "BOD",
+      "name": "FUTURA FINANCES",
+      "parutionDate": "2021-02-12",
+      "creationDate": "2021-02-12",
+      "siren": 344401575,
+      "urlEvent": "/event/RCS-C_BXC20210030580",
+      "portfolioItems": [
+        {
+          "portfolioId": 999999,
+          "customCode": "0",
+          "customCredit": 0
+        }
+      ]
+    },
+    {
+      "adId": "RCS-C_BXC20210030638",
+      "source": "BOD",
+      "name": "ALIX TEXTILES",
+      "parutionDate": "2021-02-12",
+      "creationDate": "2021-02-12",
+      "siren": 484815238,
+      "urlEvent": "/event/RCS-C_BXC20210030638",
+      "portfolioItems": [
+        {
+          "portfolioId": 999999,
+          "customCode": "0",
+          "customCredit": 0
+        }
+      ]
+    }
+  ]
+}

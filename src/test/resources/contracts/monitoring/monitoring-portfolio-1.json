@@ -1,0 +1,19 @@
+{
+  "id": 999999,
+  "label": "PF JURIALERTE 999",
+  "title": "PF Jurialerte 999",
+  "alertType": 4,
+  "extendable": false,
+  "matchable": false,
+  "type": 0,
+  "updateDate": "2021-02-12",
+  "createdAt": "2020-12-09",
+  "isPerso": false,
+  "customer": {
+    "id": 1000009999,
+    "label": "999",
+    "customerCode": "7482"
+  },
+  "editable": true,
+  "deliverable": false
+}
