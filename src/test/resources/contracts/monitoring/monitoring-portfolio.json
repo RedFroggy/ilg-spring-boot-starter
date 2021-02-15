@@ -1,0 +1,10 @@
+{
+  "portfolios": [
+    {
+      "id": 999999,
+      "label": "PF JURIALERTE 999",
+      "alertType": 4,
+      "type": 0
+    }
+  ]
+}

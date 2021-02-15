@@ -1,0 +1,25 @@
+{
+  "items": [
+    {
+      "id": 1170109486,
+      "siren": 303731590,
+      "companyName": "ETABLISSEMENTS GUICHARD",
+      "customCode": null,
+      "customCredit": null,
+      "monitoringStartDate": "2020-12-26",
+      "portfolio": null,
+      "links": []
+    },
+    {
+      "id": 1170109487,
+      "siren": 304099732,
+      "companyName": "AMENAGEMENT 77",
+      "customCode": null,
+      "customCredit": null,
+      "monitoringStartDate": "2020-12-26",
+      "portfolio": null,
+      "links": []
+    }
+  ],
+  "count": 3525
+}

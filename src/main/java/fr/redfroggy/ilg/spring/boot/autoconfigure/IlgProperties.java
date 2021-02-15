@@ -10,7 +10,7 @@ import org.springframework.validation.annotation.Validated;
  *
  * @author djay
  */
-@ConfigurationProperties(prefix = "ilg", ignoreUnknownFields = false)
+@ConfigurationProperties(prefix = "ilg")
 @Validated
 public class IlgProperties {
 

@@ -1,0 +1,18 @@
+{
+  "portfolios": [
+    {
+      "id": 999999,
+      "label": "PF JURIALERTE 999",
+      "alertType": 4,
+      "type": 0,
+      "item": {
+        "id": 1170109486,
+        "siren": 303731590,
+        "customCode": null,
+        "customCredit": null
+      },
+      "editable": true
+    }
+  ],
+  "count": 1
+}
