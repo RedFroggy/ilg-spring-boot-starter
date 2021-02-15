@@ -17,7 +17,7 @@ import javax.validation.constraints.*;
  * Portfolio
  */
 
-public class Portfolio   {
+public class Portfolio implements fr.redfroggy.ilg.client.monitoring.PortfolioProjection {
   @JsonProperty("id")
   private Integer id;
 
@@ -61,6 +61,7 @@ public class Portfolio   {
    * Portfolio's Id
    * @return id
   */
+  @Override
   @ApiModelProperty(example = "2", value = "Portfolio's Id")
 
 
@@ -81,6 +82,7 @@ public class Portfolio   {
    * Name of the portfolio
    * @return label
   */
+  @Override
   @ApiModelProperty(example = "Créalerte Rhône", value = "Name of the portfolio")
 
 
@@ -101,6 +103,7 @@ public class Portfolio   {
    * Display name of the portfolio
    * @return title
   */
+  @Override
   @ApiModelProperty(example = "Surveillance en ligne", value = "Display name of the portfolio")
 
 
@@ -121,6 +124,7 @@ public class Portfolio   {
    * Type of alert (jurialerte, scorealerte…
    * @return alertType
   */
+  @Override
   @ApiModelProperty(example = "2", value = "Type of alert (jurialerte, scorealerte…")
 
 
@@ -141,6 +145,7 @@ public class Portfolio   {
    * Extension of financial links
    * @return extendable
   */
+  @Override
   @ApiModelProperty(example = "false", value = "Extension of financial links")
 
 
@@ -161,6 +166,7 @@ public class Portfolio   {
    * Is a machine expert portfolio
    * @return matchable
   */
+  @Override
   @ApiModelProperty(example = "false", value = "Is a machine expert portfolio")
 
 
@@ -181,6 +187,7 @@ public class Portfolio   {
    * Portfolio type : complex, normal…
    * @return type
   */
+  @Override
   @ApiModelProperty(example = "1", value = "Portfolio type : complex, normal…")
 
 
@@ -201,6 +208,7 @@ public class Portfolio   {
    * Update date of the portfolio
    * @return updateDate
   */
+  @Override
   @ApiModelProperty(value = "Update date of the portfolio")
 
   @Valid
@@ -222,6 +230,7 @@ public class Portfolio   {
    * Creation date of the portfolio
    * @return createdAt
   */
+  @Override
   @ApiModelProperty(value = "Creation date of the portfolio")
 
   @Valid
@@ -251,6 +260,7 @@ public class Portfolio   {
    * customer information
    * @return customer
   */
+  @Override
   @ApiModelProperty(value = "customer information")
 
   @Valid
@@ -272,6 +282,7 @@ public class Portfolio   {
    * this portfolio is editable
    * @return editable
   */
+  @Override
   @ApiModelProperty(example = "false", value = "this portfolio is editable")
 
 

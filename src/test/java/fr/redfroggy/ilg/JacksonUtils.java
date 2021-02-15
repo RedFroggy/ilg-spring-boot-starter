@@ -13,7 +13,6 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 /**
  * Utility class to get configured jackon serializer
  *
- * @author cdamon
  */
 public final class JacksonUtils {
 

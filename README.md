@@ -18,7 +18,7 @@ Add the following in your `pom.xml`
         <dependency>
           <groupId>fr.redfroggy</groupId>
           <artifactId>ilg-spring-boot-starter</artifactId>
-          <version>1.4.0</version>
+          <version>1.5.0</version>
         </dependency>
     </dependencies>
 ```

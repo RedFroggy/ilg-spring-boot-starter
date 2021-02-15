@@ -2,12 +2,8 @@ package fr.redfroggy.ilg.client.monitoring;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiParam;
-import javax.validation.Valid;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RequestParam;
 
-@Validated
 @Api(value = "Monitoring", description = "the Monitoring API")
 public interface MonitoringApi {
 
@@ -70,7 +66,59 @@ public interface MonitoringApi {
      * or Forbidden (status code 403)
      * or Resource not found (status code 404)
      */
-    ResponseEntity<MonitoringNumbers> getMonitoringNumbers(@ApiParam(value = "Unique identifier representing a " +
-            "portfolio") @Valid @RequestParam(value = "portfolioId", required = false) Integer portfolioId);
-    
+    ResponseEntity<MonitoringNumbers> getMonitoringNumbers(Integer portfolioId);
+
+
+    /**
+     * GET /monitoring/portfolio : Return a list of portfolio for user or entity
+     *
+     * Request params :
+     * - entityId      Unique identifier representing a entity (optional)
+     * - userEmail     Email of user (optional)
+     * - label         part of name of the portfolio (optional)
+     * - alertType     type of of alert 4&#x3D;juri, 8&#x3D;score, 12&#x3D;juri+score (ex: alertType[]&#x3D;
+     *                      4&amp;alertype[]&#x3D;12) (optional)
+     * - isPerso       Portfolio perso or not 1&#x3D;perso, 0&#x3D;pro (optional)
+     * - updateDateMin update date min YYYY-MM-DD (optional)
+     * - updateDateMax update date max YYYY-MM-DD (optional)
+     * - audit         Portfolio auditable or not 1 or 0 (optional)
+     * - editable      Portfolio is editable or not 1 or 0 (optional)
+     * - page          Page number (optional)
+     * - number        Number of result by page (optional)
+     * - sort          Value to sort (optional, default to label)
+     * - order         Sorting order, ‘asc’ or ‘desc’ (optional, default to ASC)
+     * @return (status code 200)
+     * or Bad Request (status code 400)
+     * or Authentication Failure: Expired Token or Invalid Token (status code 401)
+     * or Forbidden (status code 403)
+     * or Resource not found (status code 404)
+     */
+    ResponseEntity<Portfolios> getMonitoringPortfolios(PortfolioRequest request);
+
+
+    /**
+     * POST /monitoring/portfolio/perso : POST a personal portfolio
+     *
+     * @return The portfolio have been added (status code 201)
+     * or Bad Request (status code 400)
+     * or Authentication Failure: Expired Token or Invalid Token (status code 401)
+     * or Forbidden (status code 403)
+     * or Resource not found (status code 404)
+     * or A personal portfolio already exists (status code 409)
+     */
+    ResponseEntity<Void> postMonitoringPortfolioPerso();
+
+
+    /**
+     * GET /monitoring/portfolio/{portfolioId} : Return information of portfolio
+     *
+     * @param portfolioId Unique identifier representing a Portfolio (required)
+     * @return (status code 200)
+     * or Bad Request (status code 400)
+     * or Authentication Failure: Expired Token or Invalid Token (status code 401)
+     * or Forbidden (status code 403)
+     * or Resource not found (status code 404)
+     */
+    ResponseEntity<PortfolioProjection> getMonitoringPortfolio(Integer portfolioId);
+
 }
