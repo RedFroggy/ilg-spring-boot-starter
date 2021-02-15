@@ -1,11 +1,11 @@
 package fr.redfroggy.ilg.client.company;
 
-import static org.assertj.core.api.Assertions.*;
-
 import fr.redfroggy.ilg.client.Sorting;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class TermRequestTest {
 

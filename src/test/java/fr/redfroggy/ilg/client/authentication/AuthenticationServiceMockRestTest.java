@@ -1,23 +1,17 @@
 package fr.redfroggy.ilg.client.authentication;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.springframework.test.web.client.match.MockRestRequestMatchers.*;
-import static org.springframework.test.web.client.response.MockRestResponseCreators.*;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.benmanes.caffeine.cache.LoadingCache;
 import fr.redfroggy.ilg.TestApplication;
 import fr.redfroggy.ilg.spring.boot.autoconfigure.client.AuthenticationApiClient;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.client.ExpectedCount;
 import org.springframework.test.web.client.MockRestServiceServer;
@@ -27,7 +21,12 @@ import org.springframework.web.client.RestTemplate;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-@RunWith(SpringRunner.class)
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.springframework.test.web.client.match.MockRestRequestMatchers.*;
+import static org.springframework.test.web.client.response.MockRestResponseCreators.withStatus;
+
+
 @SpringBootTest(classes = TestApplication.class, properties = { "ilg.url=http://ilg.fr","ilg.debugging=false",
 "ilg.username=test-username","ilg.password=test-password"})
 public class AuthenticationServiceMockRestTest {
@@ -42,7 +41,7 @@ public class AuthenticationServiceMockRestTest {
 
     private ObjectMapper mapper = new ObjectMapper();
 
-    @Before
+    @BeforeEach
     public void init() {
         LoadingCache<String, AuthenticationJwt> tokens = (LoadingCache<String, AuthenticationJwt>) ReflectionTestUtils.getField(authService,"tokens");
         tokens.invalidateAll();
@@ -56,7 +55,7 @@ public class AuthenticationServiceMockRestTest {
         mockServer.expect(ExpectedCount.once(),
             requestTo(new URI("http://ilg.fr/login_json")))
             .andExpect(method(HttpMethod.POST))
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(content()
                 .string(mapper.writeValueAsString(credentials))
             )
@@ -80,7 +79,7 @@ public class AuthenticationServiceMockRestTest {
         mockServer.expect(ExpectedCount.once(),
             requestTo(new URI("http://ilg.fr/login_json")))
             .andExpect(method(HttpMethod.POST))
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(content()
                 .string(mapper.writeValueAsString(credentials))
             )

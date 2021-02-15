@@ -1,8 +1,6 @@
 package fr.redfroggy.ilg.client.executive;
 
 
-import static org.assertj.core.api.Assertions.*;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -10,7 +8,7 @@ import com.google.common.io.Resources;
 import fr.redfroggy.ilg.JacksonUtils;
 import fr.redfroggy.ilg.UnitTestUtils;
 import fr.redfroggy.ilg.client.model.*;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -20,6 +18,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class ExecutiveTest {
 
@@ -45,14 +45,7 @@ public class ExecutiveTest {
     }
 
     public static String amazon00048ExecutiveTermsJson() {
-        try {
-            return Resources.toString(
-                    Resources.getResource("contracts/executive/FR-428785042-executive-terms.json"),
-                    Charset.forName("UTF8"));
-        } catch (IOException e) {
-            return "";
-        }
-
+        return UnitTestUtils.getJsonFromContractFile("/executive/FR-428785042-executive-terms.json");
     }
 
 

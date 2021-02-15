@@ -1,15 +1,14 @@
 package fr.redfroggy.ilg.client;
 
-import static org.junit.Assume.*;
-
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
 import org.springframework.util.ObjectUtils;
 
 import java.io.IOException;
 
+import static org.junit.Assume.*;
+
 public abstract class ApiClientIntTest {
-    @Before
-    public void ping() throws IOException {
-        assumeFalse("No ILG_URL define, no int tests run", ObjectUtils.isEmpty(System.getenv("ILG_URL")));
-    }
+
 }

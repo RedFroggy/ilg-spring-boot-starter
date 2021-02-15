@@ -6,8 +6,9 @@ see ilg documentation https://webservice.infolegale.fr/v2/docs/api/
 
 ## Compatibility
 
-This library requires library requires Java version 1.8 or higher.
-This library is compatible with ilg rest api 2.0.8
+This library requires Java version 1.8 or higher.
+This library requires spring boot 2.x .
+This library is compatible with ilg rest api 2.0.8 .
 
 ## Installation (Maven)
 

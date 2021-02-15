@@ -4,15 +4,13 @@ package fr.redfroggy.ilg.client.kyc;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.google.common.io.Resources;
 import fr.redfroggy.ilg.JacksonUtils;
 import fr.redfroggy.ilg.UnitTestUtils;
 import fr.redfroggy.ilg.client.model.*;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.nio.charset.Charset;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.Arrays;
@@ -31,14 +29,7 @@ public class KycUboTest {
     }
 
     public static String ilg503207896UboJson() {
-        try {
-            return Resources.toString(
-                    Resources.getResource("contracts/kyc/FR-503207896-kyc-ubo.json"),
-                    Charset.forName("UTF8"));
-        } catch (IOException e) {
-            return "";
-        }
-
+        return UnitTestUtils.getJsonFromContractFile("/kyc/FR-503207896-kyc-ubo.json");
     }
 
     public static KycUbo ilg503207896Ubo() {

@@ -1,8 +1,6 @@
 package fr.redfroggy.ilg.client.company;
 
 
-import static org.assertj.core.api.Assertions.*;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -11,7 +9,7 @@ import fr.redfroggy.ilg.JacksonUtils;
 import fr.redfroggy.ilg.UnitTestUtils;
 import fr.redfroggy.ilg.client.model.*;
 import org.assertj.core.util.Maps;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -20,6 +18,8 @@ import java.time.Month;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Map;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class CompanyTest {
 
@@ -46,13 +46,7 @@ public class CompanyTest {
     }
 
     public static String amazon00048CompanyJson() {
-        try {
-            return Resources.toString(
-                    Resources.getResource("contracts/company/FR-428785042-company.json"),
-                    Charset.forName("UTF8"));
-        } catch (IOException e) {
-            return "";
-        }
+        return UnitTestUtils.getJsonFromContractFile("/company/FR-428785042-company.json");
     }
 
     public static Company amazon00048Company() {

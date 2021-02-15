@@ -1,33 +1,28 @@
 package fr.redfroggy.ilg.client.site;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.Assume.*;
-
 import fr.redfroggy.ilg.TestApplication;
+import fr.redfroggy.ilg.client.ApiClientIntTest;
 import fr.redfroggy.ilg.client.PageRequest;
 import fr.redfroggy.ilg.spring.boot.autoconfigure.client.SiteApiClient;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.ObjectUtils;
 
 import java.io.IOException;
 
-@RunWith(SpringRunner.class)
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assume.*;
+
+@EnabledIfEnvironmentVariable(named = "ILG_URL", matches = ".*")
 @SpringBootTest(classes = TestApplication.class)
-public class SiteApiClientIntTest {
+public class SiteApiClientIntTest extends ApiClientIntTest {
 
     @Autowired
     private SiteApiClient apiClient;
-
-    @Before
-    public void ping() throws IOException {
-        assumeFalse("No ILG_URL define, no int tests run",ObjectUtils.isEmpty(System.getenv("ILG_URL")));
-    }
 
     @Test
     public void shouldGetAmazonSitesWhenRequestIsAmazon() {

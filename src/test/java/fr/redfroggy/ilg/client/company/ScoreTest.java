@@ -9,7 +9,7 @@ import fr.redfroggy.ilg.JacksonUtils;
 import fr.redfroggy.ilg.UnitTestUtils;
 import fr.redfroggy.ilg.client.model.Score;
 import fr.redfroggy.ilg.client.model.ScoreHistory;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -31,14 +31,7 @@ public class ScoreTest {
     }
 
     public static String amazon00048ScoreJson() {
-        try {
-            return Resources.toString(
-                    Resources.getResource("contracts/company/FR-428785042-company-score.json"),
-                    Charset.forName("UTF8"));
-        } catch (IOException e) {
-            return "";
-        }
-
+        return UnitTestUtils.getJsonFromContractFile("/company/FR-428785042-company-score.json");
     }
 
     public static Score amazon00048Score() {

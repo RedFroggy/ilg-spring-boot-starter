@@ -8,7 +8,7 @@ import fr.redfroggy.ilg.JacksonUtils;
 import fr.redfroggy.ilg.UnitTestUtils;
 import fr.redfroggy.ilg.client.model.Executive;
 import fr.redfroggy.ilg.client.model.ExecutiveFonction;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -42,12 +42,6 @@ public class ExecutiveTest {
     }
 
     public static String amazon00048MandataireJson() {
-        try {
-            return Resources.toString(
-                    Resources.getResource("contracts/company/FR-428785042-company-mandataire.json"),
-                    Charset.forName("UTF8"));
-        } catch (IOException e) {
-            return "";
-        }
+        return UnitTestUtils.getJsonFromContractFile("/company/FR-428785042-company-mandataire.json");
     }
 }

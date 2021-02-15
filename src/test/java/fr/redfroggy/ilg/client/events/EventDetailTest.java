@@ -8,7 +8,7 @@ import com.google.common.io.Resources;
 import fr.redfroggy.ilg.JacksonUtils;
 import fr.redfroggy.ilg.UnitTestUtils;
 import fr.redfroggy.ilg.client.model.*;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -31,14 +31,7 @@ public class EventDetailTest {
     }
 
     public static String ilg503207896EventDetailJson() {
-        try {
-            return Resources.toString(
-                    Resources.getResource("contracts/events/FR-503207896-eventDetail.json"),
-                    Charset.forName("UTF8"));
-        } catch (IOException e) {
-            return "";
-        }
-
+        return UnitTestUtils.getJsonFromContractFile("/events/FR-503207896-eventDetail.json");
     }
 
     public static EventDetail ilg503207896EventDetail() {

@@ -1,12 +1,12 @@
 package fr.redfroggy.ilg.client.monitoring;
 
-import static org.assertj.core.api.Assertions.*;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.redfroggy.ilg.UnitTestUtils;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class MonitoringNumbersTest {
     private static final ObjectMapper json = UnitTestUtils.getJsonMapper();

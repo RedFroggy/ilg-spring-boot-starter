@@ -1,14 +1,10 @@
 package fr.redfroggy.ilg.client.monitoring;
 
-import fr.redfroggy.ilg.client.PageRequest;
-import fr.redfroggy.ilg.client.Sorting;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
 import java.time.LocalDate;
-import java.time.Month;
-import java.time.format.DateTimeFormatter;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

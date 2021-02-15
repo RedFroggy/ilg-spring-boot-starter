@@ -7,7 +7,7 @@ import com.google.common.io.Resources;
 import fr.redfroggy.ilg.JacksonUtils;
 import fr.redfroggy.ilg.UnitTestUtils;
 import fr.redfroggy.ilg.client.model.Contact;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -30,12 +30,6 @@ public class ContactTest {
 
 
     public static String amazon00048IdentityContactJson() {
-        try {
-            return Resources.toString(
-                    Resources.getResource("contracts/company/FR-428785042-company-identity-contact.json"),
-                    Charset.forName("UTF8"));
-        } catch (IOException e) {
-            return "";
-        }
+        return UnitTestUtils.getJsonFromContractFile("/company/FR-428785042-company-identity-contact.json");
     }
 }

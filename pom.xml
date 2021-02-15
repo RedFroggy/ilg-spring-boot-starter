@@ -6,7 +6,7 @@
   <version>1.7.1-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>ilg-spring-boot-starter</name>
-  <description>Spring boot 1.5 support for ILG api 2.0.8</description>
+  <description>Spring boot 2.x support for ILG api 2.0.8</description>
   <url>https://github.com/RedFroggy/ilg-spring-boot-starter</url>
   <licenses>
     <license>
@@ -51,11 +51,13 @@
     <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
 
     <commons-lang3.version>3.11</commons-lang3.version>
-    <spring-boot.version>1.5.22.RELEASE</spring-boot.version>
+    <spring-boot.version>2.4.2</spring-boot.version>
 
     <assertj-core.version>3.19.0</assertj-core.version>
     <swagger-annotations.version>1.6.2</swagger-annotations.version>
     <guava-testlib.version>30.1-jre</guava-testlib.version>
+    <json.version>20201115</json.version>
+    <commons-text.version>1.9</commons-text.version>
   </properties>
   <!-- Define where the source code for this project lives -->
   <scm>
@@ -122,10 +124,18 @@
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
-      <version>${commons-lang3.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.hibernate.validator</groupId>
+      <artifactId>hibernate-validator</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-text</artifactId>
+      <version>${commons-text.version}</version>
     </dependency>
     <!-- JUnit is a Java testing framework.
-      It is optional in the workflow of deploying with maven-semantic-release. -->
+  It is optional in the workflow of deploying with maven-semantic-release. -->
     <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava-testlib</artifactId>
@@ -148,26 +158,15 @@
       </exclusions>
     </dependency>
     <dependency>
-      <groupId>org.hibernate.validator</groupId>
-      <artifactId>hibernate-validator</artifactId>
-      <version>7.0.1.Final</version>
-    </dependency>
-    <dependency>
       <groupId>org.json</groupId>
       <artifactId>json</artifactId>
+      <version>${json.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.assertj</groupId>
       <artifactId>assertj-core</artifactId>
       <scope>test</scope>
-      <version>${assertj-core.version}</version>
-    </dependency>
-    <!-- https://mvnrepository.com/artifact/javassist/javassist -->
-    <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-text</artifactId>
-      <version>1.9</version>
     </dependency>
   </dependencies>
   <build>
@@ -303,9 +302,9 @@
             <goals>
               <goal>report</goal>
             </goals>
-            <configuration>
-              <outputDirectory>${project.build.directory}/jacoco/test</outputDirectory>
-            </configuration>
+<!--            <configuration>-->
+<!--              <outputDirectory>${project.build.directory}/jacoco/test</outputDirectory>-->
+<!--            </configuration>-->
           </execution>
           <execution>
             <id>jacoco-check</id>

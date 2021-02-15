@@ -7,7 +7,7 @@ import com.google.common.io.Resources;
 import fr.redfroggy.ilg.JacksonUtils;
 import fr.redfroggy.ilg.UnitTestUtils;
 import fr.redfroggy.ilg.client.model.*;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -30,14 +30,7 @@ public class SiteTest {
     }
 
     public static String amazon00048SiteJson() {
-        try {
-            return Resources.toString(
-                    Resources.getResource("contracts/site/FR-42878504200048-site.json"),
-                    Charset.forName("UTF8"));
-        } catch (IOException e) {
-            return "";
-        }
-
+        return UnitTestUtils.getJsonFromContractFile("/site/FR-42878504200048-site.json");
     }
 
     public static Site amazon00048Site() {
