@@ -53,10 +53,9 @@ public class SiteRequestTest {
 
         assertThat(sort)
                 .hasFieldOrPropertyWithValue("column", "$.name")
-                .hasFieldOrPropertyWithValue("order", Sorting.Direction.ASC)
-                .hasFieldOrPropertyWithValue("order.isAscending", true)
-                .hasFieldOrPropertyWithValue("order.isDescending", false);
-
+                .hasFieldOrPropertyWithValue("order", Sorting.Direction.ASC);
+        assertThat(sort.getOrder().isAscending()).isTrue();
+        assertThat(sort.getOrder().isDescending()).isFalse();
 
         assertThat(request.toQueryParams())
                 .containsEntry("column", Collections.singletonList("$.name"))

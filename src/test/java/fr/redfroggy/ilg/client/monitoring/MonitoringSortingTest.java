@@ -2,6 +2,7 @@ package fr.redfroggy.ilg.client.monitoring;
 
 import static org.assertj.core.api.Assertions.*;
 
+import fr.redfroggy.ilg.client.Sorting;
 import org.junit.Test;
 
 import java.util.Collections;
@@ -21,10 +22,10 @@ public class MonitoringSortingTest {
 
         assertThat(sort)
                 .hasFieldOrPropertyWithValue("sort", "$.name")
-                .hasFieldOrPropertyWithValue("order", MonitoringSorting.Direction.ASC)
-                .hasFieldOrPropertyWithValue("order.isAscending", true)
-                .hasFieldOrPropertyWithValue("order.isDescending", false);
-
+                .extracting(Sorting::getOrder,
+                        order -> order.getOrder().isAscending(),
+                        order -> order.getOrder().isDescending())
+                .containsExactly(MonitoringSorting.Direction.ASC, true, false);
 
         assertThat(sort.toQueryParams())
                 .containsEntry("sort", Collections.singletonList("$.name"))
