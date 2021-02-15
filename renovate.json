@@ -2,11 +2,15 @@
   "extends": ["config:base", ":semanticCommitTypeAll(chore)"],
   "timezone": "Europe/Paris",
   "prHourlyLimit": 30,
+  "schedule": ["every 3 months on the first day of the month"],
   "automerge": false,
   "automergeType": "branch",
   "major": {
     "automerge": false
   },
   "recreateClosed": true,
-  "ignoreDeprecated": false
+  "ignoreDeprecated": false,
+  "ignorePaths": [
+    "generate/code/pom.xml"
+  ]
 }
