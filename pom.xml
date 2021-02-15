@@ -50,7 +50,7 @@
     <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
     <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
 
-    <commons-lang3.version>3.7</commons-lang3.version>
+    <commons-lang3.version>3.11</commons-lang3.version>
     <spring-boot.version>1.5.22.RELEASE</spring-boot.version>
 
     <assertj-core.version>3.14.0</assertj-core.version>
