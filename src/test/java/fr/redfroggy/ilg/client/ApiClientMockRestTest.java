@@ -30,7 +30,7 @@ public abstract class ApiClientMockRestTest {
     private RestTemplate simpleRestTemplate;
 
     private MockRestServiceServer mockAuthorizedServer;
-    private ObjectMapper mapper = new ObjectMapper();
+    protected ObjectMapper mapper = new ObjectMapper();
 
     @Before
     public void init() throws URISyntaxException, JsonProcessingException {

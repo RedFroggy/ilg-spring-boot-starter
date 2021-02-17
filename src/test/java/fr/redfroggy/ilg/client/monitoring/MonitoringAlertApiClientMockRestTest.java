@@ -74,8 +74,7 @@ public class MonitoringAlertApiClientMockRestTest extends ApiClientMockRestTest 
                         .alertMaxDate(LocalDate.of(2021, Month.FEBRUARY, 12))
                         .alertMinDate(LocalDate.of(2021, Month.FEBRUARY, 01))
                         .source(AlertSource.BOD)
-                        .page(PageRequest.of(1,2))
-                        .sort(MonitoringSorting.by("my-column", MonitoringSorting.Direction.ASC))
+                        .pageable(PageableRequest.of(1,2, "my-column", MonitoringSorting.Direction.ASC))
                         .build());
         mockApiServer.verify();
 
@@ -132,7 +131,7 @@ public class MonitoringAlertApiClientMockRestTest extends ApiClientMockRestTest 
                         .alertMaxDate(LocalDate.of(2021, Month.FEBRUARY, 12))
                         .alertMinDate(LocalDate.of(2021, Month.FEBRUARY, 01))
                         .source(AlertSource.BOD)
-                        .page(PageRequest.of(1,2))
+                        .pageable(PageableRequest.of(1,2))
                         .build());
         mockApiServer.verify();
 

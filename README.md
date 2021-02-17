@@ -18,7 +18,7 @@ Add the following in your `pom.xml`
         <dependency>
           <groupId>fr.redfroggy</groupId>
           <artifactId>ilg-spring-boot-starter</artifactId>
-          <version>1.5.0</version>
+          <version>1.6.0</version>
         </dependency>
     </dependencies>
 ```
@@ -247,6 +247,61 @@ public EventDetailProjection getEventById(String adId) {
         public MonitoringNumbers getMonitoringNumbersByPortfolio(Integer portfolio) {
             ResponseEntity<MonitoringNumbers> response = apiClient.getMonitoringNumbers(portfolio);
             return response.getBody();
+        }
+```
+### Monitoring portfolio Api Client
+```java
+//...
+        @Autowired
+        private MonitoringApi apiClient;
+
+        public Portfolios getPortfolios() {
+            ResponseEntity<Portfolios> response = apiClient.getMonitoringPortfolios(
+                PortfolioRequest.builder()
+                .entityId(777)
+                .userEmail("tes@test.fr")
+                .isPerso(1)
+                .alertType(AlertType.JURI)
+                .label("my-label")
+                .updateDateMax(LocalDate.of(2021, Month.FEBRUARY, 12))
+                .updateDateMin(LocalDate.of(2021, Month.FEBRUARY, 12))
+                .audit(1)
+                .editable(0)
+                .pageable(PageableRequest.of(1,2,"my-col", MonitoringSorting.Direction.ASC))
+                .build());
+            return response.getBody();
+        }
+
+        public PortfolioProjection getPortfolio(Integer portfolio) {
+            ResponseEntity<PortfolioProjection> response = apiClient.getMonitoringPortfolio(portfolio);
+            return response.getBody();
+        }
+```
+### Monitoring portfolio items Api Client
+```java
+//...
+        @Autowired
+        private MonitoringApi apiClient;
+
+        public PortfolioItems getPortfolioItems(Integer portfolio, PortfolioItemRequest requestParams) {
+            ResponseEntity<PortfolioItems> response = apiClient.getPortfolioItems(portfolio, requestParams);
+            return response.getBody();
+        }
+
+        public void addPortfolioItem(Integer portfolio, Integer siren) {
+            apiClient.addPortfolioItem(portfolio, new PortfolioItemSirenDetail(siren, "rf","100"));
+        }
+
+        public void updatePortfolioItem(Integer portfolio, Integer item, PortfolioItemDetail detail) {
+            apiClient.updatePortfolioItem(portfolio, item, detail);
+        }
+
+        public void deletPortfolioItem(Integer portfolio, Integer item) {
+            apiClient.deletePortfolioItem((portfolio, item);
+        }
+
+        public void deletPortfolioItems(Integer portfolio, PortfolioItemIds itemIds) {
+            apiClient.deletePortfolioItems(999999, itemIds);
         }
 ```
 

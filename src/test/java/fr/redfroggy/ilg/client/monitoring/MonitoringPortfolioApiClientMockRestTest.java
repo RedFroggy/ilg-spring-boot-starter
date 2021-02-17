@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import fr.redfroggy.ilg.TestApplication;
 import fr.redfroggy.ilg.client.ApiClientMockRestTest;
-import fr.redfroggy.ilg.client.PageRequest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,8 +79,7 @@ public class MonitoringPortfolioApiClientMockRestTest extends ApiClientMockRestT
                         .updateDateMin(LocalDate.of(2021, Month.FEBRUARY, 12))
                         .audit(1)
                         .editable(0)
-                        .page(PageRequest.of(1,2))
-                        .sort(MonitoringSorting.by("my-col", MonitoringSorting.Direction.ASC))
+                        .pageable(PageableRequest.of(1,2,"my-col", MonitoringSorting.Direction.ASC))
                         .build());
         mockApiServer.verify();
 

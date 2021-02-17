@@ -19,16 +19,13 @@ public class AlertPortfolioRequest {
     @ApiParam(value = "Enum sur la source de l’alerte, Available values : BOD, JAL, PRE, RPC, SIR, TCO", allowableValues = "BOD, JAL, PRE, RPC, SIR, TCO")
     private final AlertSource source;
 
-    private final PageRequest page;
-
-    private final MonitoringSorting sort;
+    private final PageableRequest pageable;
 
     protected AlertPortfolioRequest(AlertPortfolioRequestBuilder builder) {
         this.alertMinDate = builder.alertMinDate;
         this.alertMaxDate = builder.alertMaxDate;
         this.source = builder.source;
-        this.page = builder.page;
-        this.sort = builder.sort;
+        this.pageable = builder.pageable;
     }
 
     public static AlertPortfolioRequestBuilder builder() {
@@ -47,11 +44,8 @@ public class AlertPortfolioRequest {
             queryParams.add("source[]", source.name());
         }
 
-        if (page != null) {
-            queryParams.putAll(page.toQueryParams());
-        }
-        if (sort != null) {
-            queryParams.putAll(sort.toQueryParams());
+        if (pageable != null) {
+            queryParams.putAll(pageable.toQueryParams());
         }
         return queryParams;
     }
@@ -60,8 +54,7 @@ public class AlertPortfolioRequest {
         private LocalDate alertMinDate;
         private LocalDate alertMaxDate;
         private AlertSource source;
-        private PageRequest page;
-        private MonitoringSorting sort;
+        private PageableRequest pageable;
 
         protected AlertPortfolioRequestBuilder() {
         }
@@ -81,13 +74,8 @@ public class AlertPortfolioRequest {
             return (T)this;
         }
 
-        public T page(PageRequest page) {
-            this.page = page;
-            return (T)this;
-        }
-
-        public T sort(MonitoringSorting sort) {
-            this.sort = sort;
+        public T pageable(PageableRequest pageable) {
+            this.pageable = pageable;
             return (T)this;
         }
 
