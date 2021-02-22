@@ -44,7 +44,7 @@ public class AlertPortfolioRequest {
             queryParams.add("alertMaxDate", alertMaxDate.format(DateTimeFormatter.ISO_LOCAL_DATE));
         }
         if (source != null) {
-            queryParams.add("source", source.name());
+            queryParams.add("source[]", source.name());
         }
 
         if (page != null) {

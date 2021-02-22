@@ -22,8 +22,8 @@ public class MonitoringSorting extends Sorting {
 
     public MultiValueMap<String, String> toQueryParams() {
         MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<>();
-        if (getColumn() != null) {
-            queryParams.add("sort", getColumn());
+        if (getSort() != null) {
+            queryParams.add("sort", getSort());
         }
         if (getOrder() != null) {
             queryParams.add("order", getOrder().name());

@@ -60,7 +60,7 @@ public class MonitoringAlertApiClientMockRestTest extends ApiClientMockRestTest 
     public void shouldGetAlertsWithParams() throws URISyntaxException,
             JsonProcessingException {
         mockApi("http://ilg.fr/monitoring/alert" +
-                        "?alertMinDate=2021-02-01&alertMaxDate=2021-02-12&source=BOD" +
+                        "?alertMinDate=2021-02-01&alertMaxDate=2021-02-12&source[]=BOD" +
                         "&page=1&number=2" +
                         "&sort=my-column&order=ASC" +
                         "&entityId=777&userEmail=tes@test.fr&isPerso=1",
@@ -123,7 +123,7 @@ public class MonitoringAlertApiClientMockRestTest extends ApiClientMockRestTest 
     public void shouldGetAlertsByPortfolio999999WithParams() throws URISyntaxException,
             JsonProcessingException {
         mockApi("http://ilg.fr/monitoring/alert/portfolio/999999" +
-                        "?alertMinDate=2021-02-01&alertMaxDate=2021-02-12&source=BOD" +
+                        "?alertMinDate=2021-02-01&alertMaxDate=2021-02-12&source[]=BOD" +
                         "&page=1&number=2",
                 AlertsTest.alertsJson());
 
