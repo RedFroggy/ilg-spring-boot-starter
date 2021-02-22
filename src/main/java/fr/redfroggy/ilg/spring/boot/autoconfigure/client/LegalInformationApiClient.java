@@ -4,7 +4,6 @@ import fr.redfroggy.ilg.client.Sorting;
 import fr.redfroggy.ilg.client.legalinformation.Legal;
 import fr.redfroggy.ilg.client.legalinformation.LegalDepositList;
 import fr.redfroggy.ilg.client.legalinformation.LegalInformationApi;
-import fr.redfroggy.ilg.client.monitoring.PortfolioProjection;
 import fr.redfroggy.ilg.spring.boot.autoconfigure.IlgRestTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

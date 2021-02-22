@@ -3,6 +3,7 @@ package fr.redfroggy.ilg.client.relation;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import fr.redfroggy.ilg.client.model.Links;
 import io.swagger.annotations.ApiModelProperty;
+
 import javax.validation.Valid;
 
 @JsonDeserialize(as = Links.class)

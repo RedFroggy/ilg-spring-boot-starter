@@ -2,12 +2,13 @@ package fr.redfroggy.ilg.client.authentication;
 
 
 import fr.redfroggy.ilg.client.IlgApi;
-import javax.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.validation.Valid;
 
 public interface AuthenticationApi extends IlgApi {
 

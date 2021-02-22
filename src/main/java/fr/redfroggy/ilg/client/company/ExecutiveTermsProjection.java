@@ -3,8 +3,8 @@ package fr.redfroggy.ilg.client.company;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import fr.redfroggy.ilg.client.model.ExecutiveTerms;
 import io.swagger.annotations.ApiModelProperty;
-import javax.validation.Valid;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @JsonDeserialize(as=ExecutiveTerms.class)

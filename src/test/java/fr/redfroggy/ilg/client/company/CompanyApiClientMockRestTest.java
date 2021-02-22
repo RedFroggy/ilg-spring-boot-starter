@@ -6,7 +6,6 @@ import fr.redfroggy.ilg.client.ApiClientMockRestTest;
 import fr.redfroggy.ilg.client.Sorting;
 import fr.redfroggy.ilg.client.model.Availability;
 import fr.redfroggy.ilg.spring.boot.autoconfigure.client.CompanyApiClient;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -140,6 +139,7 @@ public class CompanyApiClientMockRestTest  extends ApiClientMockRestTest {
         mockApiServer.verify();
     }
 
+    @Test
     public void shouldGetIlgTermsWhenRequestIsIlgCompanyWithParams() throws URISyntaxException,
             JsonProcessingException {
         mockApi("http://ilg.fr/companies/fr/503207896/terms?blockId=666&positionRole=O&principal=true&termsState=true&orders[start_date]=asc",

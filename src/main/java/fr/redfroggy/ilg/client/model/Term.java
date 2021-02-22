@@ -5,8 +5,8 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import fr.redfroggy.ilg.client.company.TermProjection2;
 import fr.redfroggy.ilg.client.executive.TermProjection;
 import io.swagger.annotations.ApiModelProperty;
-import javax.validation.Valid;
 
+import javax.validation.Valid;
 import java.time.LocalDate;
 
 /**

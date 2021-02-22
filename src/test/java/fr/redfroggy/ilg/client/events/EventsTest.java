@@ -4,7 +4,6 @@ package fr.redfroggy.ilg.client.events;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.google.common.io.Resources;
 import fr.redfroggy.ilg.JacksonUtils;
 import fr.redfroggy.ilg.UnitTestUtils;
 import fr.redfroggy.ilg.client.Pagination;
@@ -14,7 +13,6 @@ import fr.redfroggy.ilg.client.model.Events;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.Arrays;

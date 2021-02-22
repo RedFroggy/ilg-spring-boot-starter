@@ -6,12 +6,13 @@ import fr.redfroggy.ilg.client.authentication.AuthenticationApi;
 import fr.redfroggy.ilg.client.authentication.AuthenticationJwt;
 import fr.redfroggy.ilg.client.authentication.Credentials;
 import fr.redfroggy.ilg.spring.boot.autoconfigure.IlgProperties;
-import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.Assert;
 import org.springframework.web.client.RestTemplate;
+
+import javax.validation.Valid;
 
 public class AuthenticationApiClient implements AuthenticationApi {
 

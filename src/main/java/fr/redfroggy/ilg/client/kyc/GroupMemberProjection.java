@@ -1,8 +1,8 @@
 package fr.redfroggy.ilg.client.kyc;
 
 import io.swagger.annotations.ApiModelProperty;
-import javax.validation.Valid;
 
+import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
