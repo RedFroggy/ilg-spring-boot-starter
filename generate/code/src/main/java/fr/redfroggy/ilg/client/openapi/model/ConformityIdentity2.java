@@ -32,6 +32,7 @@ public class ConformityIdentity2   {
   private String title;
 
   @JsonProperty("birthday")
+  @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
   private LocalDate birthday;
 
   @JsonProperty("nationality")

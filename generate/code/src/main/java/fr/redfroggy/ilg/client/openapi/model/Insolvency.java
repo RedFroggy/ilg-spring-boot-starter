@@ -22,9 +22,11 @@ public class Insolvency   {
   private String label;
 
   @JsonProperty("effectiveStart")
+  @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
   private LocalDate effectiveStart;
 
   @JsonProperty("effectiveEnd")
+  @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
   private LocalDate effectiveEnd;
 
   public Insolvency code(Integer code) {

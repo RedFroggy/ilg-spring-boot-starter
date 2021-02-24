@@ -37,6 +37,7 @@ public class Portfolio3   {
   private String referenceContrat;
 
   @JsonProperty("updateDate")
+  @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
   private LocalDate updateDate;
 
   @JsonProperty("customer")

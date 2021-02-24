@@ -17,7 +17,7 @@ import javax.validation.constraints.*;
  * Portfolio
  */
 
-public class Portfolio implements fr.redfroggy.ilg.client.monitoring.PortfolioProjection {
+public class Portfolio   {
   @JsonProperty("id")
   private Integer id;
 
@@ -40,9 +40,11 @@ public class Portfolio implements fr.redfroggy.ilg.client.monitoring.PortfolioPr
   private Integer type;
 
   @JsonProperty("updateDate")
+  @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
   private LocalDate updateDate;
 
   @JsonProperty("createdAt")
+  @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
   private LocalDate createdAt;
 
   @JsonProperty("customer")
@@ -61,7 +63,6 @@ public class Portfolio implements fr.redfroggy.ilg.client.monitoring.PortfolioPr
    * Portfolio's Id
    * @return id
   */
-  @Override
   @ApiModelProperty(example = "2", value = "Portfolio's Id")
 
 
@@ -82,7 +83,6 @@ public class Portfolio implements fr.redfroggy.ilg.client.monitoring.PortfolioPr
    * Name of the portfolio
    * @return label
   */
-  @Override
   @ApiModelProperty(example = "Créalerte Rhône", value = "Name of the portfolio")
 
 
@@ -103,7 +103,6 @@ public class Portfolio implements fr.redfroggy.ilg.client.monitoring.PortfolioPr
    * Display name of the portfolio
    * @return title
   */
-  @Override
   @ApiModelProperty(example = "Surveillance en ligne", value = "Display name of the portfolio")
 
 
@@ -124,7 +123,6 @@ public class Portfolio implements fr.redfroggy.ilg.client.monitoring.PortfolioPr
    * Type of alert (jurialerte, scorealerte…
    * @return alertType
   */
-  @Override
   @ApiModelProperty(example = "2", value = "Type of alert (jurialerte, scorealerte…")
 
 
@@ -145,7 +143,6 @@ public class Portfolio implements fr.redfroggy.ilg.client.monitoring.PortfolioPr
    * Extension of financial links
    * @return extendable
   */
-  @Override
   @ApiModelProperty(example = "false", value = "Extension of financial links")
 
 
@@ -166,7 +163,6 @@ public class Portfolio implements fr.redfroggy.ilg.client.monitoring.PortfolioPr
    * Is a machine expert portfolio
    * @return matchable
   */
-  @Override
   @ApiModelProperty(example = "false", value = "Is a machine expert portfolio")
 
 
@@ -187,7 +183,6 @@ public class Portfolio implements fr.redfroggy.ilg.client.monitoring.PortfolioPr
    * Portfolio type : complex, normal…
    * @return type
   */
-  @Override
   @ApiModelProperty(example = "1", value = "Portfolio type : complex, normal…")
 
 
@@ -208,7 +203,6 @@ public class Portfolio implements fr.redfroggy.ilg.client.monitoring.PortfolioPr
    * Update date of the portfolio
    * @return updateDate
   */
-  @Override
   @ApiModelProperty(value = "Update date of the portfolio")
 
   @Valid
@@ -230,7 +224,6 @@ public class Portfolio implements fr.redfroggy.ilg.client.monitoring.PortfolioPr
    * Creation date of the portfolio
    * @return createdAt
   */
-  @Override
   @ApiModelProperty(value = "Creation date of the portfolio")
 
   @Valid
@@ -260,7 +253,6 @@ public class Portfolio implements fr.redfroggy.ilg.client.monitoring.PortfolioPr
    * customer information
    * @return customer
   */
-  @Override
   @ApiModelProperty(value = "customer information")
 
   @Valid
@@ -282,7 +274,6 @@ public class Portfolio implements fr.redfroggy.ilg.client.monitoring.PortfolioPr
    * this portfolio is editable
    * @return editable
   */
-  @Override
   @ApiModelProperty(example = "false", value = "this portfolio is editable")
 
 

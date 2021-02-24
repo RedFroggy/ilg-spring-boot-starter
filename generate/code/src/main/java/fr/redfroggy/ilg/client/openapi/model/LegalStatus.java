@@ -19,9 +19,11 @@ public class LegalStatus   {
   private String registrationId;
 
   @JsonProperty("date")
+  @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
   private LocalDate date;
 
   @JsonProperty("dateAct")
+  @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
   private LocalDate dateAct;
 
   @JsonProperty("availability")

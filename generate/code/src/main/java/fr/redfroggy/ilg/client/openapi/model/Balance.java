@@ -28,6 +28,7 @@ public class Balance   {
   private String registrationId;
 
   @JsonProperty("closingDate")
+  @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
   private LocalDate closingDate;
 
   @JsonProperty("duration")
@@ -40,9 +41,11 @@ public class Balance   {
   private String turnover;
 
   @JsonProperty("creationDate")
+  @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
   private LocalDate creationDate;
 
   @JsonProperty("updateDate")
+  @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
   private LocalDate updateDate;
 
   @JsonProperty("previousDuration")

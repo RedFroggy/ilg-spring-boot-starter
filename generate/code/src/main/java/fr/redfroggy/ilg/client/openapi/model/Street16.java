@@ -13,7 +13,7 @@ import javax.validation.constraints.*;
  * Street16
  */
 
-public class Street16 implements fr.redfroggy.ilg.client.site.Street16 {
+public class Street16   {
   @JsonProperty("number")
   private String number;
 
@@ -35,7 +35,6 @@ public class Street16 implements fr.redfroggy.ilg.client.site.Street16 {
    * Street number
    * @return number
   */
-  @Override
   @ApiModelProperty(example = "1", value = "Street number")
 
 
@@ -56,7 +55,6 @@ public class Street16 implements fr.redfroggy.ilg.client.site.Street16 {
    * Street number repetition
    * @return repetition
   */
-  @Override
   @ApiModelProperty(example = "bis", value = "Street number repetition")
 
 
@@ -77,7 +75,6 @@ public class Street16 implements fr.redfroggy.ilg.client.site.Street16 {
    * Street Type
    * @return streetType
   */
-  @Override
   @ApiModelProperty(example = "rue", value = "Street Type")
 
 
@@ -98,7 +95,6 @@ public class Street16 implements fr.redfroggy.ilg.client.site.Street16 {
    * Street name
    * @return streetName
   */
-  @Override
   @ApiModelProperty(example = "de la baule", value = "Street name")
 
 
