@@ -22,6 +22,7 @@ public class LegalDeposit2   {
   private Integer number;
 
   @JsonProperty("date")
+  @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
   private LocalDate date;
 
   @JsonProperty("acts")

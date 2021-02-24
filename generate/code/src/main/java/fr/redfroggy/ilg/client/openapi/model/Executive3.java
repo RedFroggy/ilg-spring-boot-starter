@@ -46,6 +46,7 @@ public class Executive3   {
   private Address4 address;
 
   @JsonProperty("birthday")
+  @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
   private LocalDate birthday;
 
   @JsonProperty("email")

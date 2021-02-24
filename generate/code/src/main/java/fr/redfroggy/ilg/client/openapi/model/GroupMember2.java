@@ -47,6 +47,7 @@ public class GroupMember2   {
   private Address9 address;
 
   @JsonProperty("birthday")
+  @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
   private LocalDate birthday;
 
   @JsonProperty("birthCity")

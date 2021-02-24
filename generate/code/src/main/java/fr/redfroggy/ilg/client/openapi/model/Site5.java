@@ -16,7 +16,7 @@ import javax.validation.constraints.*;
  * Site5
  */
 
-public class Site5 implements fr.redfroggy.ilg.client.site.Site5 {
+public class Site5   {
   @JsonProperty("registrationId")
   private String registrationId;
 
@@ -33,9 +33,11 @@ public class Site5 implements fr.redfroggy.ilg.client.site.Site5 {
   private Boolean status;
 
   @JsonProperty("creationDate")
+  @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
   private LocalDate creationDate;
 
   @JsonProperty("closingDate")
+  @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
   private LocalDate closingDate;
 
   @JsonProperty("isHeadquarter")
@@ -56,7 +58,6 @@ public class Site5 implements fr.redfroggy.ilg.client.site.Site5 {
    * Fiscal registration Identifier
    * @return registrationId
   */
-  @Override
   @ApiModelProperty(example = "12345678900129", value = "Fiscal registration Identifier")
 
 
@@ -77,7 +78,6 @@ public class Site5 implements fr.redfroggy.ilg.client.site.Site5 {
    * Establishment number
    * @return siteNumber
   */
-  @Override
   @ApiModelProperty(example = "00129", value = "Establishment number")
 
 
@@ -98,7 +98,6 @@ public class Site5 implements fr.redfroggy.ilg.client.site.Site5 {
    * Commercial Name of the establishment
    * @return commercialName
   */
-  @Override
   @ApiModelProperty(example = "World Aware", value = "Commercial Name of the establishment")
 
 
@@ -119,7 +118,6 @@ public class Site5 implements fr.redfroggy.ilg.client.site.Site5 {
    * Trading Name of the establishment
    * @return tradings
   */
-  @Override
   @ApiModelProperty(example = "GC Information", value = "Trading Name of the establishment")
 
 
@@ -140,7 +138,6 @@ public class Site5 implements fr.redfroggy.ilg.client.site.Site5 {
    * Whether the establishment is active or not
    * @return status
   */
-  @Override
   @ApiModelProperty(example = "true", value = "Whether the establishment is active or not")
 
 
@@ -161,7 +158,6 @@ public class Site5 implements fr.redfroggy.ilg.client.site.Site5 {
    * When the establishment opened
    * @return creationDate
   */
-  @Override
   @ApiModelProperty(value = "When the establishment opened")
 
   @Valid
@@ -183,7 +179,6 @@ public class Site5 implements fr.redfroggy.ilg.client.site.Site5 {
    * When the establishment closed (if status=false)
    * @return closingDate
   */
-  @Override
   @ApiModelProperty(value = "When the establishment closed (if status=false)")
 
   @Valid
@@ -205,7 +200,6 @@ public class Site5 implements fr.redfroggy.ilg.client.site.Site5 {
    * Whether the establishment is headquarter or not
    * @return isHeadquarter
   */
-  @Override
   @ApiModelProperty(example = "true", value = "Whether the establishment is headquarter or not")
 
 
@@ -226,7 +220,6 @@ public class Site5 implements fr.redfroggy.ilg.client.site.Site5 {
    * Get address
    * @return address
   */
-  @Override
   @ApiModelProperty(value = "")
 
   @Valid
@@ -248,7 +241,6 @@ public class Site5 implements fr.redfroggy.ilg.client.site.Site5 {
    * Get workforce
    * @return workforce
   */
-  @Override
   @ApiModelProperty(value = "")
 
   @Valid

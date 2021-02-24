@@ -80,6 +80,7 @@ public class Identite   {
   private String devise;
 
   @JsonProperty("dateCreation")
+  @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
   private LocalDate dateCreation;
 
   @JsonProperty("duree")
@@ -89,6 +90,7 @@ public class Identite   {
   private String garant;
 
   @JsonProperty("dateClotureDesComptes")
+  @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
   private LocalDate dateClotureDesComptes;
 
   @JsonProperty("etablissements")

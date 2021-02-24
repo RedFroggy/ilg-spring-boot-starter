@@ -35,6 +35,7 @@ public class InlineResponse200   {
   private String companyId;
 
   @JsonProperty("date")
+  @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE_TIME)
   private OffsetDateTime date;
 
   /**

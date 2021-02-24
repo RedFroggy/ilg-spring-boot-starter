@@ -139,6 +139,7 @@ public class ScreeningCandidate   {
   private Integer score;
 
   @JsonProperty("generatedAt")
+  @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
   private LocalDate generatedAt;
 
   @JsonProperty("raw")

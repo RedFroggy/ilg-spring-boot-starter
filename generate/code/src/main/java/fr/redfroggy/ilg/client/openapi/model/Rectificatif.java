@@ -19,6 +19,7 @@ public class Rectificatif   {
   private String nomPublication;
 
   @JsonProperty("dateParution")
+  @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
   private LocalDate dateParution;
 
   @JsonProperty("numParution")

@@ -31,9 +31,11 @@ public class Event2   {
   private String categorie;
 
   @JsonProperty("dateParution")
+  @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
   private LocalDate dateParution;
 
   @JsonProperty("dateEffet")
+  @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
   private LocalDate dateEffet;
 
   @JsonProperty("role")

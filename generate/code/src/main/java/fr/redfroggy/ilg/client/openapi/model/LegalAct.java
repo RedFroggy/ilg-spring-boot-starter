@@ -23,6 +23,7 @@ public class LegalAct   {
   private String id;
 
   @JsonProperty("date")
+  @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
   private LocalDate date;
 
   @JsonProperty("number")
