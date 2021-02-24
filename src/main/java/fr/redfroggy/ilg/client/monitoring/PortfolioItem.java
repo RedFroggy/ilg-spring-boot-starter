@@ -8,8 +8,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @JsonDeserialize(builder = PortfolioItem.PortfolioItemBuilder.class)
-public class PortfolioItem implements Serializable
-{
+public class PortfolioItem implements Serializable, PortfolioItemProjection2 {
     private final static long serialVersionUID = 1L;
 
     private final Integer id;
@@ -36,10 +35,12 @@ public class PortfolioItem implements Serializable
         return serialVersionUID;
     }
 
+    @Override
     public Integer getId() {
         return id;
     }
 
+    @Override
     public Integer getSiren() {
         return siren;
     }
@@ -48,10 +49,12 @@ public class PortfolioItem implements Serializable
         return companyName;
     }
 
+    @Override
     public String getCustomCode() {
         return customCode;
     }
 
+    @Override
     public Integer getCustomCredit() {
         return customCredit;
     }

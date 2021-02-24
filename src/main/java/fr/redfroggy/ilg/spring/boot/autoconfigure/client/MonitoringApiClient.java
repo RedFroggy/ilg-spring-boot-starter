@@ -1,5 +1,6 @@
 package fr.redfroggy.ilg.spring.boot.autoconfigure.client;
 
+import fr.redfroggy.ilg.client.PageRequest;
 import fr.redfroggy.ilg.client.monitoring.*;
 import fr.redfroggy.ilg.spring.boot.autoconfigure.IlgRestTemplate;
 import org.springframework.http.HttpEntity;
@@ -49,12 +50,12 @@ public class MonitoringApiClient implements MonitoringApi {
     }
 
     @Override
-    public ResponseEntity<Portfolios> getMonitoringPortfolios(PortfolioRequest requestParam) {
+    public ResponseEntity<PortfoliosProjection> getMonitoringPortfolios(PortfolioRequest requestParam) {
         UriComponentsBuilder uriBuilder = client.absoluteUriBuilder("/monitoring/portfolio");
         if (requestParam != null) {
             uriBuilder.queryParams(requestParam.toQueryParams());
         }
-        return client.getForEntity(uriBuilder.buildAndExpand().toUri(), Portfolios.class);
+        return client.getForEntity(uriBuilder.buildAndExpand().toUri(), PortfoliosProjection.class);
     }
 
     @Override
@@ -109,5 +110,19 @@ public class MonitoringApiClient implements MonitoringApi {
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 
+    @Override
+    public ResponseEntity<SirensResponseBody> listPortfolioSirens(SirensRequestBody sirensRequestBody) {
+        UriComponentsBuilder uriBuilder = client.absoluteUriBuilder("/monitoring/portfolio/siren");
 
+        return client.postForEntity(uriBuilder.build().toUri(), sirensRequestBody, SirensResponseBody.class);
+    }
+
+    @Override
+    public ResponseEntity<PortfoliosProjection2> getPortfolioSiren(Integer siren, PageRequest page) {
+        UriComponentsBuilder uriBuilder = client.absoluteUriBuilder("/monitoring/portfolio/siren/{siren}");
+        if (page != null) {
+            uriBuilder.queryParams(page.toQueryParams());
+        }
+        return client.getForEntity(uriBuilder.buildAndExpand(siren).toUri(), PortfoliosProjection2.class);
+    }
 }

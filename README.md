@@ -304,6 +304,24 @@ public EventDetailProjection getEventById(String adId) {
             apiClient.deletePortfolioItems(999999, itemIds);
         }
 ```
+### Monitoring portfolio siren Api Client
+```java
+//...
+        @Autowired
+        private MonitoringApi apiClient;
+
+        public PortfoliosProjection2 getPortfolioSiren(Integer siren) {
+            ResponseEntity<PortfoliosProjection2> response = apiClient.getPortfolioSiren(siren, PageRequest.of(0,10));
+            return response.getBody();
+        }
+
+        public SirensResponseBody listPortfolioSirens(Integer siren) {
+            SirensRequestBody content = new SirensRequestBody(Collections.singletonList(siren));
+            ResponseEntity<SirensResponseBody> response = apiClient.listPortfolioSirens(content);
+            return response.getBody();
+        }
+
+```
 
 ## Security
 To pass authorization headers to the provider API, [interceptors](src/main/java/fr/redfroggy/ilg/spring/boot/autoconfigure/AuthorizationInterceptor.java) are used to add these headers to the request.

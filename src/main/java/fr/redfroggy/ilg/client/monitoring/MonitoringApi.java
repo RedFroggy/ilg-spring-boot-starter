@@ -1,8 +1,11 @@
 package fr.redfroggy.ilg.client.monitoring;
 
+import fr.redfroggy.ilg.client.PageRequest;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiParam;
 import org.springframework.http.ResponseEntity;
+
+import javax.validation.constraints.NotNull;
 
 @Api(value = "Monitoring", description = "the Monitoring API")
 public interface MonitoringApi {
@@ -93,7 +96,7 @@ public interface MonitoringApi {
      * or Forbidden (status code 403)
      * or Resource not found (status code 404)
      */
-    ResponseEntity<Portfolios> getMonitoringPortfolios(PortfolioRequest request);
+    ResponseEntity<PortfoliosProjection> getMonitoringPortfolios(PortfolioRequest request);
 
 
     /**
@@ -213,5 +216,30 @@ public interface MonitoringApi {
      *         or Conflict (status code 409)
      */
     ResponseEntity<Void> deletePortfolioItems(Integer portfolioId, PortfolioItemIds idsOfItem);
+
+    /**
+     * POST /monitoring/portfolio/siren : Return list of siren subscribed for given siren
+     *
+     * @param sirensRequestBody list of siren (required)
+     * @return list of siren subscribed for given siren (status code 200)
+     *         or Bad Request (status code 400)
+     *         or Authentication Failure: Expired Token or Invalid Token (status code 401)
+     *         or Forbidden (status code 403)
+     *         or Resource not found (status code 404)
+     */
+    ResponseEntity<SirensResponseBody> listPortfolioSirens(@NotNull SirensRequestBody sirensRequestBody);
+
+    /**
+     * GET /monitoring/portfolio/siren/{siren} : Return informations of portfolios for user and siren
+     *
+     * @param siren Unique identifier representing a company (required)
+     * @param page Page request params (optional)
+     * @return  (status code 200)
+     *         or Bad Request (status code 400)
+     *         or Authentication Failure: Expired Token or Invalid Token (status code 401)
+     *         or Forbidden (status code 403)
+     *         or Resource not found (status code 404)
+     */
+    ResponseEntity<PortfoliosProjection2> getPortfolioSiren(@NotNull Integer siren, PageRequest page);
 
 }

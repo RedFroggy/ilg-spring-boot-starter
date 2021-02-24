@@ -9,7 +9,7 @@ import java.util.List;
  * Portfolios
  */
 
-public class Portfolios {
+public class Portfolios implements PortfoliosProjection,PortfoliosProjection2 {
 
     private final List<Portfolio> portfolios;
 
@@ -26,8 +26,9 @@ public class Portfolios {
      *
      * @return portfolios
      */
+    @Override
     @ApiModelProperty(value = "List of portfolios")
-    public List<? extends PortfolioProjection3> getPortfolios() {
+    public List<? extends Portfolio> getPortfolios() {
         return portfolios;
     }
 
@@ -36,6 +37,7 @@ public class Portfolios {
      *
      * @return count
      */
+    @Override
     @ApiModelProperty(example = "1", value = "Number of portfolios")
     public Integer getCount() {
         return count;
