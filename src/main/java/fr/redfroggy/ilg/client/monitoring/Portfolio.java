@@ -5,12 +5,13 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  * Portfolio
  */
 @JsonDeserialize(builder = Portfolio.PortfolioBuilder.class)
-public class Portfolio implements PortfolioProjection, PortfolioProjection3 {
+public class Portfolio implements PortfolioProjection, PortfolioProjection2, PortfolioProjection3 {
 
     private final Integer id;
 
@@ -19,6 +20,8 @@ public class Portfolio implements PortfolioProjection, PortfolioProjection3 {
     private final String title;
 
     private final AlertType alertType;
+
+    private final PortfolioItem item;
 
     private final Boolean extendable;
 
@@ -43,6 +46,7 @@ public class Portfolio implements PortfolioProjection, PortfolioProjection3 {
         this.label = builder.label;
         this.title = builder.title;
         this.alertType = builder.alertType;
+        this.item = builder.item;
         this.extendable = builder.extendable;
         this.matchable = builder.matchable;
         this.type = builder.type;
@@ -92,6 +96,17 @@ public class Portfolio implements PortfolioProjection, PortfolioProjection3 {
     @ApiModelProperty(example = "2", value = "Type of alert (jurialerte, scorealerte…")
     public AlertType getAlertType() {
         return alertType;
+    }
+
+    /**
+     * Monitored item
+     *
+     * @return item
+     */
+    @ApiModelProperty(value = "Monitored item")
+    @Override
+    public PortfolioItem getItem() {
+        return item;
     }
 
     /**
@@ -194,6 +209,7 @@ public class Portfolio implements PortfolioProjection, PortfolioProjection3 {
         private String label;
         private String title;
         private AlertType alertType;
+        private PortfolioItem item;
         private Boolean extendable;
         private Boolean matchable;
         private Integer type;
@@ -224,6 +240,11 @@ public class Portfolio implements PortfolioProjection, PortfolioProjection3 {
 
         public PortfolioBuilder alertType(AlertType alertType) {
             this.alertType = alertType;
+            return this;
+        }
+
+        public PortfolioBuilder item(PortfolioItem item) {
+            this.item = item;
             return this;
         }
 

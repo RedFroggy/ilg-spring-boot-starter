@@ -28,9 +28,7 @@ public class PortfolioRequest {
 
     private final Integer editable;
 
-    private final PageRequest page;
-
-    private final MonitoringSorting sort;
+    private final PageableRequest pageable;
 
     protected PortfolioRequest(PortfolioRequestBuilder builder) {
         this.alertType = builder.alertType;
@@ -42,8 +40,7 @@ public class PortfolioRequest {
         this.isPerso = builder.isPerso;
         this.audit = builder.audit;
         this.label = builder.label;
-        this.page = builder.page;
-        this.sort = builder.sort;
+        this.pageable = builder.pageable;
     }
 
     @ApiParam(value = "part of name of the portfolio")
@@ -91,13 +88,8 @@ public class PortfolioRequest {
         return isPerso;
     }
 
-
-    public PageRequest getPage() {
-        return page;
-    }
-
-    public MonitoringSorting getSort() {
-        return sort;
+    public PageableRequest getPageable() {
+        return pageable;
     }
 
     public static PortfolioRequestBuilder builder() {
@@ -133,11 +125,8 @@ public class PortfolioRequest {
         if (getEditable() != null) {
             queryParams.add("editable", String.valueOf(getEditable()));
         }
-        if (getPage() != null) {
-            queryParams.putAll(getPage().toQueryParams());
-        }
-        if (getSort() != null) {
-            queryParams.putAll(getSort().toQueryParams());
+        if (getPageable() != null) {
+            queryParams.putAll(getPageable().toQueryParams());
         }
         return queryParams;
     }
@@ -152,14 +141,9 @@ public class PortfolioRequest {
         private LocalDate updateDateMax;
         private Integer audit;
         private Integer editable;
-        private PageRequest page;
-        private MonitoringSorting sort;
+        private PageableRequest pageable;
 
         private PortfolioRequestBuilder() {
-        }
-
-        public static PortfolioRequestBuilder aPortfolioRequest() {
-            return new PortfolioRequestBuilder();
         }
 
         public PortfolioRequestBuilder entityId(Integer entityId) {
@@ -207,13 +191,8 @@ public class PortfolioRequest {
             return this;
         }
 
-        public PortfolioRequestBuilder page(PageRequest page) {
-            this.page = page;
-            return this;
-        }
-
-        public PortfolioRequestBuilder sort(MonitoringSorting sort) {
-            this.sort = sort;
+        public PortfolioRequestBuilder pageable(PageableRequest pageable) {
+            this.pageable = pageable;
             return this;
         }
 

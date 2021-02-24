@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import fr.redfroggy.ilg.TestApplication;
 import fr.redfroggy.ilg.client.ApiClientMockRestTest;
-import fr.redfroggy.ilg.client.PageRequest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,12 +28,12 @@ public class MonitoringPortfolioApiClientMockRestTest extends ApiClientMockRestT
         mockApi("http://ilg.fr/monitoring/portfolio",
                 PortfoliosTest.portfoliosJson());
 
-        ResponseEntity<Portfolios> response = apiClient.getMonitoringPortfolios(
+        ResponseEntity<PortfoliosProjection> response = apiClient.getMonitoringPortfolios(
                 PortfolioRequest.builder()
                         .build());
         mockApiServer.verify();
 
-        Portfolios body = response.getBody();
+        PortfoliosProjection body = response.getBody();
 
         assertThat(body)
                 .usingRecursiveComparison()
@@ -47,10 +46,10 @@ public class MonitoringPortfolioApiClientMockRestTest extends ApiClientMockRestT
         mockApi("http://ilg.fr/monitoring/portfolio",
                 PortfoliosTest.portfoliosJson());
 
-        ResponseEntity<Portfolios> response = apiClient.getMonitoringPortfolios(null);
+        ResponseEntity<PortfoliosProjection> response = apiClient.getMonitoringPortfolios(null);
         mockApiServer.verify();
 
-        Portfolios body = response.getBody();
+        PortfoliosProjection body = response.getBody();
 
         assertThat(body)
                 .usingRecursiveComparison()
@@ -69,7 +68,7 @@ public class MonitoringPortfolioApiClientMockRestTest extends ApiClientMockRestT
                         "&sort=my-col&order=ASC",
                 PortfoliosTest.portfoliosJson());
 
-        ResponseEntity<Portfolios> response = apiClient.getMonitoringPortfolios(
+        ResponseEntity<PortfoliosProjection> response = apiClient.getMonitoringPortfolios(
                 PortfolioRequest.builder()
                         .entityId(777)
                         .userEmail("tes@test.fr")
@@ -80,12 +79,11 @@ public class MonitoringPortfolioApiClientMockRestTest extends ApiClientMockRestT
                         .updateDateMin(LocalDate.of(2021, Month.FEBRUARY, 12))
                         .audit(1)
                         .editable(0)
-                        .page(PageRequest.of(1,2))
-                        .sort(MonitoringSorting.by("my-col", MonitoringSorting.Direction.ASC))
+                        .pageable(PageableRequest.of(1,2,"my-col", MonitoringSorting.Direction.ASC))
                         .build());
         mockApiServer.verify();
 
-        Portfolios body = response.getBody();
+        PortfoliosProjection body = response.getBody();
 
         assertThat(body)
                 .usingRecursiveComparison()

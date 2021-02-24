@@ -1,8 +1,11 @@
 package fr.redfroggy.ilg.client.monitoring;
 
+import fr.redfroggy.ilg.client.PageRequest;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiParam;
 import org.springframework.http.ResponseEntity;
+
+import javax.validation.constraints.NotNull;
 
 @Api(value = "Monitoring", description = "the Monitoring API")
 public interface MonitoringApi {
@@ -93,7 +96,7 @@ public interface MonitoringApi {
      * or Forbidden (status code 403)
      * or Resource not found (status code 404)
      */
-    ResponseEntity<Portfolios> getMonitoringPortfolios(PortfolioRequest request);
+    ResponseEntity<PortfoliosProjection> getMonitoringPortfolios(PortfolioRequest request);
 
 
     /**
@@ -120,5 +123,123 @@ public interface MonitoringApi {
      * or Resource not found (status code 404)
      */
     ResponseEntity<PortfolioProjection> getMonitoringPortfolio(Integer portfolioId);
+
+
+    /**
+     * GET /monitoring/portfolio/{portfolioId}/item : Return a list of items
+     *
+     * Request params:
+     * - page Page number (optional)
+     * - number Number of result by page (optional)
+     * - customCode Filter for a custom code (optional)
+     * - eventCode Filter for the event code (optional)
+     * - siren Filter for a siren (optional)
+     * - cname Search text in company name (optional)
+     * - ilgScoreOrigin Filter for a origin score (optional)
+     * - customCreditMin Filter for a custom credit min (optional)
+     * - customCreditMax Filter for a custom credit max (optional)
+     * - portfolio List of monitoring for a portfolio (optional)
+     * - userEmail List of monitoring for a user (optional)
+     * - monitoringStartDateMin Filter for a start date of monitoring min (YYYY-MM-DD) (optional)
+     * - monitoringStartDateMax Filter for a start date of monitoring max (YYYY-MM-DD) (optional)
+     * - creationDateMin Filter for a creation date of monitoring min (YYYY-MM-DD) (optional)
+     * - creationDateMax Filter for a creation date of monitoring max (YYYY-MM-DD) (optional)
+     * - sort Value to sort (optional, default to monitoringStartDate)
+     * - order Sorting order, ‘asc’ or ‘desc’ (optional, default to DESC)
+     *
+     * @param portfolioId Unique identifier representing a portfolio (required)
+     * @param requestParam add request params to get request
+     * @return  (status code 200)
+     *         or Bad Request (status code 400)
+     *         or Authentication Failure: Expired Token or Invalid Token (status code 401)
+     *         or Forbidden (status code 403)
+     *         or Resource not found (status code 404)
+     */
+    ResponseEntity<PortfolioItems> getPortfolioItems(Integer portfolioId, PortfolioItemRequest requestParam);
+
+
+    /**
+     * DELETE /monitoring/portfolio/{portfolioId}/item/{itemId} : Delete items from PF
+     *
+     * @param portfolioId Unique identifier representing a portfolio (required)
+     * @param itemId Unique identifier representing a item (required)
+     * @return The items have been removed (status code 204)
+     *         or Bad Request (status code 400)
+     *         or Authentication Failure: Expired Token or Invalid Token (status code 401)
+     *         or Forbidden (status code 403)
+     *         or Resource not found (status code 404)
+     *         or Conflict (status code 409)
+     */
+    ResponseEntity<Void> deletePortfolioItem(Integer portfolioId, Integer itemId);
+
+
+    /**
+     * PATCH /monitoring/portfolio/{portfolioId}/item/{itemId} : Update item from PF
+     *
+     * @param portfolioId Unique identifier representing a portfolio (required)
+     * @param itemId Unique identifier representing a item (required)
+     * @param itemDetail  (required)
+     * @return The items have been removed (status code 204)
+     *         or Bad Request (status code 400)
+     *         or Authentication Failure: Expired Token or Invalid Token (status code 401)
+     *         or Forbidden (status code 403)
+     *         or Resource not found (status code 404)
+     *         or Conflict (status code 409)
+     */
+    ResponseEntity<Void> updatePortfolioItem(Integer portfolioId, Integer itemId, PortfolioItemDetail itemDetail);
+
+
+    /**
+     * POST /monitoring/portfolio/{portfolioId}/item : Add item to PF
+     *
+     * @param portfolioId Unique identifier representing a portfolio (required)
+     * @param itemDetail  (required)
+     * @return the item have been added (status code 201)
+     *         or Bad Request (status code 400)
+     *         or Authentication Failure: Expired Token or Invalid Token (status code 401)
+     *         or Forbidden (status code 403)
+     *         or Conflict (status code 409)
+     */
+    ResponseEntity<Void> addPortfolioItem(Integer portfolioId, PortfolioItemSirenDetail itemDetail);
+
+
+    /**
+     * DELETE /monitoring/portfolio/{portfolioId}/items : Delete items from PF
+     *
+     * @param portfolioId Unique identifier representing a portfolio (required)
+     * @param idsOfItem  (required)
+     * @return The items have been removed (status code 204)
+     *         or Bad Request (status code 400)
+     *         or Authentication Failure: Expired Token or Invalid Token (status code 401)
+     *         or Forbidden (status code 403)
+     *         or Resource not found (status code 404)
+     *         or Conflict (status code 409)
+     */
+    ResponseEntity<Void> deletePortfolioItems(Integer portfolioId, PortfolioItemIds idsOfItem);
+
+    /**
+     * POST /monitoring/portfolio/siren : Return list of siren subscribed for given siren
+     *
+     * @param sirensRequestBody list of siren (required)
+     * @return list of siren subscribed for given siren (status code 200)
+     *         or Bad Request (status code 400)
+     *         or Authentication Failure: Expired Token or Invalid Token (status code 401)
+     *         or Forbidden (status code 403)
+     *         or Resource not found (status code 404)
+     */
+    ResponseEntity<SirensResponseBody> listPortfolioSirens(@NotNull SirensRequestBody sirensRequestBody);
+
+    /**
+     * GET /monitoring/portfolio/siren/{siren} : Return informations of portfolios for user and siren
+     *
+     * @param siren Unique identifier representing a company (required)
+     * @param page Page request params (optional)
+     * @return  (status code 200)
+     *         or Bad Request (status code 400)
+     *         or Authentication Failure: Expired Token or Invalid Token (status code 401)
+     *         or Forbidden (status code 403)
+     *         or Resource not found (status code 404)
+     */
+    ResponseEntity<PortfoliosProjection2> getPortfolioSiren(@NotNull Integer siren, PageRequest page);
 
 }
