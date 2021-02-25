@@ -323,6 +323,25 @@ public EventDetailProjection getEventById(String adId) {
 
 ```
 
+### Legal information Api Client
+```java
+//...
+        @Autowired
+        private LegalInformationApi apiClient;
+
+        public Legal getLegal(String country, String siren) {
+            ResponseEntity<Legal> response = apiClient.getLegal(country, siren,
+            Sorting.by("dateAct", Sorting.Direction.ASC));
+            return response.getBody();
+        }
+
+        public LegalDepositList getLegalDeposits(String country, String siren) {
+            ResponseEntity<LegalDepositList> response = apiClient.getLegalDeposits(country, siren);
+            return response.getBody();
+        }
+
+```
+
 ## Security
 To pass authorization headers to the provider API, [interceptors](src/main/java/fr/redfroggy/ilg/spring/boot/autoconfigure/AuthorizationInterceptor.java) are used to add these headers to the request.
 See [IlgRestTemplate ](src/main/java/fr/redfroggy/ilg/spring/boot/autoconfigure/IlgRestTemplate.java) implementation
