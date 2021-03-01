@@ -41,10 +41,10 @@ public class LegalDeposit   {
   }
 
   /**
-   * where the deposit happened
+   * when the deposit happens
    * @return date
   */
-  @ApiModelProperty(value = "where the deposit happened")
+  @ApiModelProperty(value = "when the deposit happens")
   @Valid
   public LocalDate getDate() {
     return date;
