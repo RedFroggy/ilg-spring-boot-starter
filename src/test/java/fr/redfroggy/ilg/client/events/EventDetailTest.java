@@ -48,6 +48,7 @@ public class EventDetailTest {
                 .evenements(new Evenements(Collections.singletonList(Evenement.builder()
                         .codeEvenement(6365)
                         .labelEvenement("Cotation Banque de France : 3")
+                        .codeEvenementInsee("SU")
                         .dateDecision(LocalDate.of(2020, Month.OCTOBER, 8))
                         .build())))
                 .acteursCession(new ActeursCession(Collections.emptyList()))
