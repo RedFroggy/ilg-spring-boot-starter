@@ -82,7 +82,9 @@ then
   echo 'call legalinformation'
   cd legalinformation
   curl -X GET "$URL/companies/FR/503207896/legal" -H "accept: application/json" -H "Authorization: bearer $TOKEN" | jq '.' > FR-503207896-legal.json
-  curl -X GET "$URL/companies/{country}/{id}/legal/deposits" -H "accept: application/json" -H "Authorization: bearer $TOKEN" | jq '.' > FR-503207896-legal-deposits.json
+  curl -X GET "$URL/companies/FR/503207896/legal/deposits" -H "accept: application/json" -H "Authorization: bearer $TOKEN" | jq '.' > FR-503207896-legal-deposits.json
+  curl -X GET "$URL/companies/fr/503207896/legal/deposits/6901-14-B-02638-1-02" -H "accept: application/json" -H "Authorization: bearer $TOKEN" | jq '.' > FR-503207896-legal-deposit.json
+  curl -X GET "$URL/companies/FR/503207896/legal/status" -H "accept: application/json" -H "Authorization: bearer $TOKEN" | jq '.' > FR-503207896-legal-status.json
   cd ..
 fi
 

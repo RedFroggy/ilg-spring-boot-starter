@@ -18,7 +18,7 @@ Add the following in your `pom.xml`
         <dependency>
           <groupId>fr.redfroggy</groupId>
           <artifactId>ilg-spring-boot-starter</artifactId>
-          <version>1.6.1</version>
+          <version>1.7.0</version>
         </dependency>
     </dependencies>
 ```
@@ -318,6 +318,25 @@ public EventDetailProjection getEventById(String adId) {
         public SirensResponseBody listPortfolioSirens(Integer siren) {
             SirensRequestBody content = new SirensRequestBody(Collections.singletonList(siren));
             ResponseEntity<SirensResponseBody> response = apiClient.listPortfolioSirens(content);
+            return response.getBody();
+        }
+
+```
+
+### Legal information Api Client
+```java
+//...
+        @Autowired
+        private LegalInformationApi apiClient;
+
+        public Legal getLegal(String country, String siren) {
+            ResponseEntity<Legal> response = apiClient.getLegal(country, siren,
+            Sorting.by("dateAct", Sorting.Direction.ASC));
+            return response.getBody();
+        }
+
+        public LegalDepositList getLegalDeposits(String country, String siren) {
+            ResponseEntity<LegalDepositList> response = apiClient.getLegalDeposits(country, siren);
             return response.getBody();
         }
 
