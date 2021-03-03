@@ -25,7 +25,7 @@ public class CessionInfo {
 
     private final LocalDate dateFinCession;
 
-    private final Integer nbParts;
+    private final String nbParts;
 
     private final String valeurTitre;
 
@@ -110,7 +110,7 @@ public class CessionInfo {
      * @return nbParts
      */
     @ApiModelProperty(example = "20", value = "Sales percentage")
-    public Integer getNbParts() {
+    public String getNbParts() {
         return nbParts;
     }
 
@@ -133,7 +133,7 @@ public class CessionInfo {
         private String dureeCession;
         private String uniteMois;
         private LocalDate dateFinCession;
-        private Integer nbParts;
+        private String nbParts;
         private String valeurTitre;
 
         private CessionInfoBuilder() {
@@ -169,7 +169,7 @@ public class CessionInfo {
             return this;
         }
 
-        public CessionInfoBuilder nbParts(Integer nbParts) {
+        public CessionInfoBuilder nbParts(String nbParts) {
             this.nbParts = nbParts;
             return this;
         }

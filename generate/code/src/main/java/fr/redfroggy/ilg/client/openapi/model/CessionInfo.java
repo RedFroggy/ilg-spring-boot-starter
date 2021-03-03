@@ -35,7 +35,7 @@ public class CessionInfo   {
   private LocalDate dateFinCession;
 
   @JsonProperty("nbParts")
-  private Integer nbParts;
+  private String nbParts;
 
   @JsonProperty("valeurTitre")
   private String valeurTitre;
@@ -161,7 +161,7 @@ public class CessionInfo   {
     this.dateFinCession = dateFinCession;
   }
 
-  public CessionInfo nbParts(Integer nbParts) {
+  public CessionInfo nbParts(String nbParts) {
     this.nbParts = nbParts;
     return this;
   }
@@ -173,11 +173,11 @@ public class CessionInfo   {
   @ApiModelProperty(example = "20", value = "Sales percentage")
 
 
-  public Integer getNbParts() {
+  public String getNbParts() {
     return nbParts;
   }
 
-  public void setNbParts(Integer nbParts) {
+  public void setNbParts(String nbParts) {
     this.nbParts = nbParts;
   }
 
