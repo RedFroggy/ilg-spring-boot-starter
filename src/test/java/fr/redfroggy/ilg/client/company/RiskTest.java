@@ -3,15 +3,13 @@ package fr.redfroggy.ilg.client.company;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.google.common.io.Resources;
 import fr.redfroggy.ilg.JacksonUtils;
 import fr.redfroggy.ilg.UnitTestUtils;
 import fr.redfroggy.ilg.client.model.Risk;
 import org.assertj.core.util.Maps;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.Map;
 
@@ -32,13 +30,7 @@ public class RiskTest {
 
 
     public static String amazon00048RiskJson() {
-        try {
-            return Resources.toString(
-                    Resources.getResource("contracts/company/FR-428785042-company-risk.json"),
-                    Charset.forName("UTF8"));
-        } catch (IOException e) {
-            return "";
-        }
+        return UnitTestUtils.getJsonFromContractFile("/company/FR-428785042-company-risk.json");
     }
 
     public static Risk amazon00048Risk() {

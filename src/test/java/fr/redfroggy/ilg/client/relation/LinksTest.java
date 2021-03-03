@@ -1,19 +1,19 @@
 package fr.redfroggy.ilg.client.relation;
 
-import static org.assertj.core.api.Assertions.*;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.redfroggy.ilg.UnitTestUtils;
 import fr.redfroggy.ilg.client.model.GroupMember;
 import fr.redfroggy.ilg.client.model.Links;
 import fr.redfroggy.ilg.client.model.Shareholders;
 import fr.redfroggy.ilg.client.model.Subsidiaries;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Map;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class LinksTest {
 

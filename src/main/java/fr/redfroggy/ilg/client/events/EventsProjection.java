@@ -2,8 +2,8 @@ package fr.redfroggy.ilg.client.events;
 
 import fr.redfroggy.ilg.client.Pagination;
 import io.swagger.annotations.ApiModelProperty;
-import javax.validation.Valid;
 
+import javax.validation.Valid;
 import java.util.List;
 
 public interface EventsProjection {

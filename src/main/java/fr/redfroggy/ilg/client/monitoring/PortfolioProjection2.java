@@ -3,7 +3,6 @@ package fr.redfroggy.ilg.client.monitoring;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
-import java.util.List;
 
 public interface PortfolioProjection2 {
     @ApiModelProperty(example = "2", value = "Portfolio's Id")

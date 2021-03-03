@@ -3,6 +3,7 @@ package fr.redfroggy.ilg.client.search;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import fr.redfroggy.ilg.client.model.Address;
 import io.swagger.annotations.ApiModelProperty;
+
 import javax.validation.Valid;
 
 @JsonDeserialize(as = Address.class)

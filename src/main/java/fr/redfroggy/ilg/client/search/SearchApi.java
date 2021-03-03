@@ -1,9 +1,10 @@
 package fr.redfroggy.ilg.client.search;
 
 import io.swagger.annotations.Api;
-import javax.validation.constraints.Pattern;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+
+import javax.validation.constraints.Pattern;
 
 @Validated
 @Api(value = "Search")

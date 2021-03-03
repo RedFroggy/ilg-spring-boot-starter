@@ -1,6 +1,7 @@
 package fr.redfroggy.ilg.client.search;
 
 import io.swagger.annotations.ApiModelProperty;
+
 import javax.validation.Valid;
 
 public interface ExecutiveProjection6 {

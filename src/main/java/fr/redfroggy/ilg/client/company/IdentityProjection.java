@@ -4,8 +4,8 @@ import fr.redfroggy.ilg.client.model.Cotation;
 import fr.redfroggy.ilg.client.model.MarketInformationModel;
 import fr.redfroggy.ilg.client.model.SecondaryActivityModel;
 import io.swagger.annotations.ApiModelProperty;
-import javax.validation.Valid;
 
+import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.List;
 

@@ -1,6 +1,7 @@
 package fr.redfroggy.ilg.client.site;
 
 import io.swagger.annotations.ApiModelProperty;
+
 import javax.validation.Valid;
 
 public interface AddressProjection17 {

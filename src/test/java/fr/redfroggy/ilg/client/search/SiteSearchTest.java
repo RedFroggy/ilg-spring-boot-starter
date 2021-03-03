@@ -3,7 +3,7 @@ package fr.redfroggy.ilg.client.search;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.redfroggy.ilg.UnitTestUtils;
 import fr.redfroggy.ilg.client.model.*;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.Collections;

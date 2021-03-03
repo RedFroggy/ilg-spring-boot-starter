@@ -1,13 +1,23 @@
 
-# ILGV2 client library [![Build Status](https://travis-ci.org/RedFroggy/ilg-spring-boot-starter.svg?branch=master)](https://travis-ci.org/RedFroggy/ilg-spring-boot-starter) [![codecov](https://codecov.io/gh/RedFroggy/ilg-spring-boot-starter/branch/master/graph/badge.svg?token=XM9R6ZV9SJ)](https://codecov.io/gh/RedFroggy/ilg-spring-boot-starter)
+# ILGV2 client library 
+[![Build Status](https://travis-ci.org/RedFroggy/ilg-spring-boot-starter.svg?branch=master)](https://travis-ci.org/RedFroggy/ilg-spring-boot-starter) 
+[![codecov](https://codecov.io/gh/RedFroggy/ilg-spring-boot-starter/branch/master/graph/badge.svg?token=XM9R6ZV9SJ)](https://codecov.io/gh/RedFroggy/ilg-spring-boot-starter)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+[![license](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
+
+[![Maven Central](https://img.shields.io/maven-central/v/fr.redfroggy/ilg-spring-boot-starter.svg)](https://maven-badges.herokuapp.com/maven-central/fr.redfroggy/ilg-spring-boot-starter)
+![GitHub Release Date](https://img.shields.io/github/release-date/RedFroggy/ilg-spring-boot-starter?style=plastic)
+[![Known Vulnerabilities](https://snyk.io/test/github/RedFroggy/ilg-spring-boot-starter/badge.svg)](https://snyk.io/test/github/RedFroggy/ilg-spring-boot-starter)
+
 Get an organisation identity thanks to ilgV2 rest api
 
 see ilg documentation https://webservice.infolegale.fr/v2/docs/api/
 
 ## Compatibility
 
-This library requires library requires Java version 1.8 or higher.
-This library is compatible with ilg rest api 2.0.8
+This library requires Java version 1.8 or higher.
+This library requires spring boot 2.x .
+This library is compatible with ilg rest api 2.0.8 .
 
 ## Installation (Maven)
 
@@ -18,10 +28,11 @@ Add the following in your `pom.xml`
         <dependency>
           <groupId>fr.redfroggy</groupId>
           <artifactId>ilg-spring-boot-starter</artifactId>
-          <version>1.7.0</version>
+          <version>${ilg-spring-boot-starter.version}</version>
         </dependency>
     </dependencies>
 ```
+[![Maven Central](https://img.shields.io/maven-central/v/fr.redfroggy/ilg-spring-boot-starter.svg?label=ilg-spring-boot-starter.version)](https://maven-badges.herokuapp.com/maven-central/fr.redfroggy/ilg-spring-boot-starter)
 
 ## Project structure
 Client's code must be located under the "fr.redfroggy.ilg.*" package

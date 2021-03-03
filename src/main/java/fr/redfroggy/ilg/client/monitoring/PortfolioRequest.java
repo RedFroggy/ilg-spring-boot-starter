@@ -1,6 +1,5 @@
 package fr.redfroggy.ilg.client.monitoring;
 
-import fr.redfroggy.ilg.client.PageRequest;
 import io.swagger.annotations.ApiParam;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;

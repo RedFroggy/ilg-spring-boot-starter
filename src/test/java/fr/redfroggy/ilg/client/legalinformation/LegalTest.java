@@ -1,9 +1,7 @@
 package fr.redfroggy.ilg.client.legalinformation;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.redfroggy.ilg.UnitTestUtils;
-import fr.redfroggy.ilg.client.search.SiteSearch;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.time.LocalDate;

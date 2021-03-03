@@ -1,36 +1,27 @@
 package fr.redfroggy.ilg.client.company;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.Assume.*;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import fr.redfroggy.ilg.TestApplication;
+import fr.redfroggy.ilg.client.ApiClientIntTest;
 import fr.redfroggy.ilg.client.model.Availability;
 import fr.redfroggy.ilg.spring.boot.autoconfigure.client.CompanyApiClient;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.util.ObjectUtils;
 
-import java.io.IOException;
 import java.net.URISyntaxException;
 
-@RunWith(SpringRunner.class)
+import static org.assertj.core.api.Assertions.assertThat;
+
+@EnabledIfEnvironmentVariable(named = "ILG_URL", matches = ".*")
 @SpringBootTest(classes = TestApplication.class)
-public class CompanyApiClientIntTest {
+public class CompanyApiClientIntTest extends ApiClientIntTest {
 
     @Autowired
     private CompanyApiClient apiClient;
-
-    @Before
-    public void ping() throws IOException {
-        assumeFalse("No ILG_URL define, no int tests run",ObjectUtils.isEmpty(System.getenv("ILG_URL")));
-    }
 
     @Test
     public void shouldGetAmazonAvailabilityWhenRequestIsAmazon() throws URISyntaxException,

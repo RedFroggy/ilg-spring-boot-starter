@@ -2,12 +2,11 @@ package fr.redfroggy.ilg.client.monitoring;
 
 import com.google.common.io.Resources;
 import fr.redfroggy.ilg.UnitTestUtils;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.time.LocalDate;
-import java.time.Month;
 import java.util.Arrays;
 import java.util.Collections;
 

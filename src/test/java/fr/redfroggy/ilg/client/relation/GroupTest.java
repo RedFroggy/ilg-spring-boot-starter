@@ -1,17 +1,17 @@
 package fr.redfroggy.ilg.client.relation;
 
-import static org.assertj.core.api.Assertions.*;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.redfroggy.ilg.UnitTestUtils;
 import fr.redfroggy.ilg.client.model.Group;
 import fr.redfroggy.ilg.client.model.GroupMember;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Map;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class GroupTest {
     private static final ObjectMapper json = UnitTestUtils.getJsonMapper();

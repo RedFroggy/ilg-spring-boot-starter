@@ -1,8 +1,8 @@
 package fr.redfroggy.ilg.client.executive;
 
 import io.swagger.annotations.ApiModelProperty;
-import javax.validation.Valid;
 
+import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.List;
 

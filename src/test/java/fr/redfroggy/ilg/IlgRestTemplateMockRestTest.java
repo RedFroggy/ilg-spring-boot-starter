@@ -1,24 +1,17 @@
 package fr.redfroggy.ilg;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.hamcrest.Matchers.*;
-import static org.springframework.test.web.client.match.MockRestRequestMatchers.*;
-import static org.springframework.test.web.client.response.MockRestResponseCreators.*;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.redfroggy.ilg.client.authentication.AuthenticationJwt;
 import fr.redfroggy.ilg.spring.boot.autoconfigure.IlgRestTemplate;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.client.ExpectedCount;
 import org.springframework.test.web.client.MockRestServiceServer;
 import org.springframework.util.LinkedMultiValueMap;
@@ -28,7 +21,11 @@ import org.springframework.web.client.RestTemplate;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-@RunWith(SpringRunner.class)
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.Matchers.startsWith;
+import static org.springframework.test.web.client.match.MockRestRequestMatchers.*;
+import static org.springframework.test.web.client.response.MockRestResponseCreators.withStatus;
+
 @SpringBootTest(classes = TestApplication.class, properties = { "ilg.url=http://ilg.fr","ilg.debugging=true",
         "logging.level.fr.redfroggy.ilg.spring.boot.autoconfigure.RequestResponseLoggingInterceptor=DEBUG"})
 public class IlgRestTemplateMockRestTest {
@@ -44,7 +41,7 @@ public class IlgRestTemplateMockRestTest {
 
     private ObjectMapper mapper = new ObjectMapper();
 
-    @Before
+    @BeforeEach
     public void init() throws URISyntaxException, JsonProcessingException {
         mockAuthorizedServer = MockRestServiceServer.createServer(simpleRestTemplate);
         AuthenticationJwt jwt = new AuthenticationJwt("test-token", "test-refreshToken");

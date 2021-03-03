@@ -1,23 +1,20 @@
 package fr.redfroggy.ilg.client.events;
 
-import static org.assertj.core.api.Assertions.*;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import fr.redfroggy.ilg.TestApplication;
 import fr.redfroggy.ilg.client.ApiClientMockRestTest;
 import fr.redfroggy.ilg.client.FiltersRequest;
 import fr.redfroggy.ilg.client.PageRequest;
 import fr.redfroggy.ilg.spring.boot.autoconfigure.client.EventsApiClient;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.net.URISyntaxException;
 
-@RunWith(SpringRunner.class)
+import static org.assertj.core.api.Assertions.assertThat;
+
 @SpringBootTest(classes = TestApplication.class, properties = { "ilg.url=http://ilg.fr","ilg.debugging=false"})
 public class EventsApiClientMockRestTest extends ApiClientMockRestTest {
 

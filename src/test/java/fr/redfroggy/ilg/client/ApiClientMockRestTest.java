@@ -1,14 +1,10 @@
 package fr.redfroggy.ilg.client;
 
-import static org.hamcrest.Matchers.*;
-import static org.springframework.test.web.client.match.MockRestRequestMatchers.*;
-import static org.springframework.test.web.client.response.MockRestResponseCreators.*;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.redfroggy.ilg.client.authentication.AuthenticationJwt;
 import org.hamcrest.core.StringContains;
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -21,6 +17,10 @@ import org.springframework.web.client.RestTemplate;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import static org.hamcrest.Matchers.startsWith;
+import static org.springframework.test.web.client.match.MockRestRequestMatchers.*;
+import static org.springframework.test.web.client.response.MockRestResponseCreators.withStatus;
+
 public abstract class ApiClientMockRestTest {
     protected MockRestServiceServer mockApiServer;
 
@@ -32,7 +32,7 @@ public abstract class ApiClientMockRestTest {
     private MockRestServiceServer mockAuthorizedServer;
     protected ObjectMapper mapper = new ObjectMapper();
 
-    @Before
+    @BeforeEach
     public void init() throws URISyntaxException, JsonProcessingException {
         mockAuthorizedServer = MockRestServiceServer.createServer(simpleRestTemplate);
         AuthenticationJwt jwt = new AuthenticationJwt("test-token", "test-refreshToken");

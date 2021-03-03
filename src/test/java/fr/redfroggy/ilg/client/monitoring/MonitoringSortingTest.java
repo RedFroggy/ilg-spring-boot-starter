@@ -1,11 +1,12 @@
 package fr.redfroggy.ilg.client.monitoring;
 
-import static org.assertj.core.api.Assertions.*;
-
 import fr.redfroggy.ilg.client.Sorting;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class MonitoringSortingTest {
 
