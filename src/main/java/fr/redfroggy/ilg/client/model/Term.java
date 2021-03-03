@@ -155,7 +155,7 @@ public class Term implements TermProjection, TermProjection2 {
      *
      * @return principal
      */
-    @ApiModelProperty(value = "principal")
+    @ApiModelProperty(example = "1", value = "principal")
     public Integer getPrincipal() {
         return principal;
     }

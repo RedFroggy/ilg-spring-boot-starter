@@ -87,6 +87,6 @@ public interface TermProjection2 {
      * principal
      * @return principal
     */
-    @ApiModelProperty(value = "principal")
+    @ApiModelProperty(example = "1", value = "principal")
     Integer getPrincipal();
 }

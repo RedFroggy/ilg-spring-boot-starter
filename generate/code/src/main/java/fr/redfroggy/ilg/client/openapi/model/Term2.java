@@ -246,7 +246,7 @@ public class Term2   {
    * principal
    * @return principal
   */
-  @ApiModelProperty(value = "principal")
+  @ApiModelProperty(example = "1", value = "principal")
 
 
   public Integer getPrincipal() {
