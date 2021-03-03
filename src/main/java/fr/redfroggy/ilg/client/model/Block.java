@@ -60,7 +60,7 @@ public class Block implements BlockProjection3 {
      *
      * @return label
      */
-    @ApiModelProperty(value = "Label of block")
+    @ApiModelProperty(example = "Statutaires divers", value = "Label of block")
     public String getLabel() {
         return label;
     }
@@ -70,7 +70,7 @@ public class Block implements BlockProjection3 {
      *
      * @return orderId
      */
-    @ApiModelProperty(value = "priority")
+    @ApiModelProperty(example = "5", value = "priority")
     public Integer getOrderId() {
         return orderId;
     }
@@ -80,7 +80,7 @@ public class Block implements BlockProjection3 {
      *
      * @return nbActiveTerms
      */
-    @ApiModelProperty(value = "number of active term in the block")
+    @ApiModelProperty(example = "5", value = "number of active term in the block")
     public Integer getNbActiveTerms() {
         return nbActiveTerms;
     }
@@ -90,7 +90,7 @@ public class Block implements BlockProjection3 {
      *
      * @return nbInactiveTerms
      */
-    @ApiModelProperty(value = "number of inactive term in the block")
+    @ApiModelProperty(example = "0", value = "number of inactive term in the block")
     public Integer getNbInactiveTerms() {
         return nbInactiveTerms;
     }
@@ -100,7 +100,7 @@ public class Block implements BlockProjection3 {
      *
      * @return nbActiveRegroupings
      */
-    @ApiModelProperty(value = "number of active regroupings in the block")
+    @ApiModelProperty(example = "4", value = "number of active regroupings in the block")
     public Integer getNbActiveRegroupings() {
         return nbActiveRegroupings;
     }
@@ -110,7 +110,7 @@ public class Block implements BlockProjection3 {
      *
      * @return nbInactiveRegroupings
      */
-    @ApiModelProperty(value = "number of inactive regroupings in the block")
+    @ApiModelProperty(example = "0", value = "number of inactive regroupings in the block")
     public Integer getNbInactiveRegroupings() {
         return nbInactiveRegroupings;
     }
