@@ -24,7 +24,7 @@ public class Identite {
 
     private final String siren;
 
-    private final Integer codeFormeJuridique;
+    private final String codeFormeJuridique;
 
     private final String labelFormeJuridique;
 
@@ -119,7 +119,7 @@ public class Identite {
      * @return codeFormeJuridique
      */
     @ApiModelProperty(example = "5498", value = "")
-    public Integer getCodeFormeJuridique() {
+    public String getCodeFormeJuridique() {
         return codeFormeJuridique;
     }
 
@@ -211,7 +211,7 @@ public class Identite {
         private String sigle;
         private Type type;
         private String siren;
-        private Integer codeFormeJuridique;
+        private String codeFormeJuridique;
         private String labelFormeJuridique;
         private BigDecimal capital;
         private String devise;
@@ -249,7 +249,7 @@ public class Identite {
             return this;
         }
 
-        public IdentiteBuilder codeFormeJuridique(Integer codeFormeJuridique) {
+        public IdentiteBuilder codeFormeJuridique(String codeFormeJuridique) {
             this.codeFormeJuridique = codeFormeJuridique;
             return this;
         }

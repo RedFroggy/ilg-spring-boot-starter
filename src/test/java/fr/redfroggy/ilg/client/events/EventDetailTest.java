@@ -83,9 +83,11 @@ public class EventDetailTest {
     private static ActeursContentieux buildActeursContentieux() {
         IdentiteActeur identite = IdentiteActeur.builder()
                 .nom("INFOLEGALE")
+                .nic("00021")
+                .siret("50320789600021")
                 .siren("503207896")
                 .enseigne("INFOLEGALE ET MARKETING")
-                .codeFormeJuridique(5710)
+                .codeFormeJuridique("5710")
                 .labelFormeJuridique("Société par actions simplifiée (SAS)")
                 .capital(BigDecimal.valueOf(758846).setScale(2))
                 .adresse(Adresse.builder()

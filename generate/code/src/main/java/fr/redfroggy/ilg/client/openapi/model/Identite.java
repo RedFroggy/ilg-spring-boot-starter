@@ -68,7 +68,7 @@ public class Identite   {
   private String siren;
 
   @JsonProperty("codeFormeJuridique")
-  private Integer codeFormeJuridique;
+  private String codeFormeJuridique;
 
   @JsonProperty("labelFormeJuridique")
   private String labelFormeJuridique;
@@ -196,7 +196,7 @@ public class Identite   {
     this.siren = siren;
   }
 
-  public Identite codeFormeJuridique(Integer codeFormeJuridique) {
+  public Identite codeFormeJuridique(String codeFormeJuridique) {
     this.codeFormeJuridique = codeFormeJuridique;
     return this;
   }
@@ -208,11 +208,11 @@ public class Identite   {
   @ApiModelProperty(example = "5498", value = "")
 
 
-  public Integer getCodeFormeJuridique() {
+  public String getCodeFormeJuridique() {
     return codeFormeJuridique;
   }
 
-  public void setCodeFormeJuridique(Integer codeFormeJuridique) {
+  public void setCodeFormeJuridique(String codeFormeJuridique) {
     this.codeFormeJuridique = codeFormeJuridique;
   }
 
