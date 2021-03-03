@@ -29,10 +29,10 @@ public class InlineObject8   {
   }
 
   /**
-   * Get siren
+   * unique identifier of company
    * @return siren
   */
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "unique identifier of company")
 
 
   public Integer getSiren() {
@@ -49,10 +49,10 @@ public class InlineObject8   {
   }
 
   /**
-   * Get reference
+   * reference
    * @return reference
   */
-  @ApiModelProperty(example = "reference", value = "")
+  @ApiModelProperty(value = "reference")
 
 
   public String getReference() {
@@ -69,10 +69,10 @@ public class InlineObject8   {
   }
 
   /**
-   * Get credit
+   * credit
    * @return credit
   */
-  @ApiModelProperty(example = "credit", value = "")
+  @ApiModelProperty(value = "credit")
 
 
   public String getCredit() {

@@ -122,7 +122,7 @@ public class EventDetailTest {
         Identite identite = Identite.builder()
                 .nom("INFOLEGALE")
                 .siren("503207896")
-                .codeFormeJuridique(5710)
+                .codeFormeJuridique("5710")
                 .labelFormeJuridique("Société par actions simplifiée (SAS)")
                 .capital(BigDecimal.valueOf(758846).setScale(2))
                 .dateCreation(LocalDate.of(2008, Month.MARCH, 15))

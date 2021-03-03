@@ -40,6 +40,9 @@ public class Portfolio3   {
   @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
   private LocalDate updateDate;
 
+  @JsonProperty("isPerso")
+  private Boolean isPerso;
+
   @JsonProperty("customer")
   @Valid
   private List<Customer2> customer = null;
@@ -52,6 +55,9 @@ public class Portfolio3   {
 
   @JsonProperty("editable")
   private Boolean editable;
+
+  @JsonProperty("deliverable")
+  private Boolean deliverable;
 
   public Portfolio3 id(Integer id) {
     this.id = id;
@@ -142,7 +148,7 @@ public class Portfolio3   {
    * Is a machine expert portfolio
    * @return matchable
   */
-  @ApiModelProperty(example = "false", value = "Is a machine expert portfolio")
+  @ApiModelProperty(example = "true", value = "Is a machine expert portfolio")
 
 
   public Boolean getMatchable() {
@@ -192,6 +198,26 @@ public class Portfolio3   {
 
   public void setUpdateDate(LocalDate updateDate) {
     this.updateDate = updateDate;
+  }
+
+  public Portfolio3 isPerso(Boolean isPerso) {
+    this.isPerso = isPerso;
+    return this;
+  }
+
+  /**
+   * portfolio perso or not
+   * @return isPerso
+  */
+  @ApiModelProperty(example = "true", value = "portfolio perso or not")
+
+
+  public Boolean getIsPerso() {
+    return isPerso;
+  }
+
+  public void setIsPerso(Boolean isPerso) {
+    this.isPerso = isPerso;
   }
 
   public Portfolio3 customer(List<Customer2> customer) {
@@ -283,6 +309,26 @@ public class Portfolio3   {
     this.editable = editable;
   }
 
+  public Portfolio3 deliverable(Boolean deliverable) {
+    this.deliverable = deliverable;
+    return this;
+  }
+
+  /**
+   * type of delivery (jurialerte or ftp)
+   * @return deliverable
+  */
+  @ApiModelProperty(example = "false", value = "type of delivery (jurialerte or ftp)")
+
+
+  public Boolean getDeliverable() {
+    return deliverable;
+  }
+
+  public void setDeliverable(Boolean deliverable) {
+    this.deliverable = deliverable;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -300,15 +346,17 @@ public class Portfolio3   {
         Objects.equals(this.matchable, portfolio3.matchable) &&
         Objects.equals(this.referenceContrat, portfolio3.referenceContrat) &&
         Objects.equals(this.updateDate, portfolio3.updateDate) &&
+        Objects.equals(this.isPerso, portfolio3.isPerso) &&
         Objects.equals(this.customer, portfolio3.customer) &&
         Objects.equals(this.countSubscriptions, portfolio3.countSubscriptions) &&
         Objects.equals(this.countItems, portfolio3.countItems) &&
-        Objects.equals(this.editable, portfolio3.editable);
+        Objects.equals(this.editable, portfolio3.editable) &&
+        Objects.equals(this.deliverable, portfolio3.deliverable);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, label, title, alertType, matchable, referenceContrat, updateDate, customer, countSubscriptions, countItems, editable);
+    return Objects.hash(id, label, title, alertType, matchable, referenceContrat, updateDate, isPerso, customer, countSubscriptions, countItems, editable, deliverable);
   }
 
   @Override
@@ -323,10 +371,12 @@ public class Portfolio3   {
     sb.append("    matchable: ").append(toIndentedString(matchable)).append("\n");
     sb.append("    referenceContrat: ").append(toIndentedString(referenceContrat)).append("\n");
     sb.append("    updateDate: ").append(toIndentedString(updateDate)).append("\n");
+    sb.append("    isPerso: ").append(toIndentedString(isPerso)).append("\n");
     sb.append("    customer: ").append(toIndentedString(customer)).append("\n");
     sb.append("    countSubscriptions: ").append(toIndentedString(countSubscriptions)).append("\n");
     sb.append("    countItems: ").append(toIndentedString(countItems)).append("\n");
     sb.append("    editable: ").append(toIndentedString(editable)).append("\n");
+    sb.append("    deliverable: ").append(toIndentedString(deliverable)).append("\n");
     sb.append("}");
     return sb.toString();
   }

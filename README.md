@@ -11,7 +11,11 @@
 
 Get an organisation identity thanks to ilgV2 rest api
 
-see ilg documentation https://webservice.infolegale.fr/v2/docs/api/
+**see ilg documentation https://webservice.infolegale.fr/v2/docs/api/**
+
+This Library is partial but implement many of ilg's api endpoints.
+Create a github issue on this repo if you want more.
+
 
 ## Compatibility
 

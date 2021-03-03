@@ -47,12 +47,18 @@ public class Portfolio   {
   @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
   private LocalDate createdAt;
 
+  @JsonProperty("isPerso")
+  private Boolean isPerso;
+
   @JsonProperty("customer")
   @Valid
   private List<Customer> customer = null;
 
   @JsonProperty("editable")
   private Boolean editable;
+
+  @JsonProperty("deliverable")
+  private Boolean deliverable;
 
   public Portfolio id(Integer id) {
     this.id = id;
@@ -163,7 +169,7 @@ public class Portfolio   {
    * Is a machine expert portfolio
    * @return matchable
   */
-  @ApiModelProperty(example = "false", value = "Is a machine expert portfolio")
+  @ApiModelProperty(example = "true", value = "Is a machine expert portfolio")
 
 
   public Boolean getMatchable() {
@@ -236,6 +242,26 @@ public class Portfolio   {
     this.createdAt = createdAt;
   }
 
+  public Portfolio isPerso(Boolean isPerso) {
+    this.isPerso = isPerso;
+    return this;
+  }
+
+  /**
+   * portfolio perso or not
+   * @return isPerso
+  */
+  @ApiModelProperty(example = "true", value = "portfolio perso or not")
+
+
+  public Boolean getIsPerso() {
+    return isPerso;
+  }
+
+  public void setIsPerso(Boolean isPerso) {
+    this.isPerso = isPerso;
+  }
+
   public Portfolio customer(List<Customer> customer) {
     this.customer = customer;
     return this;
@@ -285,6 +311,26 @@ public class Portfolio   {
     this.editable = editable;
   }
 
+  public Portfolio deliverable(Boolean deliverable) {
+    this.deliverable = deliverable;
+    return this;
+  }
+
+  /**
+   * type of delivery (jurialerte or ftp)
+   * @return deliverable
+  */
+  @ApiModelProperty(example = "false", value = "type of delivery (jurialerte or ftp)")
+
+
+  public Boolean getDeliverable() {
+    return deliverable;
+  }
+
+  public void setDeliverable(Boolean deliverable) {
+    this.deliverable = deliverable;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -304,13 +350,15 @@ public class Portfolio   {
         Objects.equals(this.type, portfolio.type) &&
         Objects.equals(this.updateDate, portfolio.updateDate) &&
         Objects.equals(this.createdAt, portfolio.createdAt) &&
+        Objects.equals(this.isPerso, portfolio.isPerso) &&
         Objects.equals(this.customer, portfolio.customer) &&
-        Objects.equals(this.editable, portfolio.editable);
+        Objects.equals(this.editable, portfolio.editable) &&
+        Objects.equals(this.deliverable, portfolio.deliverable);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, label, title, alertType, extendable, matchable, type, updateDate, createdAt, customer, editable);
+    return Objects.hash(id, label, title, alertType, extendable, matchable, type, updateDate, createdAt, isPerso, customer, editable, deliverable);
   }
 
   @Override
@@ -327,8 +375,10 @@ public class Portfolio   {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    updateDate: ").append(toIndentedString(updateDate)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    isPerso: ").append(toIndentedString(isPerso)).append("\n");
     sb.append("    customer: ").append(toIndentedString(customer)).append("\n");
     sb.append("    editable: ").append(toIndentedString(editable)).append("\n");
+    sb.append("    deliverable: ").append(toIndentedString(deliverable)).append("\n");
     sb.append("}");
     return sb.toString();
   }
