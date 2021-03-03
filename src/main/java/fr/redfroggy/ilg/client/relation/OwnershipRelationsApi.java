@@ -7,10 +7,11 @@ package fr.redfroggy.ilg.client.relation;
 
 import fr.redfroggy.ilg.client.IlgApi;
 import io.swagger.annotations.Api;
-import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+
+import javax.validation.constraints.Pattern;
 
 @Validated
 @Api(value = "OwnershipRelations", description = "the OwnershipRelations API")

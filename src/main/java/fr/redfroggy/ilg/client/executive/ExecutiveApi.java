@@ -8,9 +8,10 @@ package fr.redfroggy.ilg.client.executive;
 import fr.redfroggy.ilg.client.IlgApi;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiParam;
-import javax.validation.constraints.Pattern;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+
+import javax.validation.constraints.Pattern;
 
 @Api(value = "Executive", description = "the Executive API")
 public interface ExecutiveApi extends IlgApi {

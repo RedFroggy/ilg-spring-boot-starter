@@ -1,7 +1,5 @@
 package fr.redfroggy.ilg.client.relation;
 
-import static org.assertj.core.api.Assertions.*;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.redfroggy.ilg.UnitTestUtils;
 import fr.redfroggy.ilg.client.Pagination;
@@ -9,13 +7,15 @@ import fr.redfroggy.ilg.client.Sorting;
 import fr.redfroggy.ilg.client.model.Address;
 import fr.redfroggy.ilg.client.model.GroupMember;
 import fr.redfroggy.ilg.client.model.Shareholders;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Map;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class ShareholdersTest {
     private static final ObjectMapper json = UnitTestUtils.getJsonMapper();

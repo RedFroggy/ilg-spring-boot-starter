@@ -31,6 +31,7 @@ public class CessionInfo   {
   private String uniteMois;
 
   @JsonProperty("dateFinCession")
+  @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
   private LocalDate dateFinCession;
 
   @JsonProperty("nbParts")

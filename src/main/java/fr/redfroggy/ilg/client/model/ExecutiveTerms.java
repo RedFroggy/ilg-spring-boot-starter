@@ -4,8 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import fr.redfroggy.ilg.client.company.ExecutiveTermsProjection;
 import io.swagger.annotations.ApiModelProperty;
-import javax.validation.Valid;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**

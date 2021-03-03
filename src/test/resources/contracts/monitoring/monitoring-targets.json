@@ -1,0 +1,29 @@
+{
+  "targets": [
+    {
+      "id": 47428,
+      "lastName": null,
+      "firstName": null,
+      "email": "999@999.fr",
+      "countSubcriptions": 1,
+      "customer": {
+        "id": 1000002399,
+        "label": "CONFORMITEE",
+        "customerCode": null
+      }
+    },
+    {
+      "id": 47429,
+      "lastName": null,
+      "firstName": null,
+      "email": "666@999.fr",
+      "countSubcriptions": 0,
+      "customer": {
+        "id": 1000002366,
+        "label": "999",
+        "customerCode": null
+      }
+    }
+  ],
+  "count": 9
+}

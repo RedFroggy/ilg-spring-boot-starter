@@ -8,6 +8,7 @@ import fr.redfroggy.ilg.client.executive.ExecutiveFonctionProjection6;
 import fr.redfroggy.ilg.client.kyc.ExecutiveFonctionProjection4;
 import fr.redfroggy.ilg.client.search.ExecutiveFonctionProjection9;
 import io.swagger.annotations.ApiModelProperty;
+
 import javax.validation.Valid;
 
 /**

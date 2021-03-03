@@ -8,9 +8,9 @@ import fr.redfroggy.ilg.client.company.ExecutiveProjection;
 import fr.redfroggy.ilg.client.executive.ExecutiveProjection4;
 import fr.redfroggy.ilg.client.search.ExecutiveProjection6;
 import io.swagger.annotations.ApiModelProperty;
-import javax.validation.Valid;
 import org.springframework.util.ObjectUtils;
 
+import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;

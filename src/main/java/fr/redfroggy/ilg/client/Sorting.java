@@ -17,7 +17,7 @@ public class Sorting {
         this(column, Direction.fromString(order));
     }
 
-    private Sorting(String column, Direction order) {
+    protected Sorting(String column, Direction order) {
         this.column = column;
         this.order = order;
     }

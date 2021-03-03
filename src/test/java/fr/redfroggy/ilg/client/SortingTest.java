@@ -1,10 +1,11 @@
 package fr.redfroggy.ilg.client;
 
-import static org.assertj.core.api.Assertions.*;
-
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class SortingTest {
 
@@ -21,10 +22,9 @@ public class SortingTest {
 
         assertThat(sort)
                 .hasFieldOrPropertyWithValue("column", "$.name")
-                .hasFieldOrPropertyWithValue("order", Sorting.Direction.ASC)
-                .hasFieldOrPropertyWithValue("order.isAscending", true)
-                .hasFieldOrPropertyWithValue("order.isDescending", false);
-
+                .hasFieldOrPropertyWithValue("order", Sorting.Direction.ASC);
+        assertThat(sort.getOrder().isAscending()).isTrue();
+        assertThat(sort.getOrder().isDescending()).isFalse();
 
         assertThat(sort.toQueryParams())
                 .containsEntry("column", Collections.singletonList("$.name"))

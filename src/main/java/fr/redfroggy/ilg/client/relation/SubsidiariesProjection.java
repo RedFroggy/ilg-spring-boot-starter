@@ -5,8 +5,8 @@ import fr.redfroggy.ilg.client.Pagination;
 import fr.redfroggy.ilg.client.Sorting;
 import fr.redfroggy.ilg.client.model.Subsidiaries;
 import io.swagger.annotations.ApiModelProperty;
-import javax.validation.Valid;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @JsonDeserialize(as = Subsidiaries.class)

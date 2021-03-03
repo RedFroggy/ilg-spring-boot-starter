@@ -30,18 +30,21 @@ public class Term3   {
   private ExecutiveMouvement7 startCode;
 
   @JsonProperty("startDate")
+  @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
   private LocalDate startDate;
 
   @JsonProperty("endCode")
   private ExecutiveMouvement7 endCode;
 
   @JsonProperty("endDate")
+  @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
   private LocalDate endDate;
 
   @JsonProperty("lastMovementCode")
   private ExecutiveMouvement7 lastMovementCode;
 
   @JsonProperty("lastMovementDate")
+  @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
   private LocalDate lastMovementDate;
 
   @JsonProperty("principal")

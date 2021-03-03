@@ -82,6 +82,7 @@ public class Dirigeant   {
   private String labelFonction;
 
   @JsonProperty("dateNaissance")
+  @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
   private LocalDate dateNaissance;
 
   @JsonProperty("nationalite")

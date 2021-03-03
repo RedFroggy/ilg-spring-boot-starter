@@ -1,11 +1,23 @@
 
-# ILGV2 client library [![Build Status](https://travis-ci.org/RedFroggy/ilg-spring-boot-starter.svg?branch=master)](https://travis-ci.org/RedFroggy/ilg-spring-boot-starter) [![codecov](https://codecov.io/gh/RedFroggy/ilg-spring-boot-starter/branch/master/graph/badge.svg?token=XM9R6ZV9SJ)](https://codecov.io/gh/RedFroggy/ilg-spring-boot-starter)
+# ILGV2 client library 
+[![Build Status](https://travis-ci.org/RedFroggy/ilg-spring-boot-starter.svg?branch=master)](https://travis-ci.org/RedFroggy/ilg-spring-boot-starter) 
+[![codecov](https://codecov.io/gh/RedFroggy/ilg-spring-boot-starter/branch/master/graph/badge.svg?token=XM9R6ZV9SJ)](https://codecov.io/gh/RedFroggy/ilg-spring-boot-starter)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+[![license](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
+
+[![Maven Central](https://img.shields.io/maven-central/v/fr.redfroggy/ilg-spring-boot-starter.svg)](https://maven-badges.herokuapp.com/maven-central/fr.redfroggy/ilg-spring-boot-starter)
+![GitHub Release Date](https://img.shields.io/github/release-date/RedFroggy/ilg-spring-boot-starter?style=plastic)
+[![Known Vulnerabilities](https://snyk.io/test/github/RedFroggy/ilg-spring-boot-starter/badge.svg)](https://snyk.io/test/github/RedFroggy/ilg-spring-boot-starter)
+
 Get an organisation identity thanks to ilgV2 rest api
+
+see ilg documentation https://webservice.infolegale.fr/v2/docs/api/
 
 ## Compatibility
 
-This library requires library requires Java version 1.8 or higher.
-This library is compatible with ilg rest api 2.0.8
+This library requires Java version 1.8 or higher.
+This library requires spring boot 2.x .
+This library is compatible with ilg rest api 2.0.8 .
 
 ## Installation (Maven)
 
@@ -16,10 +28,11 @@ Add the following in your `pom.xml`
         <dependency>
           <groupId>fr.redfroggy</groupId>
           <artifactId>ilg-spring-boot-starter</artifactId>
-          <version>1.1.0</version>
+          <version>${ilg-spring-boot-starter.version}</version>
         </dependency>
     </dependencies>
 ```
+[![Maven Central](https://img.shields.io/maven-central/v/fr.redfroggy/ilg-spring-boot-starter.svg?label=ilg-spring-boot-starter.version)](https://maven-badges.herokuapp.com/maven-central/fr.redfroggy/ilg-spring-boot-starter)
 
 ## Project structure
 Client's code must be located under the "fr.redfroggy.ilg.*" package
@@ -210,6 +223,136 @@ public EventDetailProjection getEventById(String adId) {
         }
 ```
 
+### Monitoring alerts Api Client
+```java
+//...
+        @Autowired
+        private MonitoringApi apiClient;
+
+        public Alerts getMonitoringAlert() {
+            ResponseEntity<Alerts> response = apiClient.getMonitoringAlert(
+                AlertRequest.builder()
+                        .entityId(777)
+                        .userEmail("tes@test.fr")
+                        .isPerso(1)
+                        .alertMaxDate(LocalDate.of(2021, Month.FEBRUARY, 12))
+                        .alertMinDate(LocalDate.of(2021, Month.FEBRUARY, 12))
+                        .source(AlertSource.BOD)
+                        .page(PageRequest.of(1,2))
+                        .sort(MonitoringSorting.by("my-column", MonitoringSorting.Direction.ASC))
+                        .build());
+            return response.getBody();
+        }
+
+        public Alerts getMonitoringAlertByPortfolio(Integer portfolio) {
+            ResponseEntity<Alerts> response = apiClient.getMonitoringAlertPortfolio(portfolio,
+                AlertPortfolioRequest.builder()
+                        .alertMaxDate(LocalDate.of(2021, Month.FEBRUARY, 12))
+                        .alertMinDate(LocalDate.of(2021, Month.FEBRUARY, 12))
+                        .source(AlertSource.BOD)
+                        .page(PageRequest.of(1,2))
+                        .build());
+            return response.getBody();
+        }
+
+        public MonitoringNumbers getMonitoringNumbersByPortfolio(Integer portfolio) {
+            ResponseEntity<MonitoringNumbers> response = apiClient.getMonitoringNumbers(portfolio);
+            return response.getBody();
+        }
+```
+### Monitoring portfolio Api Client
+```java
+//...
+        @Autowired
+        private MonitoringApi apiClient;
+
+        public Portfolios getPortfolios() {
+            ResponseEntity<Portfolios> response = apiClient.getMonitoringPortfolios(
+                PortfolioRequest.builder()
+                .entityId(777)
+                .userEmail("tes@test.fr")
+                .isPerso(1)
+                .alertType(AlertType.JURI)
+                .label("my-label")
+                .updateDateMax(LocalDate.of(2021, Month.FEBRUARY, 12))
+                .updateDateMin(LocalDate.of(2021, Month.FEBRUARY, 12))
+                .audit(1)
+                .editable(0)
+                .pageable(PageableRequest.of(1,2,"my-col", MonitoringSorting.Direction.ASC))
+                .build());
+            return response.getBody();
+        }
+
+        public PortfolioProjection getPortfolio(Integer portfolio) {
+            ResponseEntity<PortfolioProjection> response = apiClient.getMonitoringPortfolio(portfolio);
+            return response.getBody();
+        }
+```
+### Monitoring portfolio items Api Client
+```java
+//...
+        @Autowired
+        private MonitoringApi apiClient;
+
+        public PortfolioItems getPortfolioItems(Integer portfolio, PortfolioItemRequest requestParams) {
+            ResponseEntity<PortfolioItems> response = apiClient.getPortfolioItems(portfolio, requestParams);
+            return response.getBody();
+        }
+
+        public void addPortfolioItem(Integer portfolio, Integer siren) {
+            apiClient.addPortfolioItem(portfolio, new PortfolioItemSirenDetail(siren, "rf","100"));
+        }
+
+        public void updatePortfolioItem(Integer portfolio, Integer item, PortfolioItemDetail detail) {
+            apiClient.updatePortfolioItem(portfolio, item, detail);
+        }
+
+        public void deletPortfolioItem(Integer portfolio, Integer item) {
+            apiClient.deletePortfolioItem((portfolio, item);
+        }
+
+        public void deletPortfolioItems(Integer portfolio, PortfolioItemIds itemIds) {
+            apiClient.deletePortfolioItems(999999, itemIds);
+        }
+```
+### Monitoring portfolio siren Api Client
+```java
+//...
+        @Autowired
+        private MonitoringApi apiClient;
+
+        public PortfoliosProjection2 getPortfolioSiren(Integer siren) {
+            ResponseEntity<PortfoliosProjection2> response = apiClient.getPortfolioSiren(siren, PageRequest.of(0,10));
+            return response.getBody();
+        }
+
+        public SirensResponseBody listPortfolioSirens(Integer siren) {
+            SirensRequestBody content = new SirensRequestBody(Collections.singletonList(siren));
+            ResponseEntity<SirensResponseBody> response = apiClient.listPortfolioSirens(content);
+            return response.getBody();
+        }
+
+```
+
+### Legal information Api Client
+```java
+//...
+        @Autowired
+        private LegalInformationApi apiClient;
+
+        public Legal getLegal(String country, String siren) {
+            ResponseEntity<Legal> response = apiClient.getLegal(country, siren,
+            Sorting.by("dateAct", Sorting.Direction.ASC));
+            return response.getBody();
+        }
+
+        public LegalDepositList getLegalDeposits(String country, String siren) {
+            ResponseEntity<LegalDepositList> response = apiClient.getLegalDeposits(country, siren);
+            return response.getBody();
+        }
+
+```
+
 ## Security
 To pass authorization headers to the provider API, [interceptors](src/main/java/fr/redfroggy/ilg/spring/boot/autoconfigure/AuthorizationInterceptor.java) are used to add these headers to the request.
 See [IlgRestTemplate ](src/main/java/fr/redfroggy/ilg/spring/boot/autoconfigure/IlgRestTemplate.java) implementation
@@ -222,7 +365,7 @@ Client information must be set using environment variables
 * `ILG_PASSWORD`: Password for ILG
 * `ILG_URL`: URL for ILG webservices
 
-or add properties into application.yml
+or set as properties into application.yml
 ```yaml
 ilg:
   url: http://ilg.fr

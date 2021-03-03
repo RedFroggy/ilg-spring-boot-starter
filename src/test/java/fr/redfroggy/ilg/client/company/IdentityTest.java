@@ -4,14 +4,12 @@ package fr.redfroggy.ilg.client.company;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.google.common.io.Resources;
 import fr.redfroggy.ilg.JacksonUtils;
 import fr.redfroggy.ilg.UnitTestUtils;
 import fr.redfroggy.ilg.client.model.*;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.Collections;
@@ -30,14 +28,7 @@ public class IdentityTest {
     }
 
     public static String amazon00048IdentityJson() {
-        try {
-            return Resources.toString(
-                    Resources.getResource("contracts/company/FR-428785042-company-identity.json"),
-                    Charset.forName("UTF8"));
-        } catch (IOException e) {
-            return "";
-        }
-
+        return UnitTestUtils.getJsonFromContractFile("/company/FR-428785042-company-identity.json");
     }
 
     public static Identity amazon00048Identity() {

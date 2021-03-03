@@ -1,17 +1,16 @@
 package fr.redfroggy.ilg.client.search;
 
-import static org.assertj.core.api.Assertions.*;
-
 import fr.redfroggy.ilg.TestApplication;
 import fr.redfroggy.ilg.client.ApiClientIntTest;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.junit4.SpringRunner;
 
-@RunWith(SpringRunner.class)
+import static org.assertj.core.api.Assertions.assertThat;
+
+@EnabledIfEnvironmentVariable(named = "ILG_URL", matches = ".*")
 @SpringBootTest(classes = TestApplication.class)
 public class SearchApiClientIntTest extends ApiClientIntTest {
 

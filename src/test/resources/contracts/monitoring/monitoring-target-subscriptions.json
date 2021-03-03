@@ -1,0 +1,29 @@
+{
+  "@id": "https://webservice.infolegale.fr/v2/monitoring/target/999@999.fr/subscriptions",
+  "subscriptions": [
+    {
+      "@id": null,
+      "id": 178256,
+      "alert": true,
+      "audit": true,
+      "startDate": "2020-12-30",
+      "targetEmail": "999@999.fr",
+      "editable": true,
+      "portfolio": {
+        "id": 999999,
+        "label": "PF JURIALERTE 999",
+        "alertType": 4,
+        "type": 0,
+        "isPerso": false,
+        "countSubscriptions": null,
+        "countItems": null
+      },
+      "customer": {
+        "id": 1000002399,
+        "label": "999",
+        "customerCode": 1000002399
+      }
+    }
+  ],
+  "count": 1
+}

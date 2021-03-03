@@ -10,7 +10,7 @@ public class Pagination {
     private final Integer count;
     private final Integer total;
 
-    private Pagination(PaginationBuilder builder) {
+    protected Pagination(PaginationBuilder builder) {
         this.start = builder.start;
         this.page = builder.page;
         this.count = builder.count;
@@ -38,33 +38,33 @@ public class Pagination {
     }
 
     @JsonPOJOBuilder(withPrefix = "")
-    public static final class PaginationBuilder {
+    public static class PaginationBuilder<T extends PaginationBuilder> {
         private Integer start;
         private Integer page;
         private Integer count;
         private Integer total;
 
-        private PaginationBuilder() {
+        protected PaginationBuilder() {
         }
 
-        public PaginationBuilder start(Integer start) {
+        public T start(Integer start) {
             this.start = start;
-            return this;
+            return (T)this;
         }
 
-        public PaginationBuilder page(Integer page) {
+        public T page(Integer page) {
             this.page = page;
-            return this;
+            return (T)this;
         }
 
-        public PaginationBuilder count(Integer count) {
+        public T count(Integer count) {
             this.count = count;
-            return this;
+            return (T)this;
         }
 
-        public PaginationBuilder total(Integer total) {
+        public T total(Integer total) {
             this.total = total;
-            return this;
+            return (T)this;
         }
 
         public Pagination build() {

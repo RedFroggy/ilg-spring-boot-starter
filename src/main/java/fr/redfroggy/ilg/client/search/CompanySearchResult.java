@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import fr.redfroggy.ilg.client.model.Address;
 import fr.redfroggy.ilg.client.model.Executive;
 import io.swagger.annotations.ApiModelProperty;
+
 import javax.validation.Valid;
 
 /**

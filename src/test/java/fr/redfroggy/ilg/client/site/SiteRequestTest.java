@@ -1,14 +1,14 @@
 package fr.redfroggy.ilg.client.site;
 
-import static org.assertj.core.api.Assertions.*;
-
 import fr.redfroggy.ilg.client.FiltersRequest;
 import fr.redfroggy.ilg.client.PageRequest;
 import fr.redfroggy.ilg.client.SearchRequest;
 import fr.redfroggy.ilg.client.Sorting;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class SiteRequestTest {
 
@@ -53,10 +53,9 @@ public class SiteRequestTest {
 
         assertThat(sort)
                 .hasFieldOrPropertyWithValue("column", "$.name")
-                .hasFieldOrPropertyWithValue("order", Sorting.Direction.ASC)
-                .hasFieldOrPropertyWithValue("order.isAscending", true)
-                .hasFieldOrPropertyWithValue("order.isDescending", false);
-
+                .hasFieldOrPropertyWithValue("order", Sorting.Direction.ASC);
+        assertThat(sort.getOrder().isAscending()).isTrue();
+        assertThat(sort.getOrder().isDescending()).isFalse();
 
         assertThat(request.toQueryParams())
                 .containsEntry("column", Collections.singletonList("$.name"))

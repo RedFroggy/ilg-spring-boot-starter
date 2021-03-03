@@ -65,7 +65,7 @@
       {
         "codeEvenement": "6365",
         "labelEvenement": "Cotation Banque de France : 3",
-        "codeEvenementInsee": null,
+        "codeEvenementInsee": "SU",
         "labelEvenementInsee": null,
         "dateDecision": "2020-10-08",
         "dateEffet": null,

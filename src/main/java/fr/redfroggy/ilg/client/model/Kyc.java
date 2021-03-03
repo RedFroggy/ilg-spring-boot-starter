@@ -3,6 +3,7 @@ package fr.redfroggy.ilg.client.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import fr.redfroggy.ilg.client.company.KycProjection;
 import io.swagger.annotations.ApiModelProperty;
+
 import javax.validation.Valid;
 
 /**

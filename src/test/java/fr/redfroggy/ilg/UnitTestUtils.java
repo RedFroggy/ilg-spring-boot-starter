@@ -1,23 +1,26 @@
 package fr.redfroggy.ilg;
 
-import static org.assertj.core.api.Assertions.*;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.google.common.io.Resources;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.text.WordUtils;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.util.ObjectUtils;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.lang.reflect.WildcardType;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
+import java.util.stream.Collectors;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class UnitTestUtils {
     private static final ObjectMapper json = JacksonUtils.buildMapper()
@@ -32,9 +35,11 @@ public class UnitTestUtils {
 
     public static String getJsonFromContractFile(String path) {
         try {
-            return Resources.toString(
-                    Resources.getResource("contracts"+path),
-                    Charset.forName("UTF8"));
+            ClassPathResource resource = new ClassPathResource("contracts"+path);
+            return new BufferedReader(
+                    new InputStreamReader(resource.getInputStream(), StandardCharsets.UTF_8))
+                    .lines()
+                    .collect(Collectors.joining("\n"));
         } catch (IOException e) {
             return "";
         }

@@ -25,6 +25,7 @@ public class Acte   {
   private String description;
 
   @JsonProperty("dateCommencementActivite")
+  @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
   private LocalDate dateCommencementActivite;
 
   @JsonProperty("opposition")

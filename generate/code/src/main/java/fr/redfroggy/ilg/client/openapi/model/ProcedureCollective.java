@@ -16,9 +16,11 @@ import javax.validation.constraints.*;
 
 public class ProcedureCollective   {
   @JsonProperty("dateCessationPaiements")
+  @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
   private LocalDate dateCessationPaiements;
 
   @JsonProperty("dateFinPeriodeObservation")
+  @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
   private LocalDate dateFinPeriodeObservation;
 
   @JsonProperty("dureePlan")

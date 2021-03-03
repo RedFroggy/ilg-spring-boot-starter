@@ -4,8 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import io.swagger.annotations.ApiModelProperty;
-import javax.validation.Valid;
 
+import javax.validation.Valid;
 import java.time.LocalDate;
 
 /**
@@ -18,7 +18,7 @@ public class Evenement {
 
     private final String labelEvenement;
 
-    private final Integer codeEvenementInsee;
+    private final String codeEvenementInsee;
 
     private final String labelEvenementInsee;
 
@@ -83,7 +83,7 @@ public class Evenement {
      * @return codeEvenementInsee
      */
     @ApiModelProperty(example = "0", value = "Insee event code")
-    public Integer getCodeEvenementInsee() {
+    public String getCodeEvenementInsee() {
         return codeEvenementInsee;
     }
 
@@ -188,7 +188,7 @@ public class Evenement {
     public static final class EvenementBuilder {
         private Integer codeEvenement;
         private String labelEvenement;
-        private Integer codeEvenementInsee;
+        private String codeEvenementInsee;
         private String labelEvenementInsee;
         private LocalDate dateDecision;
         private LocalDate dateEffet;
@@ -212,7 +212,7 @@ public class Evenement {
             return this;
         }
 
-        public EvenementBuilder codeEvenementInsee(Integer codeEvenementInsee) {
+        public EvenementBuilder codeEvenementInsee(String codeEvenementInsee) {
             this.codeEvenementInsee = codeEvenementInsee;
             return this;
         }

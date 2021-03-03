@@ -31,15 +31,19 @@ public class Evenement   {
   private String labelEvenementInsee;
 
   @JsonProperty("dateDecision")
+  @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
   private LocalDate dateDecision;
 
   @JsonProperty("dateEffet")
+  @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
   private LocalDate dateEffet;
 
   @JsonProperty("dateImmatriculation")
+  @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
   private LocalDate dateImmatriculation;
 
   @JsonProperty("dateCommencementActivite")
+  @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
   private LocalDate dateCommencementActivite;
 
   @JsonProperty("opposition")

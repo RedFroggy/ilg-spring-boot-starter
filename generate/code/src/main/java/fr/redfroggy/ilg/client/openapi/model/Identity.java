@@ -70,6 +70,7 @@ public class Identity   {
   private List<SecondaryActivityModel> secondaryActivities = null;
 
   @JsonProperty("creationDate")
+  @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
   private LocalDate creationDate;
 
   @JsonProperty("status")

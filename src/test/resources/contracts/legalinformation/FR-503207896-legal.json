@@ -1,0 +1,43 @@
+{
+  "@id": "https://webservice.infolegale.fr/v2/companies/FR/503207896/legal",
+  "deposits": {
+    "@id": "https://webservice.infolegale.fr/v2/companies/FR/503207896/legal/deposits",
+    "list": [
+      {
+        "number": 12,
+        "date": "2017-08-17",
+        "acts": [
+          {
+            "@link": "https://webservice.infolegale.fr/v2/companies/fr/503207896/legal/deposits/6901-08-B-01696-12-01",
+            "@id": "https://webservice.infolegale.fr/v2/companies/fr/503207896/legal/deposits/6901-08-B-01696-12-01",
+            "id": "6901-08-B-01696-12-01",
+            "date": "2017-05-10",
+            "number": 1,
+            "type": {
+              "code": "PG",
+              "label": "PROCES-VERBAL D'ASSEMBLEE GENERALE ORDINAIRE"
+            },
+            "pages": 5,
+            "decisions": [
+              {
+                "type": "type",
+                "label": "label"
+              }
+            ],
+            "downloadable": false,
+            "available": true
+          }
+        ],
+        "availability": true
+      }
+    ]
+  },
+  "status": {
+    "@link": "https://webservice.infolegale.fr/v2/companies/fr/503207896/legal/status?date=2021-02-11",
+    "@id": "https://webservice.infolegale.fr/v2/companies/fr/503207896/legal/status?date=2021-02-11",
+    "registrationId": "503207896",
+    "date": "2021-02-11",
+    "dateAct": "2018-06-11",
+    "availability": false
+  }
+}

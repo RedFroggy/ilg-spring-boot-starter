@@ -23,6 +23,7 @@ public class ExecutiveMouvement   {
   private String label;
 
   @JsonProperty("dateMouvement")
+  @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
   private LocalDate dateMouvement;
 
   @JsonProperty("source")

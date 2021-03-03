@@ -2,8 +2,8 @@ package fr.redfroggy.ilg.client.company;
 
 import fr.redfroggy.ilg.client.model.Regrouping;
 import io.swagger.annotations.ApiModelProperty;
-import javax.validation.Valid;
 
+import javax.validation.Valid;
 import java.util.List;
 
 public interface MandatProjection3 {

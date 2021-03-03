@@ -40,9 +40,11 @@ public class Portfolio   {
   private Integer type;
 
   @JsonProperty("updateDate")
+  @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
   private LocalDate updateDate;
 
   @JsonProperty("createdAt")
+  @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
   private LocalDate createdAt;
 
   @JsonProperty("customer")
