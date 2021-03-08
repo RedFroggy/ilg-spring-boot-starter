@@ -83,15 +83,6 @@ public class Ratios   {
   @JsonProperty("workingCapitalRequirement")
   private Integer workingCapitalRequirement;
 
-  @JsonProperty("workingCapitalRequirementTurnover")
-  private Integer workingCapitalRequirementTurnover;
-
-  @JsonProperty("customersPaymentTime")
-  private Integer customersPaymentTime;
-
-  @JsonProperty("suppliersPaymentTime")
-  private Integer suppliersPaymentTime;
-
   public Ratios turnover(Integer turnover) {
     this.turnover = turnover;
     return this;
@@ -552,66 +543,6 @@ public class Ratios   {
     this.workingCapitalRequirement = workingCapitalRequirement;
   }
 
-  public Ratios workingCapitalRequirementTurnover(Integer workingCapitalRequirementTurnover) {
-    this.workingCapitalRequirementTurnover = workingCapitalRequirementTurnover;
-    return this;
-  }
-
-  /**
-   * Working capital requirement turnover
-   * @return workingCapitalRequirementTurnover
-  */
-  @ApiModelProperty(example = "466", value = "Working capital requirement turnover")
-
-
-  public Integer getWorkingCapitalRequirementTurnover() {
-    return workingCapitalRequirementTurnover;
-  }
-
-  public void setWorkingCapitalRequirementTurnover(Integer workingCapitalRequirementTurnover) {
-    this.workingCapitalRequirementTurnover = workingCapitalRequirementTurnover;
-  }
-
-  public Ratios customersPaymentTime(Integer customersPaymentTime) {
-    this.customersPaymentTime = customersPaymentTime;
-    return this;
-  }
-
-  /**
-   * Customers payment time
-   * @return customersPaymentTime
-  */
-  @ApiModelProperty(example = "88", value = "Customers payment time")
-
-
-  public Integer getCustomersPaymentTime() {
-    return customersPaymentTime;
-  }
-
-  public void setCustomersPaymentTime(Integer customersPaymentTime) {
-    this.customersPaymentTime = customersPaymentTime;
-  }
-
-  public Ratios suppliersPaymentTime(Integer suppliersPaymentTime) {
-    this.suppliersPaymentTime = suppliersPaymentTime;
-    return this;
-  }
-
-  /**
-   * Suppliers payment time
-   * @return suppliersPaymentTime
-  */
-  @ApiModelProperty(example = "96", value = "Suppliers payment time")
-
-
-  public Integer getSuppliersPaymentTime() {
-    return suppliersPaymentTime;
-  }
-
-  public void setSuppliersPaymentTime(Integer suppliersPaymentTime) {
-    this.suppliersPaymentTime = suppliersPaymentTime;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -644,15 +575,12 @@ public class Ratios   {
         Objects.equals(this.financialExpensesReturnRatio, ratios.financialExpensesReturnRatio) &&
         Objects.equals(this.debt, ratios.debt) &&
         Objects.equals(this.financialStrength, ratios.financialStrength) &&
-        Objects.equals(this.workingCapitalRequirement, ratios.workingCapitalRequirement) &&
-        Objects.equals(this.workingCapitalRequirementTurnover, ratios.workingCapitalRequirementTurnover) &&
-        Objects.equals(this.customersPaymentTime, ratios.customersPaymentTime) &&
-        Objects.equals(this.suppliersPaymentTime, ratios.suppliersPaymentTime);
+        Objects.equals(this.workingCapitalRequirement, ratios.workingCapitalRequirement);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(turnover, operatingIncome, financialExpenses, netIncome, equity, workforce, liquidAssets, operationalMargin, netMargin, grossOperatingSurplus, revenueEquityRatio, returnOnCapital, fixedAssetsObsolescence, cashFlow, financialAutonomy, repaymentCapacity, generalCreditworthiness, currentRatio, restrictedLiquidity, financialExpensesReturnRatio, debt, financialStrength, workingCapitalRequirement, workingCapitalRequirementTurnover, customersPaymentTime, suppliersPaymentTime);
+    return Objects.hash(turnover, operatingIncome, financialExpenses, netIncome, equity, workforce, liquidAssets, operationalMargin, netMargin, grossOperatingSurplus, revenueEquityRatio, returnOnCapital, fixedAssetsObsolescence, cashFlow, financialAutonomy, repaymentCapacity, generalCreditworthiness, currentRatio, restrictedLiquidity, financialExpensesReturnRatio, debt, financialStrength, workingCapitalRequirement);
   }
 
   @Override
@@ -683,9 +611,6 @@ public class Ratios   {
     sb.append("    debt: ").append(toIndentedString(debt)).append("\n");
     sb.append("    financialStrength: ").append(toIndentedString(financialStrength)).append("\n");
     sb.append("    workingCapitalRequirement: ").append(toIndentedString(workingCapitalRequirement)).append("\n");
-    sb.append("    workingCapitalRequirementTurnover: ").append(toIndentedString(workingCapitalRequirementTurnover)).append("\n");
-    sb.append("    customersPaymentTime: ").append(toIndentedString(customersPaymentTime)).append("\n");
-    sb.append("    suppliersPaymentTime: ").append(toIndentedString(suppliersPaymentTime)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -26,6 +26,9 @@ public class Portfolio2   {
   @JsonProperty("alertType")
   private Integer alertType;
 
+  @JsonProperty("type")
+  private Integer type;
+
   @JsonProperty("item")
   @Valid
   private List<PortfolioItem> item = null;
@@ -93,6 +96,26 @@ public class Portfolio2   {
     this.alertType = alertType;
   }
 
+  public Portfolio2 type(Integer type) {
+    this.type = type;
+    return this;
+  }
+
+  /**
+   * Portfolio type : complex, normal…
+   * @return type
+  */
+  @ApiModelProperty(example = "1", value = "Portfolio type : complex, normal…")
+
+
+  public Integer getType() {
+    return type;
+  }
+
+  public void setType(Integer type) {
+    this.type = type;
+  }
+
   public Portfolio2 item(List<PortfolioItem> item) {
     this.item = item;
     return this;
@@ -155,13 +178,14 @@ public class Portfolio2   {
     return Objects.equals(this.id, portfolio2.id) &&
         Objects.equals(this.label, portfolio2.label) &&
         Objects.equals(this.alertType, portfolio2.alertType) &&
+        Objects.equals(this.type, portfolio2.type) &&
         Objects.equals(this.item, portfolio2.item) &&
         Objects.equals(this.editable, portfolio2.editable);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, label, alertType, item, editable);
+    return Objects.hash(id, label, alertType, type, item, editable);
   }
 
   @Override
@@ -172,6 +196,7 @@ public class Portfolio2   {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    label: ").append(toIndentedString(label)).append("\n");
     sb.append("    alertType: ").append(toIndentedString(alertType)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    item: ").append(toIndentedString(item)).append("\n");
     sb.append("    editable: ").append(toIndentedString(editable)).append("\n");
     sb.append("}");

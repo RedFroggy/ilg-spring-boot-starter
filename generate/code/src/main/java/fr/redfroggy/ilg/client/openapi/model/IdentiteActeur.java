@@ -17,10 +17,10 @@ import javax.validation.constraints.*;
 
 public class IdentiteActeur   {
   @JsonProperty("nic")
-  private Integer nic;
+  private String nic;
 
   @JsonProperty("siret")
-  private Integer siret;
+  private String siret;
 
   @JsonProperty("nom")
   private String nom;
@@ -73,7 +73,7 @@ public class IdentiteActeur   {
   private String siren;
 
   @JsonProperty("codeFormeJuridique")
-  private Integer codeFormeJuridique;
+  private String codeFormeJuridique;
 
   @JsonProperty("labelFormeJuridique")
   private String labelFormeJuridique;
@@ -93,7 +93,7 @@ public class IdentiteActeur   {
   @JsonProperty("adresse")
   private Adresse adresse;
 
-  public IdentiteActeur nic(Integer nic) {
+  public IdentiteActeur nic(String nic) {
     this.nic = nic;
     return this;
   }
@@ -102,18 +102,18 @@ public class IdentiteActeur   {
    * Site number
    * @return nic
   */
-  @ApiModelProperty(example = "10", value = "Site number")
+  @ApiModelProperty(example = "00010", value = "Site number")
 
 
-  public Integer getNic() {
+  public String getNic() {
     return nic;
   }
 
-  public void setNic(Integer nic) {
+  public void setNic(String nic) {
     this.nic = nic;
   }
 
-  public IdentiteActeur siret(Integer siret) {
+  public IdentiteActeur siret(String siret) {
     this.siret = siret;
     return this;
   }
@@ -125,11 +125,11 @@ public class IdentiteActeur   {
   @ApiModelProperty(example = "12345678900010", value = "Site unique identifier (only available in france)")
 
 
-  public Integer getSiret() {
+  public String getSiret() {
     return siret;
   }
 
-  public void setSiret(Integer siret) {
+  public void setSiret(String siret) {
     this.siret = siret;
   }
 
@@ -233,7 +233,7 @@ public class IdentiteActeur   {
     this.siren = siren;
   }
 
-  public IdentiteActeur codeFormeJuridique(Integer codeFormeJuridique) {
+  public IdentiteActeur codeFormeJuridique(String codeFormeJuridique) {
     this.codeFormeJuridique = codeFormeJuridique;
     return this;
   }
@@ -245,11 +245,11 @@ public class IdentiteActeur   {
   @ApiModelProperty(example = "5498", value = "")
 
 
-  public Integer getCodeFormeJuridique() {
+  public String getCodeFormeJuridique() {
     return codeFormeJuridique;
   }
 
-  public void setCodeFormeJuridique(Integer codeFormeJuridique) {
+  public void setCodeFormeJuridique(String codeFormeJuridique) {
     this.codeFormeJuridique = codeFormeJuridique;
   }
 

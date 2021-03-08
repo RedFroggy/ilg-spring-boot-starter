@@ -71,7 +71,7 @@ public class Block   {
    * Label of block
    * @return label
   */
-  @ApiModelProperty(value = "Label of block")
+  @ApiModelProperty(example = "Statutaires divers", value = "Label of block")
 
 
   public String getLabel() {
@@ -91,7 +91,7 @@ public class Block   {
    * priority
    * @return orderId
   */
-  @ApiModelProperty(value = "priority")
+  @ApiModelProperty(example = "5", value = "priority")
 
 
   public Integer getOrderId() {
@@ -111,7 +111,7 @@ public class Block   {
    * number of active term in the block
    * @return nbActiveTerms
   */
-  @ApiModelProperty(value = "number of active term in the block")
+  @ApiModelProperty(example = "5", value = "number of active term in the block")
 
 
   public Integer getNbActiveTerms() {
@@ -131,7 +131,7 @@ public class Block   {
    * number of inactive term in the block
    * @return nbInactiveTerms
   */
-  @ApiModelProperty(value = "number of inactive term in the block")
+  @ApiModelProperty(example = "0", value = "number of inactive term in the block")
 
 
   public Integer getNbInactiveTerms() {
@@ -151,7 +151,7 @@ public class Block   {
    * number of active regroupings in the block
    * @return nbActiveRegroupings
   */
-  @ApiModelProperty(value = "number of active regroupings in the block")
+  @ApiModelProperty(example = "4", value = "number of active regroupings in the block")
 
 
   public Integer getNbActiveRegroupings() {
@@ -171,7 +171,7 @@ public class Block   {
    * number of inactive regroupings in the block
    * @return nbInactiveRegroupings
   */
-  @ApiModelProperty(value = "number of inactive regroupings in the block")
+  @ApiModelProperty(example = "0", value = "number of inactive regroupings in the block")
 
 
   public Integer getNbInactiveRegroupings() {

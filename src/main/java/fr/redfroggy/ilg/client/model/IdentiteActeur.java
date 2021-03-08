@@ -13,9 +13,9 @@ import java.math.BigDecimal;
 @JsonDeserialize(builder = IdentiteActeur.IdentiteActeurBuilder.class)
 public class IdentiteActeur {
 
-    private final Integer nic;
+    private final String nic;
 
-    private final Integer siret;
+    private final String siret;
 
     private final String nom;
 
@@ -27,7 +27,7 @@ public class IdentiteActeur {
 
     private final String siren;
 
-    private final Integer codeFormeJuridique;
+    private final String codeFormeJuridique;
 
     private final String labelFormeJuridique;
 
@@ -67,8 +67,8 @@ public class IdentiteActeur {
      *
      * @return nic
      */
-    @ApiModelProperty(example = "10", value = "Site number")
-    public Integer getNic() {
+    @ApiModelProperty(example = "00010", value = "Site number")
+    public String getNic() {
         return nic;
     }
 
@@ -78,7 +78,7 @@ public class IdentiteActeur {
      * @return siret
      */
     @ApiModelProperty(example = "12345678900010", value = "Site unique identifier (only available in france)")
-    public Integer getSiret() {
+    public String getSiret() {
         return siret;
     }
 
@@ -138,7 +138,7 @@ public class IdentiteActeur {
      * @return codeFormeJuridique
      */
     @ApiModelProperty(example = "5498", value = "")
-    public Integer getCodeFormeJuridique() {
+    public String getCodeFormeJuridique() {
         return codeFormeJuridique;
     }
 
@@ -205,14 +205,14 @@ public class IdentiteActeur {
     @JsonPOJOBuilder(withPrefix = "")
     @JsonIgnoreProperties({"@type", "@context", "@id", "@link"})
     public static final class IdentiteActeurBuilder {
-        private Integer nic;
-        private Integer siret;
+        private String nic;
+        private String siret;
         private String nom;
         private String enseigne;
         private String sigle;
         private Type type;
         private String siren;
-        private Integer codeFormeJuridique;
+        private String codeFormeJuridique;
         private String labelFormeJuridique;
         private BigDecimal capital;
         private String devise;
@@ -223,12 +223,12 @@ public class IdentiteActeur {
         private IdentiteActeurBuilder() {
         }
 
-        public IdentiteActeurBuilder nic(Integer nic) {
+        public IdentiteActeurBuilder nic(String nic) {
             this.nic = nic;
             return this;
         }
 
-        public IdentiteActeurBuilder siret(Integer siret) {
+        public IdentiteActeurBuilder siret(String siret) {
             this.siret = siret;
             return this;
         }
@@ -258,7 +258,7 @@ public class IdentiteActeur {
             return this;
         }
 
-        public IdentiteActeurBuilder codeFormeJuridique(Integer codeFormeJuridique) {
+        public IdentiteActeurBuilder codeFormeJuridique(String codeFormeJuridique) {
             this.codeFormeJuridique = codeFormeJuridique;
             return this;
         }

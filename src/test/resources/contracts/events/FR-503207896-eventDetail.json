@@ -85,8 +85,8 @@
     "acteurContentieux": [
       {
         "identiteActeur": {
-          "nic": null,
-          "siret": null,
+          "nic" : "00021",
+          "siret" : "50320789600021",
           "nom": "INFOLEGALE",
           "enseigne": "INFOLEGALE ET MARKETING",
           "sigle": null,

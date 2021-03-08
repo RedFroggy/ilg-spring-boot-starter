@@ -35,7 +35,7 @@ public class Balance   {
   private Integer duration;
 
   @JsonProperty("source")
-  private Integer source;
+  private String source;
 
   @JsonProperty("turnover")
   private String turnover;
@@ -170,7 +170,7 @@ public class Balance   {
     this.duration = duration;
   }
 
-  public Balance source(Integer source) {
+  public Balance source(String source) {
     this.source = source;
     return this;
   }
@@ -179,14 +179,14 @@ public class Balance   {
    * Balance source
    * @return source
   */
-  @ApiModelProperty(example = "7", value = "Balance source")
+  @ApiModelProperty(example = "Infogreffe", value = "Balance source")
 
 
-  public Integer getSource() {
+  public String getSource() {
     return source;
   }
 
-  public void setSource(Integer source) {
+  public void setSource(String source) {
     this.source = source;
   }
 
