@@ -67,7 +67,7 @@ public class EventDetailTest {
 
     }
 
-    private static AnnonceInfo buildAnnonceInfo() {
+    public static AnnonceInfo buildAnnonceInfo() {
         return AnnonceInfo.builder()
                 .adID("6000574496")
                 .origine("Infolegale Registre des Paiements et des Contentieux")
@@ -80,7 +80,7 @@ public class EventDetailTest {
                 .build();
     }
 
-    private static ActeursContentieux buildActeursContentieux() {
+    public static ActeursContentieux buildActeursContentieux() {
         IdentiteActeur identite = IdentiteActeur.builder()
                 .nom("INFOLEGALE")
                 .nic("00021")
@@ -104,7 +104,7 @@ public class EventDetailTest {
         return new ActeursContentieux(Collections.singletonList(new ActeurContentieux(identite, typeActeur, null)));
     }
 
-    private static Personnes buildPersonnes() {
+    public static Personnes buildPersonnes() {
         Etablissement etablissement = Etablissement.builder()
                 .typeEtablissement(TypeEtablissement.SIEGE_SOCIAL)
                 .enseigne("INFOLEGALE ET MARKETING")

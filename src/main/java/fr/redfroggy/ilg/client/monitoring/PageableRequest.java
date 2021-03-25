@@ -46,4 +46,17 @@ public class PageableRequest {
         }
         return queryParams;
     }
+
+    public PageableRequest next() {
+        return PageableRequest.of(getPage().getPage()+1, getPage().getNumber(), this.getSort());
+    }
+
+    public PageableRequest previous() {
+        return this.getPage().getPage() == 1 ? this : PageableRequest.of(getPage().getPage() - 1, getPage().getNumber(), this.getSort());
+    }
+
+    public PageableRequest first() {
+        return PageableRequest.of(1, getPage().getNumber(), this.getSort());
+    }
+
 }
