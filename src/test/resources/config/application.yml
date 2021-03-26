@@ -1,6 +1,20 @@
+
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+
 ilg:
   url: http://ilg.fr
   username: test-username
   password: test-password
   debugging: false
   tokenCacheSpec: expireAfterWrite=10m
+  monitoring-alert:
+    cron: "*/10 * * * * ?"
+    alert-request:
+      source: JAL
+      sort: "adId"
+      order: ASC
+      pageNumber: 50
+
