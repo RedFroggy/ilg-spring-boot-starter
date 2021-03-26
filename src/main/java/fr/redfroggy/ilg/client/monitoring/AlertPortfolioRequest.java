@@ -27,8 +27,33 @@ public class AlertPortfolioRequest {
         this.pageable = builder.pageable;
     }
 
+    public LocalDate getAlertMinDate() {
+        return alertMinDate;
+    }
+
+    public LocalDate getAlertMaxDate() {
+        return alertMaxDate;
+    }
+
+    public AlertSource getSource() {
+        return source;
+    }
+
+    public PageableRequest getPageable() {
+        return pageable;
+    }
+
     public static AlertPortfolioRequestBuilder builder() {
         return new AlertPortfolioRequestBuilder();
+    }
+
+    public AlertPortfolioRequest nextPage() {
+        return builder()
+                .alertMinDate(alertMinDate)
+                .alertMaxDate(alertMaxDate)
+                .source(source)
+                .pageable(getPageable().next())
+                .build();
     }
 
     public MultiValueMap<String, String> toQueryParams() {
