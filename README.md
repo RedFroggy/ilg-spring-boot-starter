@@ -378,6 +378,90 @@ ilg:
   debugging: false
 ```
 
+## Monitoring alert scheduler
+With this feature, you can listen alert's events which are published when new
+alerts are requested.
+
+### Prerequiste
+But first of all, you need to understand how monitoring alerts work in ILG.
+You must create a portfolio and add companies to the portfolio.
+
+Your spring app must enable Scheduling.
+See https://www.baeldung.com/spring-scheduled-tasks#enable-support-for-scheduling
+
+### Configuration
+The scheduler call /monitoring/alert/portfolio/{portfolioId} endpoint to get new alerts.
+And each alert is reached by the eventDetail resource returned by the /event/{id} endpoint.  
+By default the scheduler request new alerts created the day before.
+
+The scheduler must be enabled and configured:
+set properties into application.yml
+```yaml
+ilg:
+  monitoring-alert:
+    enabled: true
+    cron: "0 0 21 * * ?"
+    portfolioId: 999999
+    alert-request:
+      source: JAL
+      sort: "adId"
+      order: ASC
+      pageNumber: 50
+```
+
+### Alert Event types
+9 event types inherited from AlertEventType can be published :
+
+1. RegistrationAlertEventType
+1. ModificationAlertEventType
+1. CessationAlertEventType
+1. TransferAlertEventType
+1. LegalProceedingsAlertEventType
+1. CollectiveProceedingAlertEventType
+1. RiskAlertEventType
+1. MiscAlertEventTypeType
+1. NewsAlertEventType
+
+The type is determined by the first event code returned in EventDetail.
+
+### Spring events listener
+
+By default, ApplicationEventPublisher is used as publisher, you can add spring's listeners to handle events.
+```java
+@Component
+public class alertEventTypeListener {
+    @EventListener
+    public void handleAlertEventType(AlertEventType event) {
+        System.out.println("Handling all alert event types.");
+    }
+
+    @EventListener
+    public void handleOnlyRegistrationEvent(RegistrationAlertEventType event) {
+        System.out.println("Handling only registration events.");
+    }
+}
+```
+
+### Overriding MonitoringAlertPublisher
+The bean MonitoringAlertPublisher can be overriding.
+For example, you can implements an SQS publishing
+```java
+@Component
+public class SqsMonitoringAlertPublisher implements MonitoringAlertPublisher {
+
+    ...
+    
+    @Override
+    public void publishEvent(AlertEventType event) {
+        SendMessageRequest send_msg_request = new SendMessageRequest()
+                .withQueueUrl(queueUrl)
+                .withMessageBody(event)
+                .withDelaySeconds(5);
+        sqs.sendMessage(send_msg_request);
+    }
+}
+```
+
 ## Setup CI
 
 This tool is intended to automate the releases of maven projects to maven central.  However, a lot of manual steps unfortunately must be taken to get your maven project setup so it can work properly.  Big thanks to Nathan Fischer for detailing how to do a lot of these steps in a blog post [here](http://www.debonair.io/post/maven-cd/).

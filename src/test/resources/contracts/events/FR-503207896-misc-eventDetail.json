@@ -1,0 +1,124 @@
+{
+  "@context": "https://webservice.infolegale.fr/v2/schema/xsd/eventdetail.xsd",
+  "@id": "https://webservice.infolegale.fr/v2/event/6000574496",
+  "annonceInfo": {
+    "adID": "6000574496",
+    "origine": "Infolegale Registre des Paiements et des Contentieux",
+    "origineUrl": null,
+    "nomPublication": null,
+    "dateParution": "2020-10-08",
+    "numParution": null,
+    "numAnnonce": null,
+    "tribunal": null,
+    "juriste": null,
+    "descriptif": null,
+    "texte": "Le 08/10/2020. Nature : Cotation Banque de France : 3. Sollicitées : INFOLEGALE (siren : 503207896). La capacité de l’entreprise à honorer ses engagements financiers est jugée forte par la Banque de France.\nLa situation financière est satisfaisante et la capacité de résistance de l’entreprise aux évolutions défavorables de son environnement ou à la survenance d’événements particuliers est élevée."
+  },
+  "personnes": {
+    "personne": [
+      {
+        "identite": {
+          "nom": "INFOLEGALE",
+          "pseudonyme": null,
+          "sigle": null,
+          "type": null,
+          "siren": "503207896",
+          "codeFormeJuridique": "5710",
+          "labelFormeJuridique": "Société par actions simplifiée (SAS)",
+          "capital": "758846.00",
+          "devise": null,
+          "dateCreation": "2008-03-15",
+          "duree": null,
+          "garant": null,
+          "dateClotureDesComptes": null,
+          "etablissements": {
+            "etablissement": [
+              {
+                "typeEtablissement": "Siège social",
+                "siret": null,
+                "nic": null,
+                "enseigne": "INFOLEGALE ET MARKETING",
+                "naf": "8291Z",
+                "activite": null,
+                "origineFonds": null,
+                "adresse": {
+                  "rue": "20 BD EUGENE DERUELLE",
+                  "boitePostal": null,
+                  "codePostal": "69003",
+                  "ville": "LYON 3EME",
+                  "departement": "69",
+                  "codePays": null,
+                  "labelPays": "FRANCE",
+                  "adresseTexte": "20 BD EUGENE DERUELLE 69003 LYON 3EME"
+                }
+              }
+            ]
+          }
+        },
+        "dirigeants": null,
+        "administration": null
+      }
+    ]
+  },
+  "evenements": {
+    "evenement": [
+      {
+        "codeEvenement": "7113",
+        "labelEvenement": "Comptes annuels et consolidés",
+        "codeEvenementInsee": null,
+        "labelEvenementInsee": null,
+        "dateDecision": "2020-10-08",
+        "dateEffet": null,
+        "dateImmatriculation": null,
+        "dateCommencementActivite": null,
+        "opposition": null,
+        "procedureCollective": null,
+        "ancienneIdentite": null,
+        "rectificatif": null
+      }
+    ]
+  },
+  "acteursCession": {
+    "acteurCession": []
+  },
+  "acteursContentieux": {
+    "acteurContentieux": [
+      {
+        "identiteActeur": {
+          "nic" : "00021",
+          "siret" : "50320789600021",
+          "nom": "INFOLEGALE",
+          "enseigne": "INFOLEGALE ET MARKETING",
+          "sigle": null,
+          "type": null,
+          "siren": "503207896",
+          "codeFormeJuridique": "5710",
+          "labelFormeJuridique": "Société par actions simplifiée (SAS)",
+          "capital": "758846.00",
+          "devise": null,
+          "activite": null,
+          "garant": null,
+          "adresse": {
+            "rue": "20 BD EUGENE DERUELLE",
+            "boitePostal": null,
+            "codePostal": "69003",
+            "ville": "LYON 3EME",
+            "departement": "69",
+            "codePays": null,
+            "labelPays": "FRANCE",
+            "adresseTexte": null
+          }
+        },
+        "typeActeur": {
+          "type": "DF",
+          "description": "Sollicité"
+        },
+        "representantActeur": null
+      }
+    ]
+  },
+  "etablissementsCession": {
+    "etablissementCession": []
+  },
+  "actes": null
+}
