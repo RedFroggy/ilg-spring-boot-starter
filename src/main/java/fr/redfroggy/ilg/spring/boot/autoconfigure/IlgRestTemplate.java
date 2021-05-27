@@ -2,15 +2,12 @@ package fr.redfroggy.ilg.spring.boot.autoconfigure;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.client.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
@@ -89,5 +86,20 @@ public class IlgRestTemplate extends RestTemplate {
         UriComponentsBuilder uriBuilder = this.absoluteCompanyUriBuilder(uri);
 
         return this.getForEntity(uriBuilder.buildAndExpand(country, id).toUri(), responseType);
+    }
+
+    @Override
+    protected <T> T doExecute(URI url, HttpMethod method, RequestCallback requestCallback, ResponseExtractor<T> responseExtractor) throws RestClientException {
+        try {
+            return super.doExecute(url, method, requestCallback, responseExtractor);
+        } catch (HttpClientErrorException.NotFound e) {
+            if (!properties.isDecode404()) {
+                throw e;
+            }
+            if (responseExtractor instanceof HttpMessageConverterExtractor) {
+                return null;
+            }
+            return (T) ResponseEntity.status(e.getRawStatusCode()).headers(e.getResponseHeaders()).build();
+        }
     }
 }

@@ -376,7 +376,20 @@ ilg:
   username: test-username
   password: test-password
   debugging: false
+  decode404: false # default is false
 ```
+
+### Decode 404
+You can enable decode 404, if you not want client throw an exception when api response is 404.
+When decode 404 is enabled, ilg return entity with status 404 and empty body. 
+Decode404 is not enabled by default.
+
+```yaml
+ilg:
+  decode404: true
+```
+
+See [IlgRestTemplateDecode404MockRestTest ](src/test/java/fr/redfroggy/ilg/IlgRestTemplateDecode404MockRestTest.java)
 
 ## Monitoring alert scheduler
 With this feature, you can listen alert's events which are published when new

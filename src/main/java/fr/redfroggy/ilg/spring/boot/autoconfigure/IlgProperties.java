@@ -24,6 +24,8 @@ public class IlgProperties {
 
     private String tokenCacheSpec = "expireAfterWrite=14m";
 
+    private boolean decode404;
+
     @NotEmpty
     public String getUrl() {
         return url;
@@ -66,5 +68,13 @@ public class IlgProperties {
 
     public void setTokenCacheSpec(String tokenCacheSpec) {
         this.tokenCacheSpec = tokenCacheSpec;
+    }
+
+    public boolean isDecode404() {
+        return decode404;
+    }
+
+    public void setDecode404(boolean decode404) {
+        this.decode404 = decode404;
     }
 }
