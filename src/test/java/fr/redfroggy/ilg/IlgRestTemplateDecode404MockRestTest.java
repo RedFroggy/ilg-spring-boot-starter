@@ -8,29 +8,24 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.client.ExpectedCount;
 import org.springframework.test.web.client.MockRestServiceServer;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
 import java.net.URISyntaxException;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.hamcrest.Matchers.startsWith;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.*;
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withStatus;
 
-@SpringBootTest(classes = TestApplication.class, properties = { "ilg.url=http://ilg.fr","ilg.debugging=true",
+@SpringBootTest(classes = TestApplication.class,
+        properties = { "ilg.url=http://ilg.fr","ilg.debugging=true","ilg.decode404=true",
         "logging.level.fr.redfroggy.ilg.spring.boot.autoconfigure.RequestResponseLoggingInterceptor=DEBUG"})
-public class IlgRestTemplateMockRestTest {
+public class IlgRestTemplateDecode404MockRestTest {
 
     @Autowired
     private IlgRestTemplate apiClient;
@@ -58,10 +53,40 @@ public class IlgRestTemplateMockRestTest {
     }
 
     @Test
-    public void shouldGetBaseUrl() throws URISyntaxException,
+    public void shouldReturnEmptyObjectWhenNotFoundResource() throws URISyntaxException,
             JsonProcessingException {
-        assertThat(apiClient.getBaseUrl())
-                .isEqualTo("http://ilg.fr");
+        mockApiServer.expect(ExpectedCount.once(),
+                requestTo(new URI("http://ilg.fr/site")))
+                .andExpect(method(HttpMethod.GET))
+                .andExpect(header("authorization","Bearer test-token"))
+                .andExpect(header("accept",MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andRespond(withStatus(HttpStatus.NOT_FOUND)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body("not found resource")
+                );
+
+        assertThat(apiClient.getForObject("http://ilg.fr/site", String.class)).isNull();
+        mockApiServer.verify();
+    }
+
+    @Test
+    public void shouldReturnEmptyEntityWhenNotFoundResource() throws URISyntaxException,
+            JsonProcessingException {
+        mockApiServer.expect(ExpectedCount.once(),
+                requestTo(new URI("http://ilg.fr/site")))
+                .andExpect(method(HttpMethod.GET))
+                .andExpect(header("authorization","Bearer test-token"))
+                .andExpect(header("accept",MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andRespond(withStatus(HttpStatus.NOT_FOUND)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body("not found resource")
+                );
+
+        assertThat(apiClient.getForEntity("http://ilg.fr/site", String.class))
+                .hasFieldOrPropertyWithValue("body", null)
+                .hasFieldOrPropertyWithValue("statusCode", HttpStatus.NOT_FOUND);
+
+        mockApiServer.verify();
     }
 
     @Test
@@ -78,51 +103,6 @@ public class IlgRestTemplateMockRestTest {
                 );
 
         assertThat(apiClient.getForObject("http://ilg.fr/site", String.class)).isEqualTo("red froggy");
-        mockApiServer.verify();
-    }
-
-    @Test
-    public void shouldPostFormDataWithSearchRequestObject() throws URISyntaxException,
-            JsonProcessingException {
-        MultiValueMap<String, String> formData = new LinkedMultiValueMap<>();
-        formData.add("search", "red froggy");
-
-        mockApiServer
-                .expect(ExpectedCount.once(), requestTo(new URI("http://ilg.fr/search")))
-                    .andExpect(method(HttpMethod.POST))
-                    .andExpect(header("authorization","Bearer test-token"))
-                    .andExpect(header("accept",MediaType.APPLICATION_JSON_UTF8_VALUE))
-                    .andExpect(header(HttpHeaders.CONTENT_TYPE, startsWith("multipart/form-data")))
-                .andRespond(withStatus(HttpStatus.OK)
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .body("result is red froggy")
-                );
-
-        assertThat(
-            apiClient.postFormData(
-                URI.create("http://ilg.fr/search"),
-                    formData, String.class).getBody()
-        ).isEqualTo("result is red froggy");
-
-        mockApiServer.verify();
-    }
-
-    @Test
-    public void shouldThrowExceptionWhenNotFoundResource() throws URISyntaxException,
-            JsonProcessingException {
-        mockApiServer.expect(ExpectedCount.once(),
-                requestTo(new URI("http://ilg.fr/site")))
-                .andExpect(method(HttpMethod.GET))
-                .andExpect(header("authorization","Bearer test-token"))
-                .andExpect(header("accept",MediaType.APPLICATION_JSON_UTF8_VALUE))
-                .andRespond(withStatus(HttpStatus.NOT_FOUND)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .body("not found resource")
-                );
-
-        assertThatThrownBy(() -> apiClient.getForObject("http://ilg.fr/site", String.class))
-                .isInstanceOf(HttpClientErrorException.NotFound.class);
-
         mockApiServer.verify();
     }
 }
