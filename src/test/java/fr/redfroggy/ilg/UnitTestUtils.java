@@ -1,12 +1,12 @@
 package fr.redfroggy.ilg;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
+import fr.redfroggy.ilg.json.LocalDatePreventFormatExceptionDeserializer;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.text.WordUtils;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import org.springframework.util.ObjectUtils;
 
 import java.io.BufferedReader;
@@ -17,16 +17,16 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.lang.reflect.WildcardType;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class UnitTestUtils {
-    private static final ObjectMapper json = JacksonUtils.buildMapper()
-            .setSerializationInclusion(JsonInclude.Include.NON_NULL)
-            .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
-            .disable(SerializationFeature.FAIL_ON_UNWRAPPED_TYPE_IDENTIFIERS)
+    private static final ObjectMapper json = Jackson2ObjectMapperBuilder.json()
+            .deserializerByType(LocalDate.class, LocalDatePreventFormatExceptionDeserializer.INSTANCE)
+            .build()
             .enable(DeserializationFeature.ACCEPT_EMPTY_ARRAY_AS_NULL_OBJECT);
 
     public static ObjectMapper getJsonMapper() {

@@ -30,7 +30,7 @@
           "dateCreation": "2008-03-15",
           "duree": null,
           "garant": null,
-          "dateClotureDesComptes": null,
+          "dateClotureDesComptes": "08",
           "etablissements": {
             "etablissement": [
               {

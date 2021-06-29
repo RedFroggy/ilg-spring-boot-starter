@@ -1,10 +1,6 @@
 package fr.redfroggy.ilg.client.events;
 
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import fr.redfroggy.ilg.JacksonUtils;
 import fr.redfroggy.ilg.UnitTestUtils;
 import fr.redfroggy.ilg.client.model.*;
 import org.junit.jupiter.api.Test;
@@ -16,11 +12,6 @@ import java.time.Month;
 import java.util.Collections;
 
 public class EventDetailTest {
-
-    private static final ObjectMapper json = JacksonUtils.buildMapper()
-            .setSerializationInclusion(JsonInclude.Include.NON_NULL)
-            .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
-            .disable(SerializationFeature.FAIL_ON_UNWRAPPED_TYPE_IDENTIFIERS);
 
     @Test
     public void shouldGetEventDetailFromJson() throws IOException {

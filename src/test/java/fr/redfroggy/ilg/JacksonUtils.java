@@ -6,9 +6,12 @@
  */
 package fr.redfroggy.ilg;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import fr.redfroggy.ilg.json.LocalDatePreventFormatExceptionDeserializer;
+import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
+
+import java.time.LocalDate;
 
 /**
  * Utility class to get configured jackon serializer
@@ -20,8 +23,9 @@ public final class JacksonUtils {
     }
 
     public static ObjectMapper buildMapper() {
-        return new ObjectMapper()
-        .registerModule(new JavaTimeModule())
-        .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, true);
+        return Jackson2ObjectMapperBuilder.json()
+                .deserializerByType(LocalDate.class, LocalDatePreventFormatExceptionDeserializer.INSTANCE)
+                .build()
+                .enable(DeserializationFeature.ACCEPT_EMPTY_ARRAY_AS_NULL_OBJECT);
     }
 }

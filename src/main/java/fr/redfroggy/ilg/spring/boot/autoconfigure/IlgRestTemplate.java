@@ -2,7 +2,9 @@ package fr.redfroggy.ilg.spring.boot.autoconfigure;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import fr.redfroggy.ilg.json.LocalDatePreventFormatExceptionDeserializer;
 import org.springframework.http.*;
+import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -11,6 +13,7 @@ import org.springframework.web.client.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.time.LocalDate;
 import java.util.Collections;
 import java.util.Map;
 
@@ -39,9 +42,15 @@ public class IlgRestTemplate extends RestTemplate {
                 .findFirst()
                 .orElse(new MappingJackson2HttpMessageConverter());
 
-        this.mapper = httpMessageConverter.getObjectMapper()
+        mapper = buildObjectMapper();
+        httpMessageConverter.setObjectMapper(mapper);
+    }
+
+    private ObjectMapper buildObjectMapper() {
+        return Jackson2ObjectMapperBuilder.json()
+                .deserializerByType(LocalDate.class, LocalDatePreventFormatExceptionDeserializer.INSTANCE)
+                .build()
                 .enable(DeserializationFeature.ACCEPT_EMPTY_ARRAY_AS_NULL_OBJECT);
-        httpMessageConverter.setObjectMapper(this.mapper);
     }
 
     public String getBaseUrl() {
