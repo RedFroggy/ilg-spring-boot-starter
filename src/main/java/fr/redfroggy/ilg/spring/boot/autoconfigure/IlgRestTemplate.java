@@ -42,8 +42,8 @@ public class IlgRestTemplate extends RestTemplate {
                 .findFirst()
                 .orElse(new MappingJackson2HttpMessageConverter());
 
-        mapper = buildObjectMapper();
-        httpMessageConverter.setObjectMapper(mapper);
+        this.mapper = buildObjectMapper();
+        httpMessageConverter.setObjectMapper(this.mapper);
     }
 
     private ObjectMapper buildObjectMapper() {
