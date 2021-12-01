@@ -8,20 +8,17 @@ after_success:
   - bash <(curl -s https://codecov.io/bash)
 before_install: |
   echo $GPG_SECRET_KEYS | base64 --decode | gpg --import --no-tty --batch
-  nvm use 11
 # install dependencies used in after_success here because they don't get cached if called in after_success
 before_script:
-  # install node 12
-  - nvm install '12'
-  - nvm use 12
-  - yarn global add https://github.com/conveyal/maven-semantic-release.git#8eb976c8ec57b2fd1cee86f119f80ab1f8a38948 semantic-release
+  # install node 14
+  - nvm install '14'
+  - nvm use 14
+  - yarn global add @conveyal/maven-semantic-release semantic-release
 cache:
   directories:
     - $HOME/.m2
+    - $HOME/.yarn-cache
     - $HOME/.cache/yarn
-    # The following line is optional in maven-semantic-release projects.
-    # It is included here to cache libraries used to install the aws command line tool.
-    - $HOME/.cache/pip
 install: true
 jdk:
   - openjdk8
