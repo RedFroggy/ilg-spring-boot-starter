@@ -1,9 +1,10 @@
-package fr.redfroggy.ilg;
+package fr.redfroggy.ilg.spring.boot.autoconfigure;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import fr.redfroggy.ilg.TestApplication;
 import fr.redfroggy.ilg.client.authentication.AuthenticationJwt;
-import fr.redfroggy.ilg.spring.boot.autoconfigure.IlgRestTemplate;
+import fr.redfroggy.ilg.spring.boot.autoconfigure.client.cache.JWTFixture;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,8 @@ import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.Instant;
+import java.util.Date;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -43,10 +46,12 @@ public class IlgRestTemplateMockRestTest {
 
     private ObjectMapper mapper = new ObjectMapper();
 
+    private static final String ACCESS_TOKEN = JWTFixture.anAccessToken(Date.from(Instant.now().plusSeconds(360)));
+
     @BeforeEach
     public void init() throws URISyntaxException, JsonProcessingException {
         mockAuthorizedServer = MockRestServiceServer.createServer(simpleRestTemplate);
-        AuthenticationJwt jwt = new AuthenticationJwt("test-token", "test-refreshToken");
+        AuthenticationJwt jwt = new AuthenticationJwt(ACCESS_TOKEN, "test-refreshToken");
         mockAuthorizedServer.expect(ExpectedCount.once(),
                 requestTo(new URI("http://ilg.fr/login_json")))
                 .andRespond(withStatus(HttpStatus.OK)
@@ -70,7 +75,7 @@ public class IlgRestTemplateMockRestTest {
         mockApiServer.expect(ExpectedCount.once(),
                 requestTo(new URI("http://ilg.fr/site")))
                 .andExpect(method(HttpMethod.GET))
-                .andExpect(header("authorization","Bearer test-token"))
+                .andExpect(header("authorization","Bearer "+ACCESS_TOKEN))
                 .andExpect(header("accept",MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andRespond(withStatus(HttpStatus.OK)
                         .contentType(MediaType.APPLICATION_JSON)
@@ -90,7 +95,7 @@ public class IlgRestTemplateMockRestTest {
         mockApiServer
                 .expect(ExpectedCount.once(), requestTo(new URI("http://ilg.fr/search")))
                     .andExpect(method(HttpMethod.POST))
-                    .andExpect(header("authorization","Bearer test-token"))
+                    .andExpect(header("authorization","Bearer "+ACCESS_TOKEN))
                     .andExpect(header("accept",MediaType.APPLICATION_JSON_UTF8_VALUE))
                     .andExpect(header(HttpHeaders.CONTENT_TYPE, startsWith("multipart/form-data")))
                 .andRespond(withStatus(HttpStatus.OK)
@@ -113,7 +118,7 @@ public class IlgRestTemplateMockRestTest {
         mockApiServer.expect(ExpectedCount.once(),
                 requestTo(new URI("http://ilg.fr/site")))
                 .andExpect(method(HttpMethod.GET))
-                .andExpect(header("authorization","Bearer test-token"))
+                .andExpect(header("authorization","Bearer "+ACCESS_TOKEN))
                 .andExpect(header("accept",MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andRespond(withStatus(HttpStatus.NOT_FOUND)
                         .contentType(MediaType.APPLICATION_JSON)
@@ -122,6 +127,31 @@ public class IlgRestTemplateMockRestTest {
 
         assertThatThrownBy(() -> apiClient.getForObject("http://ilg.fr/site", String.class))
                 .isInstanceOf(HttpClientErrorException.NotFound.class);
+
+        mockApiServer.verify();
+    }
+
+    @Test
+    public void shouldReloadTokenWhenStatusIs401() throws URISyntaxException, JsonProcessingException {
+        mockAuthorizedServer.expect(ExpectedCount.twice(),
+                        requestTo(new URI("http://ilg.fr/login_json")))
+                .andRespond(withStatus(HttpStatus.OK)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(mapper.writeValueAsString(new AuthenticationJwt(ACCESS_TOKEN, "test-refreshToken")))
+                );
+
+        mockApiServer.expect(ExpectedCount.twice(),
+                        requestTo(new URI("http://ilg.fr/site")))
+                .andExpect(method(HttpMethod.GET))
+                .andExpect(header("authorization","Bearer "+ACCESS_TOKEN))
+                .andExpect(header("accept",MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andRespond(withStatus(HttpStatus.UNAUTHORIZED)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body("not found resource")
+                );
+
+        assertThatThrownBy(() -> apiClient.getForObject("http://ilg.fr/site", String.class))
+                .isInstanceOf(HttpClientErrorException.Unauthorized.class);
 
         mockApiServer.verify();
     }

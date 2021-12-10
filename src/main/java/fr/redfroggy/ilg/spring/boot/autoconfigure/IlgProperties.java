@@ -1,9 +1,9 @@
 package fr.redfroggy.ilg.spring.boot.autoconfigure;
 
-import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.validation.annotation.Validated;
+
+import javax.validation.constraints.NotEmpty;
 
 /**
  * Properties to manage authentication to Ilg api
@@ -21,8 +21,6 @@ public class IlgProperties {
     private String password;
 
     private boolean debugging;
-
-    private String tokenCacheSpec = "expireAfterWrite=14m";
 
     private boolean decode404;
 
@@ -59,15 +57,6 @@ public class IlgProperties {
 
     public void setDebugging(boolean debugging) {
         this.debugging = debugging;
-    }
-
-    @NotBlank
-    public String getTokenCacheSpec() {
-        return tokenCacheSpec;
-    }
-
-    public void setTokenCacheSpec(String tokenCacheSpec) {
-        this.tokenCacheSpec = tokenCacheSpec;
     }
 
     public boolean isDecode404() {

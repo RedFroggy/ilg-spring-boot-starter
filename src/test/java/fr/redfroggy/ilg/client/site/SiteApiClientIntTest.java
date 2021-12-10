@@ -28,6 +28,7 @@ public class SiteApiClientIntTest extends ApiClientIntTest {
         ResponseEntity<SitesProjection> sitesResponse = apiClient.getSites("fr", "428785042",requestParams);
         assertThat(sitesResponse.getBody())
                 .usingRecursiveComparison()
+                .ignoringFields("pagination.total")
                 .isEqualTo(SitesTest.amazonSites());
     }
 
@@ -36,6 +37,7 @@ public class SiteApiClientIntTest extends ApiClientIntTest {
         ResponseEntity<SiteProjection> siteResponse = apiClient.getSite("fr", "428785042","42878504200048");
         assertThat(siteResponse.getBody())
                 .usingRecursiveComparison()
+                .ignoringFields("events")
                 .isEqualTo(SiteTest.amazon00048Site());
     }
 

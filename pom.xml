@@ -58,6 +58,8 @@
     <guava-testlib.version>31.0.1-jre</guava-testlib.version>
     <json.version>20210307</json.version>
     <commons-text.version>1.9</commons-text.version>
+    <java-jwt.version>3.18.2</java-jwt.version>
+    <nimbus-jose-jwt.version>9.14</nimbus-jose-jwt.version>
   </properties>
   <!-- Define where the source code for this project lives -->
   <scm>
@@ -133,6 +135,11 @@
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-text</artifactId>
       <version>${commons-text.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.nimbusds</groupId>
+      <artifactId>nimbus-jose-jwt</artifactId>
+      <version>${nimbus-jose-jwt.version}</version>
     </dependency>
     <!-- JUnit is a Java testing framework.
   It is optional in the workflow of deploying with maven-semantic-release. -->

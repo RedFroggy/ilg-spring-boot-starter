@@ -1,9 +1,10 @@
-package fr.redfroggy.ilg;
+package fr.redfroggy.ilg.spring.boot.autoconfigure;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import fr.redfroggy.ilg.TestApplication;
 import fr.redfroggy.ilg.client.authentication.AuthenticationJwt;
-import fr.redfroggy.ilg.spring.boot.autoconfigure.IlgRestTemplate;
+import fr.redfroggy.ilg.spring.boot.autoconfigure.client.cache.JWTFixture;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,8 @@ import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.Instant;
+import java.util.Date;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.*;
@@ -26,6 +29,8 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
         properties = { "ilg.url=http://ilg.fr","ilg.debugging=true","ilg.decode404=true",
         "logging.level.fr.redfroggy.ilg.spring.boot.autoconfigure.RequestResponseLoggingInterceptor=DEBUG"})
 public class IlgRestTemplateDecode404MockRestTest {
+
+    private static final String ACCESS_TOKEN = JWTFixture.anAccessToken(Date.from(Instant.now().plusSeconds(360)));
 
     @Autowired
     private IlgRestTemplate apiClient;
@@ -41,7 +46,7 @@ public class IlgRestTemplateDecode404MockRestTest {
     @BeforeEach
     public void init() throws URISyntaxException, JsonProcessingException {
         mockAuthorizedServer = MockRestServiceServer.createServer(simpleRestTemplate);
-        AuthenticationJwt jwt = new AuthenticationJwt("test-token", "test-refreshToken");
+        AuthenticationJwt jwt = new AuthenticationJwt(ACCESS_TOKEN, "test-refreshToken");
         mockAuthorizedServer.expect(ExpectedCount.once(),
                 requestTo(new URI("http://ilg.fr/login_json")))
                 .andRespond(withStatus(HttpStatus.OK)
@@ -58,7 +63,7 @@ public class IlgRestTemplateDecode404MockRestTest {
         mockApiServer.expect(ExpectedCount.once(),
                 requestTo(new URI("http://ilg.fr/site")))
                 .andExpect(method(HttpMethod.GET))
-                .andExpect(header("authorization","Bearer test-token"))
+                .andExpect(header("authorization","Bearer "+ ACCESS_TOKEN))
                 .andExpect(header("accept",MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andRespond(withStatus(HttpStatus.NOT_FOUND)
                         .contentType(MediaType.APPLICATION_JSON)
@@ -75,7 +80,7 @@ public class IlgRestTemplateDecode404MockRestTest {
         mockApiServer.expect(ExpectedCount.once(),
                 requestTo(new URI("http://ilg.fr/site")))
                 .andExpect(method(HttpMethod.GET))
-                .andExpect(header("authorization","Bearer test-token"))
+                .andExpect(header("authorization","Bearer "+ ACCESS_TOKEN))
                 .andExpect(header("accept",MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andRespond(withStatus(HttpStatus.NOT_FOUND)
                         .contentType(MediaType.APPLICATION_JSON)
@@ -95,7 +100,7 @@ public class IlgRestTemplateDecode404MockRestTest {
         mockApiServer.expect(ExpectedCount.once(),
                 requestTo(new URI("http://ilg.fr/site")))
                 .andExpect(method(HttpMethod.GET))
-                .andExpect(header("authorization","Bearer test-token"))
+                .andExpect(header("authorization","Bearer "+ ACCESS_TOKEN))
                 .andExpect(header("accept",MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andRespond(withStatus(HttpStatus.OK)
                         .contentType(MediaType.APPLICATION_JSON)

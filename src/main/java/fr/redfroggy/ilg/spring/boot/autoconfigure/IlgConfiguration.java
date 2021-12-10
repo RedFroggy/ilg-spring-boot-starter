@@ -1,6 +1,7 @@
 package fr.redfroggy.ilg.spring.boot.autoconfigure;
 
 import fr.redfroggy.ilg.spring.boot.autoconfigure.client.AuthenticationApiClient;
+import fr.redfroggy.ilg.spring.boot.autoconfigure.client.cache.JwtCache;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -23,7 +24,8 @@ public class IlgConfiguration {
 
     @Bean
     @DependsOn("simpleRestTemplate")
-    public AuthenticationApiClient authenticationService(IlgProperties properties, RestTemplate simpleRestTemplate) {
-        return new AuthenticationApiClient(properties, simpleRestTemplate);
+    public AuthenticationApiClient authenticationService(IlgProperties properties,
+                                                         RestTemplate simpleRestTemplate, JwtCache jwtCache) {
+        return new AuthenticationApiClient(properties, simpleRestTemplate, jwtCache);
     }
 }
