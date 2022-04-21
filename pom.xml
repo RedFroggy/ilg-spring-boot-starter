@@ -48,7 +48,7 @@
     <lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
     <properties-maven-plugin.version>1.0.0</properties-maven-plugin.version>
     <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
-    <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
+    <nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
 
     <commons-lang3.version>3.11</commons-lang3.version>
     <spring-boot.version>2.6.4</spring-boot.version>
