@@ -92,7 +92,7 @@ public class MonitoringPortfolioItemApiClientMockRestTest extends ApiClientMockR
         mockApiServer.expect(ExpectedCount.once(),
                 requestTo(new URI("http://ilg.fr/monitoring/portfolio/999999/item")))
                 .andExpect(method(HttpMethod.POST))
-                .andExpect(header("authorization", "Bearer test-token"))
+                .andExpect(header("authorization", "Bearer "+ACCESS_TOKEN))
                 .andExpect(header("accept", MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(content().string(mapper.writeValueAsString(detail)))
                 .andRespond(withStatus(HttpStatus.CREATED)
@@ -110,7 +110,7 @@ public class MonitoringPortfolioItemApiClientMockRestTest extends ApiClientMockR
         mockApiServer.expect(ExpectedCount.once(),
                 requestTo(new URI("http://ilg.fr/monitoring/portfolio/999999/item/6")))
                 .andExpect(method(HttpMethod.PATCH))
-                .andExpect(header("authorization", "Bearer test-token"))
+                .andExpect(header("authorization", "Bearer "+ACCESS_TOKEN))
                 .andExpect(header("accept", MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(content().string(mapper.writeValueAsString(detail)))
                 .andRespond(withStatus(HttpStatus.NO_CONTENT)
@@ -126,7 +126,7 @@ public class MonitoringPortfolioItemApiClientMockRestTest extends ApiClientMockR
         mockApiServer.expect(ExpectedCount.once(),
                 requestTo(new URI("http://ilg.fr/monitoring/portfolio/999999/item/6")))
                 .andExpect(method(HttpMethod.DELETE))
-                .andExpect(header("authorization", "Bearer test-token"))
+                .andExpect(header("authorization", "Bearer "+ACCESS_TOKEN))
                 .andExpect(header("accept", MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andRespond(withStatus(HttpStatus.NO_CONTENT)
                         .contentType(MediaType.APPLICATION_JSON)
@@ -142,7 +142,7 @@ public class MonitoringPortfolioItemApiClientMockRestTest extends ApiClientMockR
         mockApiServer.expect(ExpectedCount.once(),
                 requestTo(new URI("http://ilg.fr/monitoring/portfolio/999999/items")))
                 .andExpect(method(HttpMethod.DELETE))
-                .andExpect(header("authorization", "Bearer test-token"))
+                .andExpect(header("authorization", "Bearer "+ACCESS_TOKEN))
                 .andExpect(header("accept", MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(content().string(mapper.writeValueAsString(ids)))
                 .andRespond(withStatus(HttpStatus.NO_CONTENT)

@@ -67,7 +67,7 @@ public class MonitoringPortfolioSirenApiClientMockRestTest extends ApiClientMock
         mockApiServer.expect(ExpectedCount.once(),
                 requestTo(new URI("http://ilg.fr/monitoring/portfolio/siren")))
                 .andExpect(method(HttpMethod.POST))
-                .andExpect(header("authorization", "Bearer test-token"))
+                .andExpect(header("authorization", "Bearer "+ACCESS_TOKEN))
                 .andExpect(header("accept", MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(content().string(mapper.writeValueAsString(content)))
                 .andRespond(withStatus(HttpStatus.OK)

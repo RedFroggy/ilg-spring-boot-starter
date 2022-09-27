@@ -3,6 +3,7 @@ package fr.redfroggy.ilg.client;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.redfroggy.ilg.client.authentication.AuthenticationJwt;
+import fr.redfroggy.ilg.spring.boot.autoconfigure.client.cache.JWTFixture;
 import org.hamcrest.core.StringContains;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,8 @@ import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.Instant;
+import java.util.Date;
 
 import static org.hamcrest.Matchers.startsWith;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.*;
@@ -32,10 +35,12 @@ public abstract class ApiClientMockRestTest {
     private MockRestServiceServer mockAuthorizedServer;
     protected ObjectMapper mapper = new ObjectMapper();
 
+    public static final String ACCESS_TOKEN = JWTFixture.anAccessToken(Date.from(Instant.now().plusSeconds(360)));
+
     @BeforeEach
     public void init() throws URISyntaxException, JsonProcessingException {
         mockAuthorizedServer = MockRestServiceServer.createServer(simpleRestTemplate);
-        AuthenticationJwt jwt = new AuthenticationJwt("test-token", "test-refreshToken");
+        AuthenticationJwt jwt = new AuthenticationJwt(ACCESS_TOKEN, "test-refreshToken");
         mockAuthorizedServer.expect(ExpectedCount.once(),
                 requestTo(new URI("http://ilg.fr/login_json")))
                 .andRespond(withStatus(HttpStatus.OK)
@@ -50,7 +55,7 @@ public abstract class ApiClientMockRestTest {
         mockApiServer.expect(ExpectedCount.once(),
                 requestTo(new URI(uri)))
                 .andExpect(method(HttpMethod.GET))
-                .andExpect(header("authorization", "Bearer test-token"))
+                .andExpect(header("authorization", "Bearer "+ACCESS_TOKEN))
                 .andExpect(header("accept", MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andRespond(withStatus(HttpStatus.OK)
                         .contentType(MediaType.APPLICATION_JSON)
@@ -63,7 +68,7 @@ public abstract class ApiClientMockRestTest {
                 requestTo(
                         new URI(uri)))
                 .andExpect(method(HttpMethod.POST))
-                .andExpect(header("authorization","Bearer test-token"))
+                .andExpect(header("authorization","Bearer "+ACCESS_TOKEN))
                 .andExpect(header("accept",MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(header(HttpHeaders.CONTENT_TYPE, startsWith("multipart/form-data")))
                 .andExpect(content().string(StringContains.containsString("Content-Disposition: form-data; " +

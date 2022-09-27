@@ -9,7 +9,6 @@ ilg:
   username: test-username
   password: test-password
   debugging: false
-  tokenCacheSpec: expireAfterWrite=10m
   monitoring-alert:
     cron: "*/10 * * * * ?"
     alert-request:
