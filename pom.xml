@@ -55,10 +55,9 @@
 
     <assertj-core.version>3.19.0</assertj-core.version>
     <swagger-annotations.version>1.6.3</swagger-annotations.version>
-    <guava-testlib.version>31.0.1-jre</guava-testlib.version>
-    <json.version>20210307</json.version>
+    <guava-testlib.version>31.1-jre</guava-testlib.version>
+    <json.version>20220924</json.version>
     <commons-text.version>1.9</commons-text.version>
-    <java-jwt.version>3.18.2</java-jwt.version>
     <nimbus-jose-jwt.version>9.14</nimbus-jose-jwt.version>
   </properties>
   <!-- Define where the source code for this project lives -->
