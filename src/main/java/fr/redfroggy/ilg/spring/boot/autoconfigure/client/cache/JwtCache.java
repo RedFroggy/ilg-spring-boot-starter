@@ -34,12 +34,13 @@ public class JwtCache {
     public AuthenticationJwt putAndGet(String key, Supplier<AuthenticationJwt> getNewToken) {
         AuthenticationJwt jwt =  getNewToken.get();
         JWT accessToken;
-        Date expirationTime = null;
+        Date expirationTime;
         try {
             accessToken = JWTParser.parse(jwt.getToken());
             expirationTime = accessToken.getJWTClaimsSet().getExpirationTime();
         } catch (ParseException e) {
             log.error("Cannot parse authentication jwt.",e);
+            throw new ParseRunTimeException(e);
         }
         Duration durationCache = Duration.between(Instant.now().plusSeconds(5), expirationTime.toInstant());
         if (!(durationCache.getSeconds() == this.durationCache.getSeconds())) {
