@@ -51,7 +51,7 @@
     <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
 
     <commons-lang3.version>3.11</commons-lang3.version>
-    <spring-boot.version>2.6.4</spring-boot.version>
+    <spring-boot.version>2.7.18</spring-boot.version>
 
     <assertj-core.version>3.19.0</assertj-core.version>
     <swagger-annotations.version>1.6.5</swagger-annotations.version>
