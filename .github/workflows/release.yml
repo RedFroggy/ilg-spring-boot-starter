@@ -34,7 +34,7 @@ jobs:
                   gpg-passphrase: ${{ secrets.GPG_PASSPHRASE }}
 
             - name: Run tests
-              run: ./mvnw test
+              run: mvn test
 
             - name: Run Semantic Release
               env:

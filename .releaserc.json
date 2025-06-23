@@ -7,7 +7,7 @@
     "@semantic-release/changelog",
     ["@semantic-release/exec", {
       "prepareCmd": "./scripts/update-version.sh ${nextRelease.version}",
-      "publishCmd": "./mvnw deploy -B -DskipTests"
+      "publishCmd": "mvn deploy -B -DskipTests"
     }],
     "@semantic-release/github",
     ["@semantic-release/git", {
