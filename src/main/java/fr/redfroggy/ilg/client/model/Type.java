@@ -22,6 +22,9 @@ public enum Type {
     @JsonCreator
     public static Type fromValue(String value) {
         try {
+            if (value == null) {
+                return null;
+            }
             return Type.valueOf(value.toUpperCase(Locale.US));
         } catch (Exception e) {
             throw new IllegalArgumentException("Unexpected value '" + value + "'");
