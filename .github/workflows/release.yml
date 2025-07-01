@@ -40,7 +40,9 @@ jobs:
             - name: Run Semantic Release
               env:
                   GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-                  GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+                  GPG_PRIVATE_KEY: ${{ secrets.GPG_SECRET_KEYS }}
                   GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+                  CENTRAL_USERNAME: ${{env.CENTRAL_USERNAME}}
+                  CENTRAL_PASSWORD: ${{secrets.CENTRAL_PASSWORD}}
               run: |
                   semantic-release
