@@ -1,3 +1,10 @@
+## [1.9.3](https://github.com/RedFroggy/ilg-spring-boot-starter/compare/v1.9.2...v1.9.3) (2025-07-01)
+
+
+### Bug Fixes
+
+* upgrade test lib ([7f8bb66](https://github.com/RedFroggy/ilg-spring-boot-starter/commit/7f8bb661f848d23837cbc92e6df335319d9b1cbd))
+
 ## [1.9.2](https://github.com/RedFroggy/ilg-spring-boot-starter/compare/v1.9.1...v1.9.2) (2025-06-26)
 
 
