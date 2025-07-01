@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>fr.redfroggy</groupId>
   <artifactId>ilg-spring-boot-starter</artifactId>
-  <version>1.9.2</version>
+  <version>1.9.3</version>
   <packaging>jar</packaging>
   <name>ilg-spring-boot-starter</name>
   <description>Spring boot 2.x support for ILG api 2.0.8</description>
@@ -47,8 +47,8 @@
     <jib-maven-plugin.version>1.5.1</jib-maven-plugin.version>
     <lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
     <properties-maven-plugin.version>1.0.0</properties-maven-plugin.version>
-    <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
-    <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
+    <maven-gpg-plugin.version>3.2.7</maven-gpg-plugin.version>
+    <nexus-staging-maven-plugin.version>1.6.14</nexus-staging-maven-plugin.version>
 
     <commons-lang3.version>3.11</commons-lang3.version>
     <spring-boot.version>2.6.4</spring-boot.version>
@@ -65,21 +65,9 @@
     <developerConnection>scm:git:https://github.com/RedFroggy/ilg-spring-boot-starter.git</developerConnection>
     <url>https://github.com/RedFroggy/ilg-spring-boot-starter</url>
   </scm>
-  <repositories>
-    <repository>
-      <id>sonatype-oss</id>
-      <name>Sonatype OSS</name>
-      <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-    </repository>
-  </repositories>
   <distributionManagement>
-    <snapshotRepository>
-      <id>ossrh</id>
-      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-    </snapshotRepository>
     <repository>
-      <id>ossrh</id>
-      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+      <id>central</id>
     </repository>
   </distributionManagement>
   <dependencyManagement>
@@ -239,16 +227,13 @@
         </executions>
       </plugin>
       <plugin>
-        <!-- Automatically close and deploy from OSSRH -->
-        <groupId>org.sonatype.plugins</groupId>
-        <artifactId>nexus-staging-maven-plugin</artifactId>
-        <version>${nexus-staging-maven-plugin.version}</version>
+        <groupId>org.sonatype.central</groupId>
+        <artifactId>central-publishing-maven-plugin</artifactId>
+        <version>0.8.0</version>
         <extensions>true</extensions>
         <configuration>
-          <serverId>ossrh</serverId>
-          <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-          <!-- Release versions will be synced to Maven Central automatically. -->
-          <autoReleaseAfterClose>true</autoReleaseAfterClose>
+          <publishingServerId>central</publishingServerId>
+          <deploymentName>${artifactId}-${version}</deploymentName>
         </configuration>
       </plugin>
       <plugin>
