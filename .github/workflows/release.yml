@@ -31,8 +31,6 @@ jobs:
                   server-id: 'central' # Must match <id> in distributionManagement
                   server-username: 'CENTRAL_USERNAME'
                   server-password: 'CENTRAL_PASSWORD'
-                  gpg-private-key: ${{ secrets.GPG_SECRET_KEYS }}
-                  gpg-passphrase: 'GPG_PASSPHRASE'
 
             - name: Run tests
               run: mvn test
