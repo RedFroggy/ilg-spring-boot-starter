@@ -53,7 +53,7 @@
     <spring-boot.version>2.6.4</spring-boot.version>
 
     <assertj-core.version>3.19.0</assertj-core.version>
-    <swagger-annotations.version>1.6.5</swagger-annotations.version>
+    <swagger-annotations.version>1.6.16</swagger-annotations.version>
     <guava-testlib.version>33.4.8-jre</guava-testlib.version>
     <json.version>20211205</json.version>
     <commons-text.version>1.9</commons-text.version>
